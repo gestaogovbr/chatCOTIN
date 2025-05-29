@@ -1,0 +1,1069 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+<style>
+  :root {
+      /* Cores Gov.br */
+      --primary-blue: #1351B4;
+      --primary-blue-warm-vivid-70: #0C326F;
+      --primary-blue-warm-20: #C5D4EB;
+      --secondary-green: #168821;
+      --secondary-green-light: #E3F2E3;
+      --warning-yellow: #FFCD07;
+      --error-red: #E52207;
+      --gray-80: #222222;
+      --gray-60: #4B4B4B;
+      --gray-40: #9E9E9E;
+      --gray-20: #DCDCDC;
+      --gray-10: #F8F9FA;
+      --gray-2: #F3F7FA;
+      --white: #FFFFFF;
+      --surface-background: #F3F7FA; /* Fundo gov.br */
+      
+      /* Feedback */
+      --success: #168821;
+      --success-light: #E3F2E3;
+      --info: #1351B4;
+      --info-light: #C5D4EB;
+      --warning: #FFCD07;
+      --warning-light: #FFF5C2;
+      --danger: #E52207;
+      --danger-light: #F8D7DA;
+      
+      /* Shadows */
+      --shadow-sm: 0 1px 2px 0 rgba(19,81,180,0.05);
+      --shadow-md: 0 4px 6px -1px rgba(19,81,180,0.08);
+      --shadow-lg: 0 10px 15px -3px rgba(19,81,180,0.10);
+      
+      /* Transitions */
+      --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+      
+      /* Z-index */
+      --z-header: 100;
+      --z-modal: 300;
+      --z-tooltip: 400;
+      
+      /* Layout */
+      --header-height: 70px;
+      --footer-height: 60px;
+  }
+
+  /* Dark mode variables */
+  [data-theme="dark"] {
+      --primary-blue: #4A90E2;
+      --primary-blue-warm-vivid-70: #2E5F94;
+      --primary-blue-warm-20: #1A2A3E;
+      --secondary-green: #2ECC71;
+      --secondary-green-light: #1A3A2A;
+      --gray-80: #E0E0E0;
+      --gray-60: #A0A0A0;
+      --gray-20: #3A3A3A;
+      --gray-2: #2A2A2A;
+      --white: #1E1E1E;
+      --surface-background: #121212;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+      
+      /* Header specific dark mode colors */
+      --header-text-dark: #FFFFFF;
+      --header-icon-dark: #FFFFFF;
+  }
+
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
+
+  body {
+      font-family: 'Inter', 'Rawline', Arial, sans-serif;
+      background: var(--surface-background);
+      color: var(--gray-80);
+      line-height: 1.6;
+      transition: background-color var(--transition-base), color var(--transition-base);
+  }
+
+  /* Container principal */
+  .page-container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--surface-background);
+  }
+
+  /* Modern Header - Padrão Gov.br oficial */
+  .header {
+      height: var(--header-height);
+      min-height: var(--header-height);
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-20);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      position: relative;
+      z-index: var(--z-header);
+      transition: all var(--transition-base);
+      flex-shrink: 0;
+  }
+
+  .header .container-fluid {
+      height: 100%;
+      max-width: 100%;
+      padding: 0 1.5rem;
+  }
+
+  .header .row {
+      height: 100%;
+      margin: 0;
+  }
+
+  .header-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      height: 100%;
+  }
+
+  .header-right {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.75rem;
+      height: 100%;
+  }
+
+  /* Identidade Visual Gov.br */
+  .gov-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+      height: 100%;
+  }
+
+  .gov-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      transition: all var(--transition-fast);
+      padding: 0.25rem;
+      border-radius: 0.25rem;
+  }
+
+  .gov-logo img {
+      height: 28px;
+      width: auto;
+  }
+
+  .gov-logo:hover {
+      background-color: var(--gray-2);
+      transform: none;
+      text-decoration: none;
+  }
+
+  /* Separador visual */
+  .brand-separator {
+      width: 1px;
+      height: 24px;
+      background: var(--primary-blue-warm-20);
+      margin: 0;
+  }
+
+  /* Sistema ChatCOTIN */
+  .system-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      text-decoration: none;
+      transition: all var(--transition-base);
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.375rem;
+  }
+
+  .system-logo img {
+      height: 32px;
+      width: auto;
+  }
+
+  .system-brand-info {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+  }
+
+  .system-title {
+      font-size: 1.0625rem;
+      font-weight: 600;
+      color: var(--primary-blue);
+      margin: 0;
+      line-height: 1.2;
+  }
+
+  .system-subtitle {
+      font-size: 0.6875rem;
+      color: var(--primary-blue-warm-vivid-70);
+      font-weight: 400;
+      margin: 0;
+      line-height: 1.1;
+      margin-top: -1px;
+  }
+
+  .system-logo:hover {
+      background-color: var(--gray-2);
+      transform: none;
+      text-decoration: none;
+  }
+
+  .system-logo:hover .system-title {
+      color: var(--primary-blue-warm-vivid-70);
+  }
+
+  .system-logo:hover .system-subtitle {
+      color: var(--primary-blue);
+  }
+
+  /* Navegação principal gov.br */
+  .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      margin-left: 1.5rem;
+      height: 100%;
+  }
+
+  .nav-link-gov {
+      color: var(--primary-blue);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 0.625rem 0.75rem;
+      border-radius: 0.375rem;
+      transition: all var(--transition-fast);
+      position: relative;
+      height: fit-content;
+      display: flex;
+      align-items: center;
+  }
+
+  .nav-link-gov:hover {
+      color: var(--white);
+      background-color: var(--primary-blue);
+      text-decoration: none;
+  }
+
+  .nav-link-gov.active {
+      background-color: var(--primary-blue);
+      color: var(--white);
+  }
+
+  .nav-link-gov:focus {
+      outline: 2px solid var(--primary-blue);
+      outline-offset: 2px;
+  }
+
+  /* Botões do header gov.br */
+  .icon-btn-gov {
+      background: none;
+      border: none;
+      color: var(--primary-blue);
+      font-size: 0.875rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 0.375rem;
+      transition: all var(--transition-fast);
+      position: relative;
+      min-width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+
+  .icon-btn-gov:hover {
+      background: var(--primary-blue);
+      color: var(--white);
+      transform: none;
+  }
+
+  .icon-btn-gov:focus {
+      outline: 2px solid var(--primary-blue);
+      outline-offset: 2px;
+  }
+
+  /* Botão de voltar ao chat */
+  .btn-header-primary {
+      background: var(--primary-blue);
+      color: var(--white);
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 0.375rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      text-decoration: none;
+      height: 36px;
+      min-height: 36px;
+  }
+
+  .btn-header-primary:hover {
+      background: var(--primary-blue-warm-vivid-70);
+      color: var(--white);
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(19, 81, 180, 0.25);
+      text-decoration: none;
+  }
+
+  .btn-header-primary:focus {
+      outline: 2px solid var(--primary-blue);
+      outline-offset: 2px;
+  }
+
+  /* Main Content */
+  .main-content {
+      flex: 1;
+      background: var(--surface-background);
+      padding: 2rem 0;
+      min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  }
+
+  /* Container content */
+  .content-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+  }
+
+  /* Hero Section */
+  .hero-section {
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-warm-vivid-70) 100%);
+      color: var(--white);
+      padding: 4rem 0;
+      margin-bottom: 3rem;
+      border-radius: 1rem;
+      position: relative;
+      overflow: hidden;
+  }
+
+  .hero-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 40%;
+      height: 200%;
+      background: rgba(255, 255, 255, 0.05);
+      transform: rotate(15deg);
+      border-radius: 50%;
+  }
+
+  .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+  }
+
+  .hero-title {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+  }
+
+  .hero-subtitle {
+      font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+      font-weight: 400;
+      margin-bottom: 2rem;
+      opacity: 0.95;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+  }
+
+  .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 0.75rem 1.5rem;
+      border-radius: 2rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* Section Cards */
+  .section-card {
+      background: var(--white);
+      border-radius: 1rem;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--gray-20);
+      transition: all var(--transition-base);
+  }
+
+  .section-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+  }
+
+  .section-title {
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: var(--primary-blue);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+  }
+
+  .section-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      background: var(--primary-blue-warm-20);
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-blue);
+      font-size: 1.25rem;
+  }
+
+  .section-content {
+      color: var(--gray-80);
+      line-height: 1.7;
+      font-size: 1rem;
+  }
+
+  /* Links Grid */
+  .links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+  }
+
+  .link-category {
+      background: var(--white);
+      border-radius: 0.875rem;
+      padding: 1.5rem;
+      border: 1px solid var(--gray-20);
+      transition: all var(--transition-base);
+  }
+
+  .link-category:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-blue-warm-20);
+  }
+
+  .category-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--primary-blue);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+  }
+
+  .category-icon {
+      width: 1.5rem;
+      height: 1.5rem;
+      background: var(--primary-blue);
+      border-radius: 0.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 0.75rem;
+  }
+
+  .link-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+  }
+
+  .link-item {
+      margin-bottom: 0.75rem;
+  }
+
+  .external-link {
+      color: var(--primary-blue);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem;
+      border-radius: 0.375rem;
+      transition: all var(--transition-fast);
+      line-height: 1.4;
+  }
+
+  .external-link:hover {
+      background: var(--primary-blue-warm-20);
+      color: var(--primary-blue-warm-vivid-70);
+      text-decoration: none;
+      transform: translateX(0.25rem);
+  }
+
+  .external-link i {
+      font-size: 0.75rem;
+      opacity: 0.7;
+  }
+
+  /* Footer Gov.br */
+  .footer-govbr {
+      width: 100%;
+      background: #071D41;
+      color: #fff;
+      text-align: center;
+      font-size: 0.9375rem;
+      padding: 1rem;
+      font-family: 'Inter', 'Rawline', Arial, sans-serif;
+      letter-spacing: 0.01em;
+      flex-shrink: 0;
+      min-height: var(--footer-height);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+
+  .footer-govbr a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+  }
+
+  .footer-govbr a:hover {
+      text-decoration: underline;
+      color: #fff;
+  }
+
+  /* Responsividade */
+  @media (max-width: 991.98px) {
+      .main-nav {
+          display: none;
+      }
+      
+      .header .container-fluid {
+          padding: 0 1rem;
+      }
+
+      .content-container {
+          padding: 0 1rem;
+      }
+
+      .hero-section {
+          padding: 3rem 0;
+          margin-bottom: 2rem;
+      }
+
+      .section-card {
+          padding: 2rem;
+      }
+  }
+
+  @media (max-width: 767.98px) {
+      .system-brand-info {
+          display: none;
+      }
+      
+      .brand-separator {
+          margin: 0 0.25rem;
+      }
+      
+      .gov-brand {
+          gap: 0.5rem;
+      }
+      
+      .header-left {
+          gap: 0.5rem;
+      }
+      
+      .icon-btn-gov {
+          min-width: 32px;
+          height: 32px;
+          padding: 0.375rem;
+      }
+      
+      .btn-header-primary {
+          padding: 0.375rem 0.75rem;
+          font-size: 0.75rem;
+          height: 32px;
+          min-height: 32px;
+      }
+
+      .gov-logo img {
+          height: 24px;
+      }
+
+      .system-logo img {
+          height: 28px;
+      }
+
+      .hero-section {
+          padding: 2.5rem 0;
+          margin-bottom: 1.5rem;
+      }
+
+      .section-card {
+          padding: 1.5rem;
+          margin-bottom: 1.5rem;
+      }
+
+      .links-grid {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+      }
+
+      .link-category {
+          padding: 1.25rem;
+      }
+  }
+
+  @media (max-width: 575.98px) {
+      .header .container-fluid {
+          padding: 0 0.75rem;
+      }
+
+      .content-container {
+          padding: 0 0.75rem;
+      }
+
+      .system-title {
+          font-size: 0.9375rem;
+      }
+      
+      .gov-logo img {
+          height: 22px;
+      }
+      
+      .system-logo img {
+          height: 26px;
+      }
+      
+      .btn-header-primary span {
+          display: none;
+      }
+
+      .btn-header-primary {
+          padding: 0.375rem;
+          width: 32px;
+          justify-content: center;
+      }
+
+      .hero-section {
+          padding: 2rem 0;
+      }
+
+      .section-card {
+          padding: 1.25rem;
+      }
+  }
+
+  /* Dark mode styles */
+  [data-theme="dark"] .system-title {
+      color: var(--header-text-dark) !important;
+  }
+
+  [data-theme="dark"] .system-subtitle {
+      color: var(--header-text-dark) !important;
+      opacity: 0.8;
+  }
+
+  [data-theme="dark"] .system-logo:hover .system-title {
+      color: var(--header-text-dark) !important;
+      opacity: 1;
+  }
+
+  [data-theme="dark"] .system-logo:hover .system-subtitle {
+      color: var(--header-text-dark) !important;
+      opacity: 0.9;
+  }
+
+  [data-theme="dark"] .nav-link-gov {
+      color: var(--header-text-dark) !important;
+  }
+
+  [data-theme="dark"] .nav-link-gov:hover {
+      color: var(--white) !important;
+      background-color: var(--header-text-dark) !important;
+  }
+
+  [data-theme="dark"] .nav-link-gov.active {
+      background-color: var(--header-text-dark) !important;
+      color: var(--white) !important;
+  }
+
+  [data-theme="dark"] .icon-btn-gov {
+      color: var(--header-icon-dark) !important;
+  }
+
+  [data-theme="dark"] .icon-btn-gov:hover {
+      background: var(--header-icon-dark) !important;
+      color: var(--white) !important;
+  }
+
+  [data-theme="dark"] .btn-header-primary {
+      background: var(--header-icon-dark) !important;
+      border-color: var(--header-icon-dark) !important;
+  }
+
+  [data-theme="dark"] .btn-header-primary:hover {
+      background: #666666 !important;
+      border-color: #666666 !important;
+      box-shadow: 0 2px 8px rgba(255, 255, 255, 0.15) !important;
+  }
+
+  [data-theme="dark"] .brand-separator {
+      background: var(--header-text-dark) !important;
+      opacity: 0.6;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="page-container">
+    <!-- Modern Header usando Bootstrap Grid - Padrão Gov.br -->
+    <header class="header" role="banner">
+        <div class="container-fluid h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-auto">
+                    <div class="header-left">
+                        <!-- Logo Gov.br + ChatCOTIN -->
+                        <div class="gov-brand">
+                            <a href="https://www.gov.br" class="gov-logo" aria-label="Portal gov.br" target="_blank">
+                                <img src="{% static 'img/govbr-cores.png' %}" alt="Logo gov.br" id="gov-logo-img">
+                            </a>
+                            <div class="brand-separator"></div>
+                            <a href="{% url 'chatbot_new' %}" class="system-logo" aria-label="ChatCOTIN - Página inicial">
+                                <img src="{% static 'img/logo_cotin.png' %}" alt="Logo ChatCOTIN" class="system-logo-img">
+                                <div class="system-brand-info">
+                                    <span class="system-title">ChatCOTIN</span>
+                                    <span class="system-subtitle">Assistente de Dados Abertos</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="header-right">
+                        <!-- Navegação Principal (Desktop) -->
+                        <nav class="main-nav d-none d-lg-flex" aria-label="Navegação principal">
+                            <a href="#" class="nav-link-gov">Documentação</a>
+                            <a href="#" class="nav-link-gov">Suporte</a>
+                            <!-- <a href="#" class="nav-link-gov active">Sobre</a> -->
+                        </nav>
+                        
+                        <!-- Ações do Header -->
+                        <div class="header-actions">
+                            <button class="icon-btn-gov tooltip-gov" onclick="toggleTheme()" aria-label="Alternar tema" data-tooltip="Alternar entre tema claro e escuro">
+                                <i class="fas fa-moon" id="themeIcon"></i>
+                            </button>
+                            
+                            <!-- Botão de Voltar ao Chat -->
+                            <!-- <a href="{% url 'chatbot_new' %}" class="btn-header-primary" aria-label="Voltar ao chat">
+                                <i class="fas fa-arrow-left"></i>
+                                <span class="d-none d-sm-inline">Voltar ao Chat</span>
+                            </a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content" role="main">
+        <div class="content-container">
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="hero-content">
+                    <h1 class="hero-title">Bem-vindo ao ChatCOTIN 🚀</h1>
+                    <p class="hero-subtitle">
+                        A Coordenação de Transparência e Informações Gerenciais - COTING/CGGES/DELOG tem o prazer de disponibilizar este espaço para facilitar o acesso a informações sobre compras públicas, garantindo transparência, eficiência e inovação no setor.
+                    </p>
+                    <div class="hero-badge">
+                        <i class="fas fa-shield-alt"></i>
+                        Transparência · Eficiência · Inovação
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção de APIs -->
+            <section class="section-card">
+                <h2 class="section-title">
+                    <div class="section-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    APIs de Compras Públicas
+                </h2>
+                <div class="section-content">
+                    <p>Acesse dados detalhados sobre licitações, contratos e preços praticados em compras públicas através de nossas APIs robustas e bem documentadas.</p>
+                    
+                    <div class="links-grid">
+                        <div class="link-category">
+                            <h3 class="category-title">
+                                <div class="category-icon">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                API Principal
+                            </h3>
+                            <ul class="link-list">
+                                <li class="link-item">
+                                    <a href="https://dadosabertos.compras.gov.br/swagger-ui/index.html" class="external-link" target="_blank" rel="noopener">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        Documentação da API de Compras
+                                    </a>
+                                </li>
+                                <li class="link-item">
+                                    <a href="https://dados.gov.br/dados/conjuntos-dados/compras-publicas-do-governo-federal" class="external-link" target="_blank" rel="noopener">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        Conjuntos de Dados Abertos
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="link-category">
+                            <h3 class="category-title">
+                                <div class="category-icon">
+                                    <i class="fas fa-list"></i>
+                                </div>
+                                Módulos Principais
+                            </h3>
+                            <ul class="link-list">
+                                <li class="link-item">
+                                    <span class="external-link">
+                                        <i class="fas fa-box"></i>
+                                        <strong>CATÁLOGO MATERIAL:</strong> Consulta materiais adquiridos
+                                    </span>
+                                </li>
+                                <li class="link-item">
+                                    <span class="external-link">
+                                        <i class="fas fa-tools"></i>
+                                        <strong>CATÁLOGO SERVIÇO:</strong> Consulta serviços contratados
+                                    </span>
+                                </li>
+                                <li class="link-item">
+                                    <span class="external-link">
+                                        <i class="fas fa-search-dollar"></i>
+                                        <strong>PESQUISA DE PREÇO:</strong> Informações sobre valores pagos
+                                    </span>
+                                </li>
+                                <li class="link-item">
+                                    <span class="external-link">
+                                        <i class="fas fa-clipboard-list"></i>
+                                        <strong>PGC:</strong> Planejamento e Gerenciamento de Contratações
+                                    </span>
+                                </li>
+                                <li class="link-item">
+                                    <span class="external-link">
+                                        <i class="fas fa-building"></i>
+                                        <strong>UASG:</strong> Unidades Administrativas de Serviços Gerais
+                                    </span>
+                                </li>
+                                <li class="link-item">
+                                    <span class="external-link">
+                                        <i class="fas fa-file-contract"></i>
+                                        <strong>CONTRATOS:</strong> Acompanhe contratos firmados
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção de Painéis -->
+            <section class="section-card">
+                <h2 class="section-title">
+                    <div class="section-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    Painéis de Compras Públicas
+                </h2>
+                <div class="section-content">
+                    <p>Visualize dados e estatísticas em painéis interativos que facilitam o acompanhamento e análise das compras públicas.</p>
+                    
+                    <div class="links-grid">
+                        <div class="link-category">
+                            <h3 class="category-title">
+                                <div class="category-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                Painéis Governamentais
+                            </h3>
+                            <ul class="link-list">
+                                <li class="link-item">
+                                    <a href="https://paineldecompras.economia.gov.br/licitacao-sessao" class="external-link" target="_blank" rel="noopener">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        Painel de Compras Governamentais
+                                    </a>
+                                </li>
+                                <li class="link-item">
+                                    <a href="https://pncp.gov.br/app/" class="external-link" target="_blank" rel="noopener">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        Portal Nacional de Contratações Públicas (PNCP)
+                                    </a>
+                                </li>
+                                <li class="link-item">
+                                    <a href="https://www.gov.br/pncp/pt-br/acesso-a-informacao/painel-pncp-em-numeros" class="external-link" target="_blank" rel="noopener">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        Painel PNCP em Números
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="link-category">
+                            <h3 class="category-title">
+                                <div class="category-icon">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                Ferramentas de Pesquisa
+                            </h3>
+                            <ul class="link-list">
+                                <li class="link-item">
+                                    <a href="https://www.gov.br/compras/pt-br/sistemas/conheca-o-compras/pesquisa-de-precos" class="external-link" target="_blank" rel="noopener">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        Pesquisa de Preços do Compras.gov.br
+                                    </a>
+                                </li>
+                                <li class="link-item">
+                                    <a href="https://www.gov.br/compras/pt-br/cidadao/painel-municipios" class="external-link" target="_blank" rel="noopener">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        Painel de Municípios
+                                    </a>
+                                </li>
+                                <li class="link-item">
+                                    <a href="https://www.gov.br/compras/pt-br/cidadao/Fornecedores%20Nacionais%20e%20Internacionais" class="external-link" target="_blank" rel="noopener">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        Painel de Fornecedores
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="link-category">
+                            <h3 class="category-title">
+                                <div class="category-icon">
+                                    <i class="fas fa-file-contract"></i>
+                                </div>
+                                Contratos
+                            </h3>
+                            <ul class="link-list">
+                                <li class="link-item">
+                                    <a href="https://contratos.comprasnet.gov.br/transparencia" class="external-link" target="_blank" rel="noopener">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        Portal de Contratos Públicos
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção de Compromisso -->
+            <section class="section-card">
+                <h2 class="section-title">
+                    <div class="section-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    Nosso Compromisso
+                </h2>
+                <div class="section-content">
+                    <p>A COTING/CGGES/DELOG reforça seu compromisso com a transparência e inovação no setor público. 🚀📢</p>
+                    <p>Aproveite esses recursos e boa consulta! 📊✅</p>
+                    
+                    <div class="links-grid">
+                        <div class="link-category" style="text-align: center; grid-column: 1 / -1;">
+                            <h3 class="category-title" style="justify-content: center;">
+                                <div class="category-icon">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                                Comece Agora
+                            </h3>
+                            <a href="{% url 'chatbot_new' %}" class="btn-header-primary" style="display: inline-flex; margin-top: 1rem;">
+                                <i class="fas fa-comments"></i>
+                                Iniciar Conversa com o ChatCOTIN
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer Gov.br -->
+    <footer class="footer-govbr">
+        <div class="container">
+            <strong>
+                Todo o conteúdo deste site está publicado sob a licença
+                <a href="https://creativecommons.org/licenses/by-nd/3.0/deed.en" target="_blank" rel="noopener">
+                    Creative Commons Atribuição-SemDerivações 3.0 Não Adaptada
+                </a>.
+            </strong>
+        </div>
+    </footer>
+</div>
+
+<script>
+    // Gerenciamento de tema
+    let currentTheme = 'light';
+
+    function toggleTheme() {
+        currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+        applyTheme();
+        
+        // Update icon
+        const icon = document.getElementById('themeIcon');
+        if (icon) {
+            icon.className = currentTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+    }
+
+    function applyTheme() {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        localStorage.setItem('theme', currentTheme);
+        
+        // Trocar logo gov.br baseado no tema
+        updateGovLogo();
+    }
+    
+    function updateGovLogo() {
+        const govLogo = document.getElementById('gov-logo-img');
+        if (govLogo) {
+            if (currentTheme === 'dark') {
+                govLogo.src = "{% static 'img/govbr-branca.png' %}";
+            } else {
+                govLogo.src = "{% static 'img/govbr-cores.png' %}";
+            }
+        }
+    }
+
+    // Aplicar tema salvo
+    document.addEventListener('DOMContentLoaded', function() {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            currentTheme = savedTheme;
+            applyTheme();
+            
+            const icon = document.getElementById('themeIcon');
+            if (icon) {
+                icon.className = currentTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            }
+        }
+    });
+</script>
+{% endblock %} 

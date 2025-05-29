@@ -52,6 +52,8 @@
       --header-height: 70px;
       --footer-height: 60px;
       --input-section-height: 80px;
+      --sidebar-width: 280px;
+      --sidebar-width-collapsed: 60px;
   }
 
   /* Dark mode variables */
@@ -69,6 +71,10 @@
       --surface-background: #121212;
       --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
       --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+      
+      /* Header specific dark mode colors */
+      --header-text-dark: #FFFFFF;
+      --header-icon-dark: #FFFFFF;
   }
 
   * {
@@ -97,13 +103,13 @@
       overflow: hidden;
   }
 
-  /* Modern Header - Responsivo */
+  /* Modern Header - Padrão Gov.br oficial - REFINADO */
   .header {
       height: var(--header-height);
       min-height: var(--header-height);
       background: var(--white);
-      border-bottom: 2px solid var(--primary-blue-warm-20);
-      box-shadow: var(--shadow-sm);
+      border-bottom: 1px solid var(--gray-20);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
       position: relative;
       z-index: var(--z-header);
       transition: all var(--transition-base);
@@ -113,7 +119,7 @@
   .header .container-fluid {
       height: 100%;
       max-width: 100%;
-      padding: 0 1rem;
+      padding: 0 1.5rem;
   }
 
   .header .row {
@@ -124,7 +130,7 @@
   .header-left {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 0.75rem;
       height: 100%;
   }
 
@@ -132,65 +138,345 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      gap: 0.5rem;
+      gap: 0.75rem;
       height: 100%;
   }
 
-  .menu-btn, .icon-btn {
-      background: none;
-      border: none;
-      color: var(--gray-60);
-      font-size: 1.125rem;
-      cursor: pointer;
-      padding: 0.5rem;
-      border-radius: 0.5rem;
+  /* Identidade Visual Gov.br - MELHORADA */
+  .gov-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+      height: 100%;
+  }
+
+  .gov-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      transition: all var(--transition-fast);
+      padding: 0.25rem;
+      border-radius: 0.25rem;
+  }
+
+  .gov-logo img {
+      height: 28px;
+      width: auto;
+  }
+
+  .gov-logo:hover {
+      background-color: var(--gray-2);
+      transform: none;
+      text-decoration: none;
+  }
+
+  /* Separador visual - AJUSTADO */
+  .brand-separator {
+      width: 1px;
+      height: 24px;
+      background: var(--primary-blue-warm-20);
+      margin: 0;
+  }
+
+  /* Sistema ChatCOTIN - REFINADO */
+  .system-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      text-decoration: none;
+      transition: all var(--transition-base);
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.375rem;
+  }
+
+  .system-logo img {
+      height: 32px;
+      width: auto;
+  }
+
+  .system-brand-info {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+  }
+
+  .system-title {
+      font-size: 1.0625rem;
+      font-weight: 600;
+      color: var(--primary-blue);
+      margin: 0;
+      line-height: 1.2;
+  }
+
+  .system-subtitle {
+      font-size: 0.6875rem;
+      color: var(--primary-blue-warm-vivid-70);
+      font-weight: 400;
+      margin: 0;
+      line-height: 1.1;
+      margin-top: -1px;
+  }
+
+  .system-logo:hover {
+      background-color: var(--gray-2);
+      transform: none;
+      text-decoration: none;
+  }
+
+  .system-logo:hover .system-title {
+      color: var(--primary-blue-warm-vivid-70);
+  }
+
+  .system-logo:hover .system-subtitle {
+      color: var(--primary-blue);
+  }
+
+  /* Navegação principal gov.br - CORES PADRÃO GOV.BR */
+  .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      margin-left: 1.5rem;
+      height: 100%;
+  }
+
+  .nav-link-gov {
+      color: var(--primary-blue);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 0.625rem 0.75rem;
+      border-radius: 0.375rem;
       transition: all var(--transition-fast);
       position: relative;
-      min-width: 40px;
-      height: 40px;
+      height: fit-content;
+      display: flex;
+      align-items: center;
+  }
+
+  .nav-link-gov:hover {
+      color: var(--white);
+      background-color: var(--primary-blue);
+      text-decoration: none;
+  }
+
+  .nav-link-gov:focus {
+      outline: 2px solid var(--primary-blue);
+      outline-offset: 2px;
+  }
+
+  /* Botões do header gov.br - REFINADOS */
+  .menu-btn, .icon-btn-gov {
+      background: none;
+      border: none;
+      color: var(--primary-blue);
+      font-size: 0.875rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 0.375rem;
+      transition: all var(--transition-fast);
+      position: relative;
+      min-width: 36px;
+      height: 36px;
       display: flex;
       align-items: center;
       justify-content: center;
   }
 
-  .menu-btn:hover, .icon-btn:hover {
-      background: var(--gray-2);
-      color: var(--primary-blue);
-      transform: scale(1.05);
+  .menu-btn:hover, .icon-btn-gov:hover {
+      background: var(--primary-blue);
+      color: var(--white);
+      transform: none;
   }
 
-  .logo {
+  .menu-btn:focus, .icon-btn-gov:focus {
+      outline: 2px solid var(--primary-blue);
+      outline-offset: 2px;
+  }
+
+  /* Botão de logout gov.br - APERFEIÇOADO */
+  .btn-header-logout {
+      background: var(--primary-blue);
+      color: var(--white);
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 0.375rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-fast);
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--primary-blue);
+      gap: 0.375rem;
       text-decoration: none;
-      transition: all var(--transition-base);
-  }
-
-  .logo img {
       height: 36px;
-      width: auto;
-      max-width: none;
+      min-height: 36px;
   }
 
-  .logo:hover {
-      transform: translateX(2px);
-      text-decoration: none;
-      color: var(--primary-blue);
+  .btn-header-logout:hover {
+      background: var(--primary-blue-warm-vivid-70);
+      color: var(--white);
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(19, 81, 180, 0.25);
   }
 
-  /* Welcome message responsiva */
+  .btn-header-logout:focus {
+      outline: 2px solid var(--primary-blue);
+      outline-offset: 2px;
+  }
+
+  /* Informações do usuário - MELHORADAS */
+  .user-info {
+      display: flex;
+      align-items: center;
+      margin-right: 0.5rem;
+  }
+
   .user-welcome {
-      color: var(--gray-60);
-      font-size: 0.875rem;
-      margin-right: 1rem;
+      color: var(--primary-blue);
+      font-size: 0.8125rem;
+      margin: 0;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      max-width: 200px;
+      max-width: 180px;
+      font-weight: 400;
+  }
+
+  .user-welcome strong {
+      font-weight: 600;
+      color: var(--primary-blue-warm-vivid-70);
+  }
+
+  /* Ações do header - ORGANIZADAS */
+  .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+  }
+
+  /* Tooltips gov.br - APERFEIÇOADOS */
+  .tooltip-gov {
+      position: relative;
+  }
+
+  .tooltip-gov::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--primary-blue-warm-vivid-70);
+      color: var(--white);
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.375rem;
+      font-size: 0.75rem;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: all var(--transition-fast);
+      z-index: var(--z-tooltip);
+      pointer-events: none;
+      box-shadow: 0 4px 12px rgba(19, 81, 180, 0.25);
+  }
+
+  .tooltip-gov:hover::after {
+      opacity: 1;
+      visibility: visible;
+      bottom: -38px;
+  }
+
+  /* Responsividade gov.br - OTIMIZADA */
+  @media (max-width: 1199.98px) {
+      .main-nav {
+          gap: 1.25rem;
+          margin-left: 1rem;
+      }
+  }
+
+  @media (max-width: 991.98px) {
+      .main-nav {
+          display: none;
+      }
+      
+      .user-info {
+          display: none;
+      }
+      
+      .header .container-fluid {
+          padding: 0 1rem;
+      }
+  }
+
+  @media (max-width: 767.98px) {
+      .system-brand-info {
+          display: none;
+      }
+      
+      .brand-separator {
+          margin: 0 0.25rem;
+      }
+      
+      .gov-brand {
+          gap: 0.5rem;
+      }
+      
+      .header-left {
+          gap: 0.5rem;
+      }
+      
+      .header-actions {
+          gap: 0.25rem;
+      }
+      
+      .icon-btn-gov {
+          min-width: 32px;
+          height: 32px;
+          padding: 0.375rem;
+      }
+      
+      .btn-header-logout {
+          padding: 0.375rem 0.75rem;
+          font-size: 0.75rem;
+          height: 32px;
+          min-height: 32px;
+      }
+
+      .gov-logo img {
+          height: 24px;
+      }
+
+      .system-logo img {
+          height: 28px;
+      }
+  }
+
+  @media (max-width: 575.98px) {
+      .header .container-fluid {
+          padding: 0 0.75rem;
+      }
+
+      .system-title {
+          font-size: 0.9375rem;
+      }
+      
+      .gov-logo img {
+          height: 22px;
+      }
+      
+      .system-logo img {
+          height: 26px;
+      }
+      
+      .btn-header-logout span {
+          display: none;
+      }
+
+      .btn-header-logout {
+          padding: 0.375rem;
+          width: 32px;
+          justify-content: center;
+      }
   }
 
   /* Main Content - Responsivo */
@@ -777,7 +1063,7 @@
       /* Action Cards Mobile - Altura uniforme garantida */
       .action-grid .row {
           margin: 0 -0.5rem;
-          display: flex;
+      display: flex;
           flex-direction: column;
           align-items: stretch;
       }
@@ -797,7 +1083,7 @@
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          align-items: center;
+      align-items: center;
       }
 
       .action-card-icon {
@@ -877,7 +1163,7 @@
 
   /* Small devices (landscape phones, 576px and up) */
   @media (min-width: 576px) and (max-width: 767.98px) {
-      .user-welcome {
+  .user-welcome {
           max-width: 150px;
       }
 
@@ -1075,7 +1361,7 @@
   }
 
   /* Hide Bootstrap elements que podem conflitar */
-  .card, .card-header, .btn:not(.send-btn):not(.icon-btn):not(.menu-btn):not(.suggestion-pill):not(.action-card), .nav-link {
+  .card, .card-header, .btn:not(.send-btn):not(.icon-btn):not(.menu-btn):not(.suggestion-pill):not(.action-card):not(.feedback-btn), .nav-link {
       display: none !important;
   }
 
@@ -1280,7 +1566,7 @@
           padding: 1.5rem;
           max-width: calc(100vw - 1rem);
       }
-
+      
       .modal-gov-title {
           font-size: 1.25rem;
       }
@@ -1288,19 +1574,763 @@
       .modal-gov-footer {
           flex-direction: column;
       }
-
+      
       .btn-gov-primary,
       .btn-gov-secondary {
           width: 100%;
           margin: 0.25rem 0 !important;
       }
   }
+
+  /* === BOTÕES DE FEEDBACK === */
+  .feedback-buttons {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+      opacity: 0;
+      transition: opacity var(--transition-base);
+      align-items: center;
+      flex-wrap: wrap;
+  }
+
+  .message:hover .feedback-buttons {
+      opacity: 1;
+  }
+
+  .feedback-btn {
+      background: none;
+      border: 1px solid var(--gray-30);
+      border-radius: 6px;
+      padding: 6px 8px;
+      color: var(--gray-60);
+      cursor: pointer;
+      font-size: 12px;
+      transition: all var(--transition-base);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      min-width: 32px;
+      height: 32px;
+      justify-content: center;
+  }
+
+  .feedback-btn:hover {
+      background-color: var(--gray-5);
+      border-color: var(--gray-40);
+      color: var(--gray-70);
+  }
+
+  .feedback-btn:active {
+      transform: scale(0.95);
+  }
+
+  .feedback-btn.positive:hover {
+      background-color: var(--success-lighter);
+      border-color: var(--success);
+      color: var(--success-dark);
+  }
+
+  .feedback-btn.negative:hover {
+      background-color: var(--error-lighter);
+      border-color: var(--error);
+      color: var(--error-dark);
+  }
+
+  .feedback-btn.active.positive {
+      background-color: var(--success);
+      border-color: var(--success);
+      color: var(--white);
+  }
+
+  .feedback-btn.active.negative {
+      background-color: var(--error);
+      border-color: var(--error);
+      color: var(--white);
+  }
+
+  .feedback-btn.copy:hover {
+      background-color: var(--info-lighter);
+      border-color: var(--info);
+      color: var(--info-dark);
+  }
+
+  .feedback-btn.regenerate:hover {
+      background-color: var(--warning-lighter);
+      border-color: var(--warning);
+      color: var(--warning-dark);
+  }
+
+  .feedback-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+  }
+
+  .feedback-loading {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border: 1px solid var(--gray-30);
+      border-radius: 50%;
+      border-top-color: var(--primary-blue);
+      animation: spin 1s ease-in-out infinite;
+  }
+
+  @keyframes spin {
+      to {
+          transform: rotate(360deg);
+      }
+  }
+
+  /* Modal de comentário de feedback */
+  .feedback-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: var(--z-modal);
+  }
+
+  .feedback-modal-content {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 24px;
+      max-width: 500px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: var(--shadow-lg);
+  }
+
+  .feedback-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--gray-20);
+  }
+
+  .feedback-modal-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--gray-80);
+      margin: 0;
+  }
+
+  .feedback-modal-close {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--gray-50);
+      cursor: pointer;
+      padding: 4px;
+      line-height: 1;
+  }
+
+  .feedback-modal-close:hover {
+      color: var(--gray-70);
+  }
+
+  .feedback-textarea {
+      width: 100%;
+      min-height: 100px;
+      padding: 12px;
+      border: 1px solid var(--gray-30);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 14px;
+      line-height: 1.5;
+      resize: vertical;
+      margin-bottom: 16px;
+  }
+
+  .feedback-textarea:focus {
+      outline: none;
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 0 2px var(--primary-blue-20);
+  }
+
+  .feedback-modal-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+  }
+
+  .btn-feedback-submit {
+      background-color: var(--primary-blue);
+      color: var(--white);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color var(--transition-base);
+  }
+
+  .btn-feedback-submit:hover {
+      background-color: var(--primary-blue-dark);
+  }
+
+  .btn-feedback-cancel {
+      background-color: transparent;
+      color: var(--gray-60);
+      border: 1px solid var(--gray-30);
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all var(--transition-base);
+  }
+
+  .btn-feedback-cancel:hover {
+      background-color: var(--gray-5);
+      border-color: var(--gray-40);
+  }
+
+  /* Responsividade dos botões de feedback */
+  @media (max-width: 767.98px) {
+      .feedback-buttons {
+          margin-top: 6px;
+          gap: 6px;
+      }
+      
+      .feedback-btn {
+          font-size: 11px;
+          padding: 5px 6px;
+          height: 28px;
+          min-width: 28px;
+      }
+      
+      .feedback-modal-content {
+          padding: 20px;
+          width: 95%;
+      }
+  }
+
+  /* === BARRA LATERAL === */
+  .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      height: 100vh;
+      width: var(--sidebar-width);
+      background: var(--white);
+      border-right: 2px solid var(--primary-blue-warm-20);
+      box-shadow: var(--shadow-md);
+      transform: translateX(-100%);
+      transition: transform var(--transition-base);
+      z-index: var(--z-sidebar);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+  }
+
+  .sidebar.open {
+      transform: translateX(0);
+  }
+
+  .sidebar-header {
+      padding: 1rem;
+      border-bottom: 1px solid var(--gray-20);
+      flex-shrink: 0;
+  }
+
+  .sidebar-title {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--primary-blue);
+      margin: 0 0 0.75rem 0;
+  }
+
+  .search-wrapper {
+      position: relative;
+  }
+
+  .search-input {
+      width: 100%;
+      padding: 0.625rem 2.5rem 0.625rem 0.75rem;
+      border: 1.5px solid var(--gray-20);
+      border-radius: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--gray-80);
+      background: var(--white);
+      transition: all var(--transition-fast);
+  }
+
+  .search-input:focus {
+      outline: none;
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 0 3px rgba(19, 81, 180, 0.1);
+  }
+
+  .search-icon {
+      position: absolute;
+      right: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gray-60);
+      font-size: 0.875rem;
+  }
+
+  .sidebar-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0.5rem;
+  }
+
+  .conversation-group {
+      margin-bottom: 1.5rem;
+  }
+
+  .group-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--gray-60);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+      padding: 0 0.5rem;
+  }
+
+  .conversation-item {
+      display: flex;
+      align-items: flex-start;
+      padding: 0.75rem 0.5rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      margin-bottom: 0.25rem;
+      position: relative;
+      text-decoration: none;
+      color: inherit;
+  }
+
+  .conversation-item:hover {
+      background: var(--gray-2);
+      text-decoration: none;
+      color: inherit;
+  }
+
+  .conversation-item.active {
+      background: var(--primary-blue-warm-20);
+      color: var(--primary-blue);
+  }
+
+  .conversation-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--gray-10);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 0.75rem;
+      flex-shrink: 0;
+      color: var(--gray-60);
+      font-size: 0.875rem;
+  }
+
+  .conversation-item.active .conversation-icon {
+      background: var(--primary-blue);
+      color: #fff;
+  }
+
+  .conversation-details {
+      flex: 1;
+      min-width: 0;
+  }
+
+  .conversation-title {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--gray-80);
+      margin: 0 0 0.25rem 0;
+      line-height: 1.3;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+  }
+
+  .conversation-item.active .conversation-title {
+      color: var(--primary-blue);
+  }
+
+  .conversation-meta {
+      font-size: 0.75rem;
+      color: var(--gray-60);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+  }
+
+  .conversation-actions {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      opacity: 0;
+      transition: opacity var(--transition-fast);
+  }
+
+  .conversation-item:hover .conversation-actions {
+      opacity: 1;
+  }
+
+  .action-btn {
+      background: none;
+      border: none;
+      color: var(--gray-60);
+      cursor: pointer;
+      padding: 0.25rem;
+      border-radius: 0.25rem;
+      transition: all var(--transition-fast);
+      font-size: 0.75rem;
+  }
+
+  .action-btn:hover {
+      background: var(--gray-10);
+      color: var(--gray-80);
+  }
+
+  .sidebar-footer {
+      padding: 1rem;
+      border-top: 1px solid var(--gray-20);
+      flex-shrink: 0;
+  }
+
+  .new-chat-btn {
+      width: 100%;
+      padding: 0.75rem;
+      background: var(--primary-blue);
+      color: #fff;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+  }
+
+  .new-chat-btn:hover {
+      background: var(--primary-blue-warm-vivid-70);
+  }
+
+  /* Layout adjustments when sidebar is open */
+  .chat-container.sidebar-open {
+      margin-left: var(--sidebar-width);
+  }
+
+  .sidebar-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: calc(var(--z-sidebar) - 1);
+      opacity: 0;
+      visibility: hidden;
+      transition: all var(--transition-base);
+  }
+
+  .sidebar-overlay.show {
+      opacity: 1;
+      visibility: visible;
+  }
+
+  /* Responsive sidebar */
+  @media (max-width: 991.98px) {
+      .sidebar {
+          width: 100vw;
+          max-width: 320px;
+      }
+      
+      .chat-container.sidebar-open {
+          margin-left: 0;
+      }
+  }
+
+  @media (max-width: 575.98px) {
+      .sidebar {
+          width: 100vw;
+          max-width: 100vw;
+      }
+  }
+
+  /* Estados especiais */
+  .conversation-item.loading {
+      pointer-events: none;
+      opacity: 0.6;
+  }
+
+  .empty-state {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--gray-60);
+  }
+
+  .empty-state-icon {
+      font-size: 2rem;
+      color: var(--gray-40);
+      margin-bottom: 0.75rem;
+  }
+
+  .empty-state-text {
+      font-size: 0.875rem;
+      line-height: 1.5;
+  }
+
+  /* Identidade Visual Gov.br - LAYOUT VERTICAL OFICIAL */
+  .gov-brand-vertical {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.375rem;
+      height: 100%;
+      justify-content: center;
+  }
+
+  .gov-logo-top {
+      display: flex;
+      align-items: center;
+  }
+
+  .gov-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      transition: all var(--transition-fast);
+      padding: 0.125rem;
+      border-radius: 0.25rem;
+  }
+
+  .gov-logo img {
+      height: 24px;
+      width: auto;
+  }
+
+  .gov-logo:hover {
+      background-color: var(--gray-2);
+      transform: none;
+      text-decoration: none;
+  }
+
+  /* Sistema ChatCOTIN - TIPOGRAFIA GOV.BR OFICIAL */
+  .system-brand-section {
+      display: flex;
+      align-items: center;
+  }
+
+  .system-logo-vertical {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      transition: all var(--transition-base);
+      padding: 0.125rem 0.25rem;
+      border-radius: 0.25rem;
+  }
+
+  .system-logo-vertical img {
+      height: 24px;
+      width: auto;
+      flex-shrink: 0;
+  }
+
+  .system-brand-info-vertical {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+  }
+
+  .system-title-govbr {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--gray-80);
+      margin: 0;
+      line-height: 1.2;
+      font-family: 'Inter', 'Rawline', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  .system-subtitle-govbr {
+      font-size: 0.75rem;
+      color: var(--gray-60);
+      font-weight: 400;
+      margin: 0;
+      line-height: 1.1;
+      margin-top: 1px;
+      font-family: 'Inter', 'Rawline', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  .system-logo-vertical:hover {
+      background-color: var(--gray-2);
+      transform: none;
+      text-decoration: none;
+  }
+
+  .system-logo-vertical:hover .system-title-govbr {
+      color: var(--primary-blue);
+  }
+
+  .system-logo-vertical:hover .system-subtitle-govbr {
+      color: var(--primary-blue);
+  }
+
+  /* Responsividade Layout Vertical Gov.br */
+  @media (max-width: 767.98px) {
+      .system-brand-info-vertical {
+          display: none;
+      }
+      
+      .gov-brand-vertical {
+          gap: 0.25rem;
+      }
+      
+      .system-logo-vertical img {
+          height: 20px;
+      }
+      
+      .gov-logo img {
+          height: 20px;
+      }
+  }
+
+  @media (max-width: 575.98px) {
+      .gov-logo img {
+          height: 18px;
+      }
+      
+      .system-logo-vertical img {
+          height: 18px;
+      }
+      
+      .system-title-govbr {
+          font-size: 0.875rem;
+      }
+      
+      .system-subtitle-govbr {
+          font-size: 0.6875rem;
+      }
+  }
+
+  /* === DARK MODE HEADER STYLES - Cores douradas #A09473 === */
+  [data-theme="dark"] .system-title {
+      color: var(--header-text-dark) !important;
+  }
+
+  [data-theme="dark"] .system-subtitle {
+      color: var(--header-text-dark) !important;
+      opacity: 0.8;
+  }
+
+  [data-theme="dark"] .system-logo:hover .system-title {
+      color: var(--header-text-dark) !important;
+      opacity: 1;
+  }
+
+  [data-theme="dark"] .system-logo:hover .system-subtitle {
+      color: var(--header-text-dark) !important;
+      opacity: 0.9;
+  }
+
+  [data-theme="dark"] .nav-link-gov {
+      color: var(--header-text-dark) !important;
+  }
+
+  [data-theme="dark"] .nav-link-gov:hover {
+      color: var(--white) !important;
+      background-color: var(--header-text-dark) !important;
+  }
+
+  [data-theme="dark"] .menu-btn, 
+  [data-theme="dark"] .icon-btn-gov {
+      color: var(--header-icon-dark) !important;
+  }
+
+  [data-theme="dark"] .menu-btn:hover, 
+  [data-theme="dark"] .icon-btn-gov:hover {
+      background: var(--header-icon-dark) !important;
+      color: var(--white) !important;
+  }
+
+  [data-theme="dark"] .btn-header-logout {
+      background: var(--header-icon-dark) !important;
+      border-color: var(--header-icon-dark) !important;
+  }
+
+  [data-theme="dark"] .btn-header-logout:hover {
+      background: #666666 !important;
+      border-color: #666666 !important;
+      box-shadow: 0 2px 8px rgba(255, 255, 255, 0.15) !important;
+  }
+
+  [data-theme="dark"] .user-welcome {
+      color: var(--header-text-dark) !important;
+  }
+
+  [data-theme="dark"] .user-welcome strong {
+      color: var(--header-text-dark) !important;
+  }
+
+  [data-theme="dark"] .brand-separator {
+      background: var(--header-text-dark) !important;
+      opacity: 0.6;
+  }
+
+  [data-theme="dark"] .tooltip-gov::after {
+      background: #4A5568 !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+  }
 </style>
 {% endblock %}
 
 {% block content %}
-<div class="chat-container">
-    <!-- Modern Header usando Bootstrap Grid -->
+<!-- Barra Lateral -->
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <h2 class="sidebar-title">Conversas</h2>
+        <div class="search-wrapper">
+            <input type="text" class="search-input" id="searchInput" placeholder="Buscar conversas...">
+            <i class="fas fa-search search-icon"></i>
+        </div>
+    </div>
+    
+    <div class="sidebar-content" id="sidebarContent">
+        <!-- Conteúdo carregado dinamicamente -->
+        <div class="empty-state" id="emptyState">
+            <div class="empty-state-icon">
+                <i class="fas fa-comments"></i>
+            </div>
+            <div class="empty-state-text">
+                Suas conversas aparecerão aqui
+            </div>
+        </div>
+    </div>
+    
+    <div class="sidebar-footer">
+        <button class="new-chat-btn" onclick="app.newConversation()">
+            <i class="fas fa-plus"></i>
+            Nova Conversa
+        </button>
+    </div>
+</aside>
+
+<!-- Overlay para mobile -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="app.toggleSidebar()"></div>
+
+<div class="chat-container" id="chatContainer">
+    <!-- Modern Header usando Bootstrap Grid - Padrão Gov.br -->
     <header class="header" role="banner">
         <div class="container-fluid h-100">
             <div class="row h-100 align-items-center">
@@ -1309,35 +2339,62 @@
                         <button class="menu-btn" onclick="toggleSidebar()" aria-label="Menu principal">
                             <i class="fas fa-bars"></i>
                         </button>
-                        <a href="#" class="logo" aria-label="ChatCOTIN - Página inicial">
-                            <img src="{% static 'img/logo_cotin.png' %}" alt="Logo ChatCOTIN">
-                            <span class="d-none d-sm-inline">ChatCOTIN</span>
-                        </a>
+                        <!-- Logo Gov.br + ChatCOTIN -->
+                        <div class="gov-brand">
+                            <a href="https://www.gov.br" class="gov-logo" aria-label="Portal gov.br" target="_blank">
+                                <img src="{% static 'img/govbr-cores.png' %}" alt="Logo gov.br">
+                            </a>
+                            <div class="brand-separator"></div>
+                            <a href="#" class="system-logo" aria-label="ChatCOTIN - Página inicial">
+                                <img src="{% static 'img/logo_cotin.png' %}" alt="Logo ChatCOTIN" class="system-logo-img">
+                                <div class="system-brand-info">
+                                    <span class="system-title">ChatCOTIN</span>
+                                    <span class="system-subtitle">Assistente de Dados Abertos</span>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="col">
                     <div class="header-right">
-                        <span class="user-welcome d-none d-md-inline">
-                            Bem-vindo, <strong>{{user.username|title}}</strong>
-                        </span>
-                        <button class="icon-btn tooltip-gov" onclick="app.newConversation()" aria-label="Nova conversa" data-tooltip="Iniciar nova conversa">
-                            <i class="fas fa-plus"></i>
-                        </button>
-                        <button class="icon-btn tooltip-gov" onclick="app.clearAllHistory()" aria-label="Limpar histórico" data-tooltip="Limpar todo o histórico">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                        <button class="icon-btn tooltip-gov" onclick="app.toggleTheme()" aria-label="Alternar tema" data-tooltip="Alternar entre tema claro e escuro">
-                            <i class="fas fa-moon" id="themeIcon"></i>
-                        </button>
-                        <button class="icon-btn tooltip-gov" onclick="app.openSettings()" aria-label="Configurações" data-tooltip="Abrir configurações do assistente">
-                            <i class="fas fa-cog"></i>
-                        </button>
-                        <form action="{% url 'logout' %}" method="post" style="display: inline;">
-                            {% csrf_token %}
-                            <button type="submit" class="icon-btn tooltip-gov" aria-label="Sair" data-tooltip="Encerrar sessão">
-                                <i class="fas fa-sign-out-alt"></i>
+                        <!-- Navegação Principal (Desktop) -->
+                        <nav class="main-nav d-none d-lg-flex" aria-label="Navegação principal">
+                            <a href="#" class="nav-link-gov">Documentação</a>
+                            <a href="#" class="nav-link-gov">Suporte</a>
+                            <a href="{% url 'sobre' %}" class="nav-link-gov">Sobre</a>
+                        </nav>
+                        
+                        <!-- Info do Usuário -->
+                        <div class="user-info d-none d-md-flex">
+                            <span class="user-welcome">
+                                Olá, <strong>{{user.username|title}}</strong>
+                            </span>
+                        </div>
+                        
+                        <!-- Ações do Header -->
+                        <div class="header-actions">
+                            <button class="icon-btn-gov tooltip-gov" onclick="app.newConversation()" aria-label="Nova conversa" data-tooltip="Iniciar nova conversa">
+                                <i class="fas fa-plus"></i>
                             </button>
-                        </form>
+                            <button class="icon-btn-gov tooltip-gov" onclick="app.clearAllHistory()" aria-label="Limpar histórico" data-tooltip="Limpar todo o histórico">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                            <button class="icon-btn-gov tooltip-gov" onclick="app.toggleTheme()" aria-label="Alternar tema" data-tooltip="Alternar entre tema claro e escuro">
+                                <i class="fas fa-moon" id="themeIcon"></i>
+                            </button>
+                            <button class="icon-btn-gov tooltip-gov" onclick="app.openSettings()" aria-label="Configurações" data-tooltip="Abrir configurações do assistente">
+                                <i class="fas fa-cog"></i>
+                            </button>
+                            
+                            <!-- Botão de Sair Gov.br -->
+                            <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn-header-logout" aria-label="Sair do sistema">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    <span class="d-none d-sm-inline">Sair</span>
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1609,6 +2666,8 @@
             this.llmProvider = localStorage.getItem('llm_provider') || 'databricks';
             this.llmParams = JSON.parse(localStorage.getItem('llm_params') || '{}');
             this.chunkParams = JSON.parse(localStorage.getItem('chunk_params') || '{}');
+            this.currentConversationId = null;
+            this.searchTimeout = null;
             this.init();
         }
 
@@ -1618,6 +2677,8 @@
             this.loadExistingChats();
             this.applyTheme();
             this.setupResponsiveHandlers();
+            this.setupSidebar();
+            this.loadConversations();
             
             // Show welcome message
             setTimeout(() => {
@@ -1835,6 +2896,11 @@
                     'llm_provider': this.llmProvider
                 };
                 
+                // Adicionar conversa atual se existir
+                if (this.currentConversationId) {
+                    params['conversation_id'] = this.currentConversationId;
+                }
+                
                 if (this.llmProvider === 'ollama') {
                     Object.assign(params, this.llmParams);
                 }
@@ -1854,7 +2920,14 @@
                 this.removeTypingIndicator(typingId);
                 
                 if (response.ok) {
-                    this.addMessage(data.response, 'assistant');
+                    // Usar o chat_id retornado pelo servidor
+                    const chatId = data.chat_id || null;
+                    this.addMessage(data.response, 'assistant', true, chatId);
+                    
+                    // Atualizar conversa atual se retornada
+                    if (data.conversation_id) {
+                        this.currentConversationId = data.conversation_id;
+                    }
                 } else {
                     this.addMessage('Desculpe, ocorreu um erro. Por favor, tente novamente.', 'assistant');
                     console.error('Server error:', data);
@@ -1905,13 +2978,18 @@
             }
         }
 
-        addMessage(content, sender) {
+        addMessage(content, sender, shouldUpdateSidebar = true, chatId = null) {
             const messagesContainer = document.getElementById('messagesContainer');
             const messageId = `msg-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
             
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${sender}`;
             messageDiv.id = messageId;
+            
+            // Adicionar data attribute do chat ID se disponível
+            if (chatId) {
+                messageDiv.setAttribute('data-chat-id', chatId);
+            }
             
             const time = new Date().toLocaleTimeString('pt-BR', { 
                 hour: '2-digit', 
@@ -1936,6 +3014,24 @@
                 processedContent = content.replace(/\n/g, '<br>');
             }
             
+            // Botões de feedback para mensagens do assistente
+            const feedbackButtons = sender === 'assistant' && chatId ? `
+                <div class="feedback-buttons">
+                    <button class="feedback-btn copy" onclick="copyResponse(${chatId})" title="Copiar resposta">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                    <button class="feedback-btn positive" onclick="submitFeedback(${chatId}, 'positive')" title="Resposta útil">
+                        <i class="fas fa-thumbs-up"></i>
+                    </button>
+                    <button class="feedback-btn negative" onclick="submitFeedback(${chatId}, 'negative')" title="Resposta não útil">
+                        <i class="fas fa-thumbs-down"></i>
+                    </button>
+                    <button class="feedback-btn regenerate" onclick="regenerateResponse(${chatId})" title="Regenerar resposta">
+                        <i class="fas fa-redo"></i>
+                    </button>
+                </div>
+            ` : '';
+            
             const messageHtml = `
                 <div class="message-avatar ${sender === 'assistant' ? 'online' : ''}">
                     ${avatarHtml}
@@ -1944,6 +3040,7 @@
                     <div class="message-content">
                         ${processedContent}
                     </div>
+                    ${feedbackButtons}
                     <div class="message-time">${time}</div>
                 </div>
             `;
@@ -1952,6 +3049,11 @@
             messagesContainer.appendChild(messageDiv);
             
             this.scrollToBottom();
+            
+            // Atualizar sidebar apenas se necessário
+            if (shouldUpdateSidebar && sender === 'assistant') {
+                setTimeout(() => this.loadConversations(), 500);
+            }
             
             return messageId;
         }
@@ -2009,10 +3111,32 @@
                     confirmModal.style.display = 'flex';
                 }
             } else {
-                const messageInput = document.getElementById('messageInput');
-                if (messageInput) {
-                    messageInput.focus();
+                this.createNewConversation();
+            }
+        }
+
+        async createNewConversation() {
+            try {
+                const response = await fetch('/api/conversations/new/', {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                    }
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    this.currentConversationId = data.conversation_id;
+                    this.clearChat();
+                    this.loadConversations(); // Recarregar lista da sidebar
+                    this.showToast('Nova conversa iniciada!', 'success');
+                } else {
+                    this.showToast('Erro ao criar nova conversa', 'error');
                 }
+            } catch (error) {
+                this.showToast('Erro de conexão', 'error');
+                console.error('Erro ao criar nova conversa:', error);
             }
         }
 
@@ -2140,6 +3264,20 @@
         applyTheme() {
             document.documentElement.setAttribute('data-theme', this.theme);
             localStorage.setItem('theme', this.theme);
+            
+            // Trocar logo gov.br baseado no tema
+            this.updateGovLogo();
+        }
+        
+        updateGovLogo() {
+            const govLogo = document.querySelector('.gov-logo img');
+            if (govLogo) {
+                if (this.theme === 'dark') {
+                    govLogo.src = "{% static 'img/govbr-branca.png' %}";
+                } else {
+                    govLogo.src = "{% static 'img/govbr-cores.png' %}";
+                }
+            }
         }
 
         openSettings() {
@@ -2219,12 +3357,332 @@
             this.closeSettings();
             this.showToast('Configurações salvas com sucesso!', 'success');
         }
+
+        // === MÉTODOS DA BARRA LATERAL ===
+        
+        setupSidebar() {
+            // Setup search
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    this.debounceSearch(e.target.value);
+                });
+            }
+            
+            // Auto-show sidebar on desktop
+            if (window.innerWidth >= 992) {
+                this.showSidebar();
+            }
+        }
+
+        debounceSearch(query) {
+            clearTimeout(this.searchTimeout);
+            this.searchTimeout = setTimeout(() => {
+                this.searchConversations(query);
+            }, 300);
+        }
+
+        async loadConversations() {
+            try {
+                const response = await fetch('/api/conversations/');
+                const data = await response.json();
+                
+                if (data.success) {
+                    this.renderConversations(data.conversations);
+                } else {
+                    console.error('Erro ao carregar conversas:', data.error);
+                }
+            } catch (error) {
+                console.error('Erro de rede ao carregar conversas:', error);
+            }
+        }
+
+        async searchConversations(query) {
+            if (!query.trim()) {
+                this.loadConversations();
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/conversations/search/?q=${encodeURIComponent(query)}`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    this.renderSearchResults(data.results, query);
+                }
+            } catch (error) {
+                console.error('Erro na busca:', error);
+            }
+        }
+
+        renderConversations(conversations) {
+            const content = document.getElementById('sidebarContent');
+            const emptyState = document.getElementById('emptyState');
+            
+            if (!content) return;
+            
+            // Verificar se há conversas
+            const totalConversations = Object.values(conversations).reduce((total, group) => total + group.length, 0);
+            
+            if (totalConversations === 0) {
+                emptyState.style.display = 'block';
+                content.innerHTML = '';
+                content.appendChild(emptyState);
+                return;
+            }
+            
+            emptyState.style.display = 'none';
+            
+            const groups = [
+                { key: 'today', title: 'Hoje' },
+                { key: 'yesterday', title: 'Ontem' },
+                { key: 'this_week', title: 'Esta Semana' },
+                { key: 'older', title: 'Mais Antigas' }
+            ];
+            
+            let html = '';
+            
+            groups.forEach(group => {
+                if (conversations[group.key] && conversations[group.key].length > 0) {
+                    html += `
+                        <div class="conversation-group">
+                            <div class="group-title">${group.title}</div>
+                    `;
+                    
+                    conversations[group.key].forEach(conv => {
+                        const isActive = this.currentConversationId === conv.id ? 'active' : '';
+                        const date = new Date(conv.updated_at).toLocaleDateString('pt-BR');
+                        
+                        html += `
+                            <div class="conversation-item ${isActive}" data-conversation-id="${conv.id}" onclick="app.loadConversation(${conv.id})">
+                                <div class="conversation-icon">
+                                    <i class="fas fa-comment-dots"></i>
+                                </div>
+                                <div class="conversation-details">
+                                    <div class="conversation-title">${conv.title}</div>
+                                    <div class="conversation-meta">
+                                        <span>${conv.messages_count} mensagens</span>
+                                        <span>•</span>
+                                        <span>${date}</span>
+                                    </div>
+                                </div>
+                                <div class="conversation-actions">
+                                    <button class="action-btn" onclick="event.stopPropagation(); app.deleteConversation(${conv.id})" title="Deletar conversa">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    
+                    html += `</div>`;
+                }
+            });
+            
+            content.innerHTML = html;
+        }
+
+        renderSearchResults(results, query) {
+            const content = document.getElementById('sidebarContent');
+            
+            if (!content) return;
+            
+            if (results.length === 0) {
+                content.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="empty-state-text">
+                            Nenhuma conversa encontrada para "<strong>${query}</strong>"
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+            
+            let html = `
+                <div class="conversation-group">
+                    <div class="group-title">Resultados da busca (${results.length})</div>
+            `;
+            
+            results.forEach(conv => {
+                const isActive = this.currentConversationId === conv.id ? 'active' : '';
+                const date = new Date(conv.updated_at).toLocaleDateString('pt-BR');
+                
+                html += `
+                    <div class="conversation-item ${isActive}" data-conversation-id="${conv.id}" onclick="app.loadConversation(${conv.id})">
+                        <div class="conversation-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="conversation-details">
+                            <div class="conversation-title">${conv.title}</div>
+                            <div class="conversation-meta">
+                                <span>${conv.messages_count} mensagens</span>
+                                <span>•</span>
+                                <span>${date}</span>
+                            </div>
+                            ${conv.context_snippets && conv.context_snippets.length > 0 ? 
+                                `<div style="font-size: 0.7rem; color: var(--gray-60); margin-top: 0.25rem;">
+                                    ${conv.context_snippets.join('<br>')}
+                                </div>` : ''
+                            }
+                        </div>
+                    </div>
+                `;
+            });
+            
+            html += `</div>`;
+            content.innerHTML = html;
+        }
+
+        async loadConversation(conversationId) {
+            try {
+                // Adicionar classe loading
+                const conversationItem = document.querySelector(`[data-conversation-id="${conversationId}"]`);
+                if (conversationItem) {
+                    conversationItem.classList.add('loading');
+                }
+                
+                const response = await fetch(`/api/conversations/${conversationId}/load/`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    this.currentConversationId = conversationId;
+                    
+                    // Atualizar interface
+                    this.updateActiveConversation(conversationId);
+                    this.switchToChatMode();
+                    this.clearMessages();
+                    
+                    // Carregar mensagens
+                    data.chats.forEach(chat => {
+                        this.addMessage(chat.message, 'user', false);
+                        this.addMessage(chat.response, 'assistant', false);
+                    });
+                    
+                    this.scrollToBottom();
+                    this.showToast('Conversa carregada!', 'success');
+                    
+                    // Auto-hide sidebar on mobile
+                    if (window.innerWidth < 992) {
+                        this.hideSidebar();
+                    }
+                } else {
+                    this.showToast('Erro ao carregar conversa', 'error');
+                }
+            } catch (error) {
+                this.showToast('Erro de conexão', 'error');
+                console.error('Erro ao carregar conversa:', error);
+            } finally {
+                // Remover classe loading
+                const conversationItem = document.querySelector(`[data-conversation-id="${conversationId}"]`);
+                if (conversationItem) {
+                    conversationItem.classList.remove('loading');
+                }
+            }
+        }
+
+        async deleteConversation(conversationId) {
+            if (!confirm('Tem certeza que deseja deletar esta conversa? Esta ação não pode ser desfeita.')) {
+                return;
+            }
+            
+            try {
+                const response = await fetch(`/api/conversations/${conversationId}/delete/`, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                    }
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Se for a conversa ativa, limpar interface
+                    if (this.currentConversationId === conversationId) {
+                        this.clearChat();
+                        this.currentConversationId = null;
+                    }
+                    
+                    // Recarregar lista de conversas
+                    this.loadConversations();
+                    this.showToast('Conversa deletada', 'success');
+                } else {
+                    this.showToast('Erro ao deletar conversa', 'error');
+                }
+            } catch (error) {
+                this.showToast('Erro de conexão', 'error');
+                console.error('Erro ao deletar conversa:', error);
+            }
+        }
+
+        updateActiveConversation(conversationId) {
+            // Remover classe active de todas as conversas
+            document.querySelectorAll('.conversation-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Adicionar classe active na conversa selecionada
+            const activeItem = document.querySelector(`[data-conversation-id="${conversationId}"]`);
+            if (activeItem) {
+                activeItem.classList.add('active');
+            }
+        }
+
+        clearMessages() {
+            const messagesContainer = document.getElementById('messagesContainer');
+            if (messagesContainer) {
+                messagesContainer.innerHTML = '';
+            }
+        }
+
+        toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            const container = document.getElementById('chatContainer');
+            
+            if (sidebar.classList.contains('open')) {
+                this.hideSidebar();
+            } else {
+                this.showSidebar();
+            }
+        }
+
+        showSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            const container = document.getElementById('chatContainer');
+            
+            sidebar.classList.add('open');
+            
+            if (window.innerWidth >= 992) {
+                // Desktop: ajustar margin do container
+                container.classList.add('sidebar-open');
+            } else {
+                // Mobile: mostrar overlay
+                overlay.classList.add('show');
+            }
+        }
+
+        hideSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            const container = document.getElementById('chatContainer');
+            
+            sidebar.classList.remove('open');
+            overlay.classList.remove('show');
+            container.classList.remove('sidebar-open');
+        }
     }
 
     // Global functions for inline handlers
     function toggleSidebar() {
-        // Placeholder for sidebar functionality
-        console.log('Sidebar toggle');
+        if (window.app) {
+            window.app.toggleSidebar();
+        } else {
+            console.log('App not initialized yet');
+        }
     }
 
     // Aguardar o DOM estar carregado
@@ -2244,12 +3702,326 @@
             }
         }
     });
+
+    // === FUNÇÕES GLOBAIS DE FEEDBACK ===
+    
+    async function submitFeedback(chatId, rating) {
+        if (!chatId || !rating) {
+            console.error('Chat ID e rating são obrigatórios');
+            return;
+        }
+        
+        try {
+            const response = await fetch('/api/feedback/submit/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    rating: rating
+                })
+            });
+            
+            const data = await response.json();
+            
+            if (data.status === 'success') {
+                // Atualizar visual do botão
+                const messageElement = document.querySelector(`[data-chat-id="${chatId}"]`);
+                if (messageElement) {
+                    const buttons = messageElement.querySelectorAll('.feedback-btn.positive, .feedback-btn.negative');
+                    buttons.forEach(btn => btn.classList.remove('active'));
+                    
+                    const clickedButton = messageElement.querySelector(`.feedback-btn.${rating}`);
+                    if (clickedButton) {
+                        clickedButton.classList.add('active');
+                    }
+                }
+                
+                // Mostrar modal de comentário se feedback negativo
+                if (rating === 'negative') {
+                    showFeedbackModal(chatId);
+                } else {
+                    if (window.app) {
+                        window.app.showToast('Obrigado pelo seu feedback!', 'success');
+                    }
+                }
+            } else {
+                if (window.app) {
+                    window.app.showToast('Erro ao enviar feedback', 'error');
+                }
+            }
+        } catch (error) {
+            console.error('Erro ao enviar feedback:', error);
+            if (window.app) {
+                window.app.showToast('Erro de conexão', 'error');
+            }
+        }
+    }
+    
+    function showFeedbackModal(chatId) {
+        // Criar modal se não existir
+        let modal = document.getElementById('feedbackModal');
+        if (!modal) {
+            modal = createFeedbackModal();
+        }
+        
+        // Armazenar chat ID no modal
+        modal.setAttribute('data-chat-id', chatId);
+        
+        // Mostrar modal
+        modal.style.display = 'flex';
+        
+        // Focar no textarea
+        const textarea = modal.querySelector('.feedback-textarea');
+        if (textarea) {
+            setTimeout(() => textarea.focus(), 100);
+        }
+    }
+    
+    function createFeedbackModal() {
+        const modalHtml = `
+            <div class="feedback-modal" id="feedbackModal">
+                <div class="feedback-modal-content">
+                    <div class="feedback-modal-header">
+                        <h3 class="feedback-modal-title">Nos ajude a melhorar</h3>
+                        <button class="feedback-modal-close" onclick="closeFeedbackModal()">&times;</button>
+                    </div>
+                    <div class="feedback-modal-body">
+                        <p style="margin-bottom: 12px; color: var(--gray-60);">
+                            Que tal nos contar o que podemos melhorar nesta resposta?
+                        </p>
+                        <textarea 
+                            class="feedback-textarea" 
+                            placeholder="Sua sugestão nos ajuda a oferecer respostas melhores..."
+                            maxlength="1000"
+                        ></textarea>
+                    </div>
+                    <div class="feedback-modal-actions">
+                        <button class="btn-feedback-cancel" onclick="closeFeedbackModal()">
+                            Pular
+                        </button>
+                        <button class="btn-feedback-submit" onclick="submitFeedbackComment()">
+                            Enviar Sugestão
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        document.body.insertAdjacentHTML('beforeend', modalHtml);
+        
+        const modal = document.getElementById('feedbackModal');
+        
+        // Fechar ao clicar fora
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeFeedbackModal();
+            }
+        });
+        
+        return modal;
+    }
+    
+    function closeFeedbackModal() {
+        const modal = document.getElementById('feedbackModal');
+        if (modal) {
+            modal.style.display = 'none';
+            const textarea = modal.querySelector('.feedback-textarea');
+            if (textarea) {
+                textarea.value = '';
+            }
+        }
+    }
+    
+    async function submitFeedbackComment() {
+        const modal = document.getElementById('feedbackModal');
+        if (!modal) return;
+        
+        const chatId = modal.getAttribute('data-chat-id');
+        const textarea = modal.querySelector('.feedback-textarea');
+        const comment = textarea ? textarea.value.trim() : '';
+        
+        if (!chatId) {
+            console.error('Chat ID não encontrado');
+            return;
+        }
+        
+        try {
+            const response = await fetch('/api/feedback/submit/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                },
+                body: JSON.stringify({
+                    chat_id: parseInt(chatId),
+                    rating: 'negative',
+                    comment: comment
+                })
+            });
+            
+            const data = await response.json();
+            
+            if (data.status === 'success') {
+                closeFeedbackModal();
+                if (window.app) {
+                    window.app.showToast('Obrigado pela sua sugestão!', 'success');
+                }
+            } else {
+                if (window.app) {
+                    window.app.showToast('Erro ao enviar comentário', 'error');
+                }
+            }
+        } catch (error) {
+            console.error('Erro ao enviar comentário:', error);
+            if (window.app) {
+                window.app.showToast('Erro de conexão', 'error');
+            }
+        }
+    }
+    
+    async function copyResponse(chatId) {
+        if (!chatId) {
+            console.error('Chat ID é obrigatório');
+            return;
+        }
+        
+        try {
+            // Buscar a resposta no DOM
+            const messageElement = document.querySelector(`[data-chat-id="${chatId}"]`);
+            if (!messageElement) {
+                if (window.app) {
+                    window.app.showToast('Resposta não encontrada', 'error');
+                }
+                return;
+            }
+            
+            const messageContent = messageElement.querySelector('.message-content');
+            if (!messageContent) {
+                if (window.app) {
+                    window.app.showToast('Conteúdo não encontrado', 'error');
+                }
+                return;
+            }
+            
+            // Extrair texto sem HTML
+            const textContent = messageContent.innerText || messageContent.textContent;
+            
+            // Copiar para clipboard
+            await navigator.clipboard.writeText(textContent);
+            
+            // Registrar ação no servidor (opcional)
+            fetch('/api/response/copy/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                },
+                body: JSON.stringify({ chat_id: chatId })
+            }).catch(error => {
+                console.log('Erro ao registrar cópia:', error);
+            });
+            
+            // Feedback visual
+            const copyBtn = messageElement.querySelector('.feedback-btn.copy');
+            if (copyBtn) {
+                const originalIcon = copyBtn.innerHTML;
+                copyBtn.innerHTML = '<i class="fas fa-check"></i>';
+                copyBtn.classList.add('active');
+                
+                setTimeout(() => {
+                    copyBtn.innerHTML = originalIcon;
+                    copyBtn.classList.remove('active');
+                }, 2000);
+            }
+            
+            if (window.app) {
+                window.app.showToast('Resposta copiada!', 'success');
+            }
+            
+        } catch (error) {
+            console.error('Erro ao copiar resposta:', error);
+            if (window.app) {
+                window.app.showToast('Erro ao copiar', 'error');
+            }
+        }
+    }
+    
+    async function regenerateResponse(chatId) {
+        if (!chatId) {
+            console.error('Chat ID é obrigatório');
+            return;
+        }
+        
+        const messageElement = document.querySelector(`[data-chat-id="${chatId}"]`);
+        if (!messageElement) {
+            if (window.app) {
+                window.app.showToast('Mensagem não encontrada', 'error');
+            }
+            return;
+        }
+        
+        const regenerateBtn = messageElement.querySelector('.feedback-btn.regenerate');
+        if (regenerateBtn) {
+            regenerateBtn.disabled = true;
+            regenerateBtn.innerHTML = '<div class="feedback-loading"></div>';
+        }
+        
+        try {
+            const response = await fetch('/api/response/regenerate/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    llm_provider: window.app ? window.app.llmProvider : 'databricks'
+                })
+            });
+            
+            const data = await response.json();
+            
+            if (data.status === 'success') {
+                // Atualizar conteúdo da mensagem
+                const messageContent = messageElement.querySelector('.message-content');
+                if (messageContent) {
+                    messageContent.innerHTML = data.data.response_html || data.data.response.replace(/\n/g, '<br>');
+                }
+                
+                // Remover estados ativos dos botões de feedback
+                const feedbackButtons = messageElement.querySelectorAll('.feedback-btn.positive, .feedback-btn.negative');
+                feedbackButtons.forEach(btn => btn.classList.remove('active'));
+                
+                if (window.app) {
+                    window.app.showToast('Resposta regenerada!', 'success');
+                }
+            } else {
+                if (window.app) {
+                    window.app.showToast('Erro ao regenerar resposta', 'error');
+                }
+            }
+        } catch (error) {
+            console.error('Erro ao regenerar resposta:', error);
+            if (window.app) {
+                window.app.showToast('Erro de conexão', 'error');
+            }
+        } finally {
+            // Restaurar botão
+            if (regenerateBtn) {
+                regenerateBtn.disabled = false;
+                regenerateBtn.innerHTML = '<i class="fas fa-redo"></i>';
+            }
+        }
+    }
 </script>
 
 <!-- Adicionar CSS para indicador de digitação -->
 <style>
 .typing-dots {
-    display: flex;
+      display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 4px;
