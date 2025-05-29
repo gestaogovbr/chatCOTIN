@@ -1,0 +1,2286 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+<style>
+  :root {
+      /* Cores Gov.br */
+      --primary-blue: #1351B4;
+      --primary-blue-warm-vivid-70: #0C326F;
+      --primary-blue-warm-20: #C5D4EB;
+      --secondary-green: #168821;
+      --secondary-green-light: #E3F2E3;
+      --warning-yellow: #FFCD07;
+      --error-red: #E52207;
+      --gray-80: #222222;
+      --gray-60: #4B4B4B;
+      --gray-40: #9E9E9E;
+      --gray-20: #DCDCDC;
+      --gray-10: #F8F9FA;
+      --gray-2: #F3F7FA;
+      --white: #FFFFFF;
+      --surface-background: #F3F7FA; /* Fundo gov.br */
+      
+      /* Feedback */
+      --success: #168821;
+      --success-light: #E3F2E3;
+      --info: #1351B4;
+      --info-light: #C5D4EB;
+      --warning: #FFCD07;
+      --warning-light: #FFF5C2;
+      --danger: #E52207;
+      --danger-light: #F8D7DA;
+      
+      /* Shadows */
+      --shadow-sm: 0 1px 2px 0 rgba(19,81,180,0.05);
+      --shadow-md: 0 4px 6px -1px rgba(19,81,180,0.08);
+      --shadow-lg: 0 10px 15px -3px rgba(19,81,180,0.10);
+      
+      /* Transitions */
+      --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+      
+      /* Z-index */
+      --z-header: 100;
+      --z-sidebar: 200;
+      --z-modal: 300;
+      --z-tooltip: 400;
+      --z-notification: 500;
+      
+      /* Responsive variables */
+      --header-height: 70px;
+      --footer-height: 60px;
+      --input-section-height: 80px;
+  }
+
+  /* Dark mode variables */
+  [data-theme="dark"] {
+      --primary-blue: #4A90E2;
+      --primary-blue-warm-vivid-70: #2E5F94;
+      --primary-blue-warm-20: #1A2A3E;
+      --secondary-green: #2ECC71;
+      --secondary-green-light: #1A3A2A;
+      --gray-80: #E0E0E0;
+      --gray-60: #A0A0A0;
+      --gray-20: #3A3A3A;
+      --gray-2: #2A2A2A;
+      --white: #1E1E1E;
+      --surface-background: #121212;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  }
+
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
+
+  body {
+      font-family: 'Inter', 'Rawline', Arial, sans-serif;
+      background: var(--surface-background);
+      color: var(--gray-80);
+      height: 100vh;
+      overflow: hidden;
+      line-height: 1.6;
+      transition: background-color var(--transition-base), color var(--transition-base);
+  }
+
+  /* Container principal usando Bootstrap Grid */
+  .chat-container {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--surface-background);
+      max-width: 100vw;
+      overflow: hidden;
+  }
+
+  /* Modern Header - Responsivo */
+  .header {
+      height: var(--header-height);
+      min-height: var(--header-height);
+      background: var(--white);
+      border-bottom: 2px solid var(--primary-blue-warm-20);
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      z-index: var(--z-header);
+      transition: all var(--transition-base);
+      flex-shrink: 0;
+  }
+
+  .header .container-fluid {
+      height: 100%;
+      max-width: 100%;
+      padding: 0 1rem;
+  }
+
+  .header .row {
+      height: 100%;
+      margin: 0;
+  }
+
+  .header-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      height: 100%;
+  }
+
+  .header-right {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.5rem;
+      height: 100%;
+  }
+
+  .menu-btn, .icon-btn {
+      background: none;
+      border: none;
+      color: var(--gray-60);
+      font-size: 1.125rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      transition: all var(--transition-fast);
+      position: relative;
+      min-width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+
+  .menu-btn:hover, .icon-btn:hover {
+      background: var(--gray-2);
+      color: var(--primary-blue);
+      transform: scale(1.05);
+  }
+
+  .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary-blue);
+      text-decoration: none;
+      transition: all var(--transition-base);
+  }
+
+  .logo img {
+      height: 36px;
+      width: auto;
+      max-width: none;
+  }
+
+  .logo:hover {
+      transform: translateX(2px);
+      text-decoration: none;
+      color: var(--primary-blue);
+  }
+
+  /* Welcome message responsiva */
+  .user-welcome {
+      color: var(--gray-60);
+      font-size: 0.875rem;
+      margin-right: 1rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 200px;
+  }
+
+  /* Main Content - Responsivo */
+  .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: var(--surface-background);
+      min-height: 0;
+      overflow-y: auto;
+      padding: 1rem;
+  }
+
+  .welcome-section {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+  }
+
+  .welcome-title {
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      font-weight: 700;
+      color: var(--primary-blue-warm-vivid-70);
+      margin-bottom: 1rem;
+      text-align: center;
+      line-height: 1.2;
+  }
+
+  .welcome-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.125rem);
+      color: var(--gray-60);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+      text-align: center;
+      font-family: 'Inter', 'Rawline', Arial, sans-serif;
+  }
+
+  /* Suggestions - Responsivo com Bootstrap */
+  .suggestions {
+      margin-bottom: 2rem;
+  }
+
+  .suggestions .row {
+      justify-content: center;
+  }
+
+  .suggestion-pill {
+      background: var(--white);
+      border: 1.5px solid var(--primary-blue-warm-20);
+      color: var(--primary-blue-warm-vivid-70);
+      font-family: 'Inter', 'Rawline', Arial, sans-serif;
+      font-weight: 500;
+      border-radius: 1.5rem;
+      padding: 0.75rem 1.25rem;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      white-space: nowrap;
+      text-align: center;
+      width: 100%;
+      margin-bottom: 0.5rem;
+  }
+
+  .suggestion-pill:hover {
+      background: var(--primary-blue);
+      color: #fff;
+      border-color: var(--primary-blue);
+      transform: translateY(-2px);
+  }
+
+  /* Action Grid - Melhorado com Bootstrap Grid */
+  .action-grid {
+      margin-top: 2rem;
+  }
+
+  /* Garantir altura uniforme em todos os breakpoints */
+  .action-grid .row {
+      display: flex;
+      align-items: stretch;
+  }
+
+  .action-grid .col-12,
+  .action-grid .col-md-6,
+  .action-grid .col-lg-4 {
+      display: flex;
+      align-items: stretch;
+  }
+
+  .action-card {
+      background: var(--white);
+      border: 1.5px solid var(--primary-blue-warm-20);
+      box-shadow: var(--shadow-sm);
+      font-family: 'Inter', 'Rawline', Arial, sans-serif;
+      border-radius: 1rem;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all var(--transition-base);
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      min-height: 240px;
+  }
+
+  .action-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--primary-blue);
+      transform: scaleX(0);
+      transition: transform var(--transition-base);
+  }
+
+  .action-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary-blue);
+  }
+
+  .action-card:hover::before {
+      transform: scaleX(1);
+  }
+
+  .action-card.primary::before {
+      background: var(--primary-blue);
+  }
+
+  .action-card.secondary::before {
+      background: var(--secondary-green);
+  }
+
+  .action-card.tertiary::before {
+      background: var(--warning-yellow);
+  }
+
+  .action-card-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 1.5rem;
+      color: white;
+      flex-shrink: 0;
+  }
+
+  .action-card.primary .action-card-icon {
+      background: var(--primary-blue);
+  }
+
+  .action-card.secondary .action-card-icon {
+      background: var(--secondary-green);
+  }
+
+  .action-card.tertiary .action-card-icon {
+      background: var(--warning-yellow);
+      color: var(--gray-80);
+  }
+
+  .action-card-content {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+  }
+
+  .action-card-title {
+      font-size: clamp(1.125rem, 2vw, 1.25rem);
+      font-weight: 700;
+      color: var(--primary-blue-warm-vivid-70);
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+      text-align: center;
+  }
+
+  .action-card-description {
+      font-size: 0.875rem;
+      color: var(--gray-60);
+      line-height: 1.5;
+      margin: 0;
+      text-align: center;
+  }
+
+  /* Chat Area - Responsivo */
+  .chat-area {
+      flex: 1;
+      overflow-y: auto;
+      display: none;
+      background: var(--surface-background);
+      min-height: 0;
+      padding: 1rem;
+  }
+
+  .messages-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      width: 100%;
+  }
+
+  /* Messages - Responsivo */
+  .message {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 0.3s ease-out;
+      width: 100%;
+  }
+
+  .message.user {
+      flex-direction: row-reverse;
+  }
+
+  .message-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gray-10);
+      border: 1.5px solid var(--primary-blue-warm-20);
+  }
+
+  .message-avatar.online::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      width: 12px;
+      height: 12px;
+      background: var(--secondary-green);
+      border: 2px solid var(--white);
+      border-radius: 50%;
+  }
+
+  .message-wrapper {
+      flex: 1;
+      max-width: calc(100% - 52px);
+      min-width: 0;
+  }
+
+  .message.user .message-wrapper {
+      text-align: right;
+  }
+
+  .message-content {
+      background: var(--white);
+      border: 1.5px solid var(--primary-blue-warm-20);
+      color: var(--gray-80);
+      font-family: 'Inter', 'Rawline', Arial, sans-serif;
+      padding: 1rem 1.25rem;
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      position: relative;
+      box-shadow: var(--shadow-sm);
+      border-radius: 1rem;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+  }
+
+  .message.user .message-content {
+      background: var(--primary-blue);
+      color: #fff;
+      border-color: var(--primary-blue);
+  }
+
+  .message-time {
+      font-size: 0.75rem;
+      color: var(--gray-60);
+      margin-top: 0.5rem;
+      padding: 0 0.25rem;
+  }
+
+  /* Input Section - Responsivo */
+  .input-section {
+      background: var(--white);
+      border-top: 2px solid var(--primary-blue-warm-20);
+      flex-shrink: 0;
+      min-height: var(--input-section-height);
+      padding: 1rem;
+  }
+
+  .input-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      width: 100%;
+  }
+
+  .input-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--white);
+      border: 1.5px solid var(--primary-blue-warm-20);
+      border-radius: 1.5rem;
+      padding: 0.75rem 1rem;
+      transition: all var(--transition-fast);
+      min-height: 48px;
+  }
+
+  .input-wrapper:focus-within {
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 0 3px rgba(19, 81, 180, 0.08);
+  }
+
+  .message-input {
+      flex: 1;
+      border: none;
+      background: none;
+      resize: none;
+      outline: none;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: var(--gray-80);
+      min-height: 24px;
+      max-height: 120px;
+      padding: 0.75rem 0;
+      font-family: 'Inter', Arial, sans-serif;
+  }
+
+  .message-input::placeholder {
+      color: var(--gray-60);
+      opacity: 1;
+  }
+
+  .send-btn {
+      background: var(--primary-blue);
+      color: #fff;
+      border: none;
+      padding: 0;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition-base);
+      width: 40px;
+      height: 40px;
+      position: relative;
+      overflow: hidden;
+      font-size: 1.125rem;
+      flex-shrink: 0;
+  }
+
+  .send-btn i {
+      color: #fff;
+  }
+
+  .send-btn:disabled {
+      background: var(--gray-40);
+      color: #fff;
+      cursor: not-allowed;
+  }
+
+  .send-btn:not(:disabled):hover {
+      background: var(--primary-blue-warm-vivid-70);
+      transform: scale(1.05);
+  }
+
+  /* Footer Gov.br - Responsivo */
+  .footer-govbr {
+      width: 100%;
+      background: #071D41;
+      color: #fff;
+      text-align: center;
+      font-size: clamp(0.8rem, 1.5vw, 0.9375rem);
+      padding: 1rem;
+      font-family: 'Inter', 'Rawline', Arial, sans-serif;
+      letter-spacing: 0.01em;
+      flex-shrink: 0;
+      min-height: var(--footer-height);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+
+  .footer-govbr a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+  }
+
+  .footer-govbr a:hover {
+      text-decoration: underline;
+      color: #fff;
+  }
+
+  /* Animations */
+  @keyframes fadeInUp {
+      from {
+          opacity: 0;
+          transform: translateY(20px);
+      }
+      to {
+          opacity: 1;
+          transform: translateY(0);
+      }
+  }
+
+  /* Tooltips */
+  .tooltip-gov {
+      position: relative;
+      cursor: pointer;
+  }
+  .tooltip-gov[data-tooltip]:hover::after,
+  .tooltip-gov[data-tooltip]:focus::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      left: 50%;
+      top: 110%;
+      transform: translateX(-50%);
+      background: #1351B4;
+      color: #fff;
+      font-size: 0.8125rem;
+      font-family: 'Inter', 'Rawline', Arial, sans-serif;
+      padding: 0.5rem 0.875rem;
+      border-radius: 0.5rem;
+      white-space: nowrap;
+      box-shadow: 0 2px 8px rgba(19,81,180,0.10);
+      z-index: 1000;
+      opacity: 1;
+      pointer-events: none;
+      transition: opacity 0.2s;
+      margin-top: 6px;
+  }
+
+  /* Modais - Responsivos */
+  .modal-backdrop {
+      position: fixed;
+      z-index: 1100;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+  }
+
+  .modal-content {
+      background: white;
+      border-radius: 0.75rem;
+      width: 100%;
+      max-width: 400px;
+      margin: auto;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+      position: relative;
+      text-align: center;
+      max-height: 90vh;
+      overflow-y: auto;
+  }
+
+  .modal-content h2 {
+      font-size: 1.25rem;
+      margin-bottom: 1.125rem;
+      color: var(--primary-blue);
+      line-height: 1.3;
+  }
+
+  .modal-content p {
+      color: var(--gray-80);
+      margin-bottom: 1.75rem;
+      line-height: 1.5;
+  }
+
+  .modal-content button {
+      background: var(--primary-blue);
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      padding: 0.625rem 1.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin: 0.25rem;
+      font-size: 0.875rem;
+      transition: all var(--transition-fast);
+  }
+
+  .modal-content button:hover {
+      background: var(--primary-blue-warm-vivid-70);
+  }
+
+  .modal-content button.secondary {
+      background: none;
+      color: var(--gray-60);
+      border: 1px solid var(--gray-20);
+  }
+
+  .modal-content button.secondary:hover {
+      background: var(--gray-2);
+      color: var(--gray-80);
+  }
+
+  /* Typing indicator */
+  .typing-dots {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 4px;
+      padding: 0.5rem 0;
+  }
+
+  .typing-dots span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--gray-60);
+      animation: typing-animation 1.4s infinite ease-in-out;
+  }
+
+  .typing-dots span:nth-child(1) {
+      animation-delay: -0.32s;
+  }
+
+  .typing-dots span:nth-child(2) {
+      animation-delay: -0.16s;
+  }
+
+  @keyframes typing-animation {
+      0%, 80%, 100% {
+          opacity: 0.3;
+          transform: scale(1);
+      }
+      40% {
+          opacity: 1;
+          transform: scale(1.2);
+      }
+  }
+
+  /* Responsive Design */
+  
+  /* Extra Small devices (portrait phones, less than 576px) */
+  @media (max-width: 575.98px) {
+      :root {
+          --header-height: 60px;
+          --footer-height: auto;
+          --input-section-height: 70px;
+      }
+
+      .header .container-fluid {
+          padding: 0 0.75rem;
+      }
+
+      .logo span {
+          display: none;
+      }
+
+      .user-welcome {
+          display: none;
+      }
+
+      .welcome-title {
+          font-size: 1.75rem;
+      }
+
+      .welcome-subtitle {
+          font-size: 0.9375rem;
+      }
+
+      .main-content {
+          padding: 0.75rem;
+      }
+
+      /* Action Cards Mobile - Altura uniforme garantida */
+      .action-grid .row {
+          margin: 0 -0.5rem;
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+      }
+
+      .action-grid .col-12 {
+          padding: 0 0.5rem;
+          margin-bottom: 1rem;
+          display: flex;
+          align-items: stretch;
+      }
+
+      .action-card {
+          padding: 1.75rem 1.25rem;
+          height: 200px !important;
+          min-height: 200px !important;
+          max-height: 200px !important;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: center;
+      }
+
+      .action-card-icon {
+          width: 56px;
+          height: 56px;
+          font-size: 1.375rem;
+          margin: 0 auto 1rem;
+          flex-shrink: 0;
+      }
+
+      .action-card-content {
+          flex-grow: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          width: 100%;
+      }
+
+      .action-card-title {
+          font-size: 1.125rem;
+          margin-bottom: 0.5rem;
+          text-align: center;
+          line-height: 1.2;
+      }
+
+      .action-card-description {
+          font-size: 0.8125rem;
+          text-align: center;
+          line-height: 1.4;
+          margin: 0;
+      }
+
+      .chat-area {
+          padding: 0.75rem;
+      }
+
+      .message-wrapper {
+          max-width: calc(100% - 48px);
+      }
+
+      .message-content {
+          padding: 0.875rem 1rem;
+          font-size: 0.875rem;
+      }
+
+      .input-section {
+          padding: 0.75rem;
+      }
+
+      .input-wrapper {
+          padding: 0.625rem 0.875rem;
+      }
+
+      .send-btn {
+          width: 36px;
+          height: 36px;
+          font-size: 1rem;
+      }
+
+      .footer-govbr {
+          padding: 0.75rem 0.5rem;
+          font-size: 0.8125rem;
+      }
+
+      .modal-gov-content {
+          padding: 1.5rem 1rem;
+          max-width: 95%;
+      }
+
+      .suggestion-pill {
+          font-size: 0.8125rem;
+          padding: 0.625rem 1rem;
+      }
+  }
+
+  /* Small devices (landscape phones, 576px and up) */
+  @media (min-width: 576px) and (max-width: 767.98px) {
+      .user-welcome {
+          max-width: 150px;
+      }
+
+      /* Action Cards Small - 2 colunas com altura uniforme */
+      .action-grid .row {
+          display: flex;
+          align-items: stretch;
+      }
+
+      .action-grid .col-md-6 {
+          display: flex;
+          align-items: stretch;
+          margin-bottom: 1rem;
+      }
+
+      .action-card {
+          height: 220px !important;
+          min-height: 220px !important;
+          max-height: 220px !important;
+          padding: 2rem 1.5rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+      }
+
+      .action-card-icon {
+          width: 60px;
+          height: 60px;
+          font-size: 1.5rem;
+          margin: 0 auto 1.125rem;
+      }
+
+      .action-card-title {
+          font-size: 1.125rem;
+          margin-bottom: 0.625rem;
+      }
+
+      .action-card-description {
+          font-size: 0.875rem;
+      }
+  }
+
+  /* Medium devices (tablets, 768px and up) */
+  @media (min-width: 768px) and (max-width: 991.98px) {
+      .action-grid .row {
+          display: flex;
+          align-items: stretch;
+      }
+
+      .action-grid .col-md-6 {
+          display: flex;
+          align-items: stretch;
+          margin-bottom: 1rem;
+      }
+
+      .action-card {
+          height: 240px !important;
+          min-height: 240px !important;
+          max-height: 240px !important;
+          padding: 2rem 1.5rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+      }
+
+      .action-card-icon {
+          width: 64px;
+          height: 64px;
+          font-size: 1.5rem;
+          margin: 0 auto 1.25rem;
+      }
+
+      .user-welcome {
+          max-width: 180px;
+      }
+  }
+
+  /* Large devices (desktops, 992px and up) */
+  @media (min-width: 992px) {
+      .welcome-section {
+          padding: 0 2rem;
+      }
+
+      .action-grid .row {
+          display: flex;
+          align-items: stretch;
+      }
+
+      .action-grid .col-lg-4 {
+          display: flex;
+          align-items: stretch;
+          margin-bottom: 1rem;
+      }
+
+      .action-card {
+          height: 260px !important;
+          min-height: 260px !important;
+          max-height: 260px !important;
+          padding: 2.25rem 1.75rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+      }
+
+      .action-card-icon {
+          width: 68px;
+          height: 68px;
+          font-size: 1.625rem;
+          margin: 0 auto 1.5rem;
+      }
+  }
+
+  /* Extra large devices (large desktops, 1200px and up) */
+  @media (min-width: 1200px) {
+      .welcome-section {
+          padding: 0 3rem;
+      }
+
+      .action-card {
+          height: 280px !important;
+          min-height: 280px !important;
+          max-height: 280px !important;
+          padding: 2.5rem 2rem;
+      }
+  }
+
+  /* Landscape orientation specific */
+  @media (orientation: landscape) and (max-height: 600px) {
+      .main-content {
+          padding: 0.5rem;
+      }
+      
+      .welcome-title {
+          font-size: 2rem;
+          margin-bottom: 0.75rem;
+      }
+      
+      .welcome-subtitle {
+          margin-bottom: 1rem;
+      }
+      
+      .suggestions {
+          margin-bottom: 1rem;
+      }
+      
+      .action-grid {
+          margin-top: 1rem;
+      }
+      
+      .action-card {
+          min-height: 160px;
+          padding: 1.25rem 1rem;
+      }
+  }
+
+  /* Print styles */
+  @media print {
+      .header, .input-section, .footer-govbr {
+          display: none !important;
+      }
+      
+      .chat-area {
+          display: block !important;
+          height: auto !important;
+          overflow: visible !important;
+      }
+      
+      .main-content {
+          display: none !important;
+      }
+  }
+
+  /* Accessibility improvements */
+  @media (prefers-reduced-motion: reduce) {
+      * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+      }
+  }
+
+  /* High contrast mode */
+  @media (prefers-contrast: high) {
+      .action-card {
+          border-width: 2px;
+      }
+      
+      .message-content {
+          border-width: 2px;
+      }
+      
+      .input-wrapper {
+          border-width: 2px;
+      }
+  }
+
+  /* Hide Bootstrap elements que podem conflitar */
+  .card, .card-header, .btn:not(.send-btn):not(.icon-btn):not(.menu-btn):not(.suggestion-pill):not(.action-card), .nav-link {
+      display: none !important;
+  }
+
+  /* Permitir botões específicos dos modais */
+  .modal-content .btn,
+  .modal-content button,
+  #confirmNewConvModal .btn,
+  #confirmNewConvModal button,
+  #settingsModal .btn,
+  #settingsModal button {
+      display: inline-block !important;
+  }
+
+  /* Botões Gov.br - Seguindo Design System */
+  .btn-gov-primary {
+      background: var(--primary-blue) !important;
+      border: 2px solid var(--primary-blue) !important;
+      color: #ffffff !important;
+      font-family: 'Inter', 'Rawline', Arial, sans-serif !important;
+      font-weight: 600 !important;
+      font-size: 0.875rem !important;
+      padding: 0.75rem 1.5rem !important;
+      border-radius: 0.5rem !important;
+      text-transform: none !important;
+      letter-spacing: 0.025em !important;
+      transition: all 0.15s ease-in-out !important;
+      cursor: pointer !important;
+      display: inline-block !important;
+      text-align: center !important;
+      vertical-align: middle !important;
+      user-select: none !important;
+      line-height: 1.5 !important;
+      text-decoration: none !important;
+      margin: 0.25rem !important;
+  }
+
+  .btn-gov-primary:hover,
+  .btn-gov-primary:focus {
+      background: var(--primary-blue-warm-vivid-70) !important;
+      border-color: var(--primary-blue-warm-vivid-70) !important;
+      color: #ffffff !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 4px 8px rgba(19, 81, 180, 0.3) !important;
+  }
+
+  .btn-gov-primary:active {
+      background: var(--primary-blue-warm-vivid-70) !important;
+      border-color: var(--primary-blue-warm-vivid-70) !important;
+      transform: translateY(0) !important;
+      box-shadow: 0 2px 4px rgba(19, 81, 180, 0.3) !important;
+  }
+
+  .btn-gov-secondary {
+      background: transparent !important;
+      border: 2px solid var(--gray-20) !important;
+      color: var(--gray-80) !important;
+      font-family: 'Inter', 'Rawline', Arial, sans-serif !important;
+      font-weight: 600 !important;
+      font-size: 0.875rem !important;
+      padding: 0.75rem 1.5rem !important;
+      border-radius: 0.5rem !important;
+      text-transform: none !important;
+      letter-spacing: 0.025em !important;
+      transition: all 0.15s ease-in-out !important;
+      cursor: pointer !important;
+      display: inline-block !important;
+      text-align: center !important;
+      vertical-align: middle !important;
+      user-select: none !important;
+      line-height: 1.5 !important;
+      text-decoration: none !important;
+      margin: 0.25rem !important;
+  }
+
+  .btn-gov-secondary:hover,
+  .btn-gov-secondary:focus {
+      background: var(--gray-2) !important;
+      border-color: var(--gray-40) !important;
+      color: var(--gray-80) !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  .btn-gov-secondary:active {
+      background: var(--gray-10) !important;
+      border-color: var(--gray-40) !important;
+      transform: translateY(0) !important;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  /* Ajustes específicos para os modais Gov.br */
+  .modal-gov {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(7, 29, 65, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1050;
+      padding: 1rem;
+  }
+
+  .modal-gov-content {
+      background: var(--white);
+      border-radius: 1rem;
+      padding: 2rem;
+      max-width: 480px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      border: 1px solid var(--gray-20);
+  }
+
+  .modal-gov-header {
+      text-align: center;
+      margin-bottom: 1.5rem;
+  }
+
+  .modal-gov-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-blue);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+  }
+
+  .modal-gov-subtitle {
+      font-size: 1rem;
+      color: var(--gray-60);
+      line-height: 1.5;
+      margin: 0;
+  }
+
+  .modal-gov-body {
+      margin-bottom: 2rem;
+  }
+
+  .modal-gov-footer {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+  }
+
+  /* Formulários Gov.br */
+  .form-group-gov {
+      margin-bottom: 1.5rem;
+  }
+
+  .form-label-gov {
+      display: block;
+      font-weight: 600;
+      color: var(--gray-80);
+      margin-bottom: 0.5rem;
+      font-size: 0.875rem;
+  }
+
+  .form-control-gov {
+      width: 100%;
+      padding: 0.75rem;
+      border: 2px solid var(--gray-20);
+      border-radius: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--gray-80);
+      background: var(--white);
+      transition: all 0.15s ease-in-out;
+  }
+
+  .form-control-gov:focus {
+      outline: none;
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 0 3px rgba(19, 81, 180, 0.1);
+  }
+
+  .form-check-gov {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.75rem;
+  }
+
+  .form-check-input-gov {
+      width: 1.25rem;
+      height: 1.25rem;
+      margin-right: 0.75rem;
+      accent-color: var(--primary-blue);
+  }
+
+  .form-check-label-gov {
+      font-size: 0.875rem;
+      color: var(--gray-80);
+      cursor: pointer;
+  }
+
+  /* Responsive para modais */
+  @media (max-width: 576px) {
+      .modal-gov-content {
+          margin: 0.5rem;
+          padding: 1.5rem;
+          max-width: calc(100vw - 1rem);
+      }
+
+      .modal-gov-title {
+          font-size: 1.25rem;
+      }
+
+      .modal-gov-footer {
+          flex-direction: column;
+      }
+
+      .btn-gov-primary,
+      .btn-gov-secondary {
+          width: 100%;
+          margin: 0.25rem 0 !important;
+      }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="chat-container">
+    <!-- Modern Header usando Bootstrap Grid -->
+    <header class="header" role="banner">
+        <div class="container-fluid h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-auto">
+                    <div class="header-left">
+                        <button class="menu-btn" onclick="toggleSidebar()" aria-label="Menu principal">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <a href="#" class="logo" aria-label="ChatCOTIN - Página inicial">
+                            <img src="{% static 'img/logo_cotin.png' %}" alt="Logo ChatCOTIN">
+                            <span class="d-none d-sm-inline">ChatCOTIN</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="header-right">
+                        <span class="user-welcome d-none d-md-inline">
+                            Bem-vindo, <strong>{{user.username}}</strong>
+                        </span>
+                        <button class="icon-btn tooltip-gov" onclick="app.newConversation()" aria-label="Nova conversa" data-tooltip="Iniciar nova conversa">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                        <button class="icon-btn tooltip-gov" onclick="app.clearAllHistory()" aria-label="Limpar histórico" data-tooltip="Limpar todo o histórico">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                        <button class="icon-btn tooltip-gov" onclick="app.toggleTheme()" aria-label="Alternar tema" data-tooltip="Alternar entre tema claro e escuro">
+                            <i class="fas fa-moon" id="themeIcon"></i>
+                        </button>
+                        <button class="icon-btn tooltip-gov" onclick="app.openSettings()" aria-label="Configurações" data-tooltip="Abrir configurações do assistente">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                        <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="icon-btn tooltip-gov" aria-label="Sair" data-tooltip="Encerrar sessão">
+                                <i class="fas fa-sign-out-alt"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content usando Bootstrap Container -->
+    <main class="main-content" id="welcomeScreen" role="main">
+        <div class="welcome-section">
+            <h1 class="welcome-title">Como posso ajudar?</h1>
+            <p class="welcome-subtitle">
+                Faça perguntas sobre dados abertos de compras Públicas
+            </p>
+            
+            <!-- Suggestion Pills usando Bootstrap Grid -->
+            <div class="suggestions">
+                <div class="container-fluid">
+                    <div class="row g-2 justify-content-center">
+                        <div class="col-12 col-sm-6 col-lg-4">
+                            <button class="suggestion-pill" onclick="app.sendSuggestion('O que são dados abertos de compras públicas?')">
+                                Dados Abertos
+                            </button>
+                        </div>
+                        <div class="col-12 col-sm-6 col-lg-4">
+                            <button class="suggestion-pill" onclick="app.sendSuggestion('Como acessar informações de transparência pública?')">
+                                Transparência Pública 
+                            </button>
+                        </div>
+                        <div class="col-12 col-lg-4">
+                            <button class="suggestion-pill" onclick="app.sendSuggestion('Quais são as principais legislações sobre dados abertos?')">
+                                Legislação de Dados Abertos
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Action Cards usando Bootstrap Grid -->
+            <div class="action-grid">
+                <div class="container-fluid">
+                    <div class="row g-3 justify-content-center">
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <button class="action-card primary" onclick="app.startAction('dados_abertos')">
+                                <div class="action-card-icon">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <div class="action-card-content">
+                                    <h3 class="action-card-title">Dados Abertos</h3>
+                                    <p class="action-card-description">Insights sobre dados governamentais</p>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <button class="action-card secondary" onclick="app.startAction('transparencia_publica')">
+                                <div class="action-card-icon">
+                                    <i class="fas fa-university"></i>
+                                </div>
+                                <div class="action-card-content">
+                                    <h3 class="action-card-title">Transparência Pública</h3>
+                                    <p class="action-card-description">Acesso a informação</p>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <button class="action-card tertiary" onclick="app.startAction('legislacao_dados_abertos')">
+                                <div class="action-card-icon">
+                                    <i class="fas fa-gavel"></i>
+                                </div>
+                                <div class="action-card-content">
+                                    <h3 class="action-card-title">Legislação de Dados Abertos</h3>
+                                    <p class="action-card-description">Leis e normas sobre dados abertos</p>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Chat Area -->
+    <div class="chat-area" id="chatArea" role="log" aria-live="polite" aria-label="Mensagens do chat">
+        <div class="messages-container" id="messagesContainer">
+            <!-- Messages will be inserted here -->
+        </div>
+    </div>
+
+    <!-- Input Section -->
+    <div class="input-section" role="form">
+        <div class="input-container">
+            <div class="input-wrapper">
+                <textarea 
+                    class="message-input" 
+                    id="messageInput"
+                    placeholder="Digite sua pergunta..."
+                    rows="1"
+                    aria-label="Campo de mensagem"
+                    autocomplete="off"
+                ></textarea>
+                
+                <div class="input-controls">
+                    <button class="send-btn" id="sendBtn" onclick="app.sendMessage()" 
+                            aria-label="Enviar mensagem" disabled>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Gov.br -->
+    <footer class="footer-govbr">
+        <div class="container">
+            <strong>
+                Todo o conteúdo deste site está publicado sob a licença
+                <a href="https://creativecommons.org/licenses/by-nd/3.0/deed.en" target="_blank" rel="noopener">
+                    Creative Commons Atribuição-SemDerivações 3.0 Não Adaptada
+                </a>.
+            </strong>
+        </div>
+    </footer>
+</div>
+
+<!-- Modal de Configurações Gov.br -->
+<div id="settingsModal" class="modal-gov" style="display:none;">
+    <div class="modal-gov-content">
+        <div class="modal-gov-header">
+            <h2 class="modal-gov-title">Configurações do Sistema</h2>
+            <p class="modal-gov-subtitle">Ajuste os parâmetros do assistente de IA</p>
+        </div>
+        
+        <div class="modal-gov-body">
+            <!-- Seleção do Modelo de IA -->
+            <div class="form-group-gov">
+                <label class="form-label-gov">Modelo de Inteligência Artificial</label>
+                <div>
+                    <div class="form-check-gov">
+                        <input class="form-check-input-gov" type="radio" name="llm_provider" value="ollama" id="ollama">
+                        <label class="form-check-label-gov" for="ollama">
+                            llama3.2:latest (Modelo Local)
+                        </label>
+                    </div>
+                    <div class="form-check-gov">
+                        <input class="form-check-input-gov" type="radio" name="llm_provider" value="databricks" id="databricks">
+                        <label class="form-check-label-gov" for="databricks">
+                            databricks-llama-4-maverick (Nuvem)
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <hr style="border: none; border-top: 1px solid var(--gray-20); margin: 1.5rem 0;">
+            
+            <!-- Parâmetros do Modelo -->
+            <div class="form-group-gov">
+                <label class="form-label-gov">Parâmetros do Modelo (Ollama)</label>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label-gov">Temperature (Criatividade)</label>
+                        <input type="number" step="0.01" min="0" max="1" id="llm_temperature" class="form-control-gov" placeholder="0.1">
+                        <small class="text-muted">0 = Determinístico, 1 = Muito criativo</small>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label-gov">Top-p (Núcleo)</label>
+                        <input type="number" step="0.01" min="0" max="1" id="llm_top_p" class="form-control-gov" placeholder="0.9">
+                        <small class="text-muted">Controla a diversidade das respostas</small>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label-gov">Top-k (Opções)</label>
+                        <input type="number" step="1" min="1" max="100" id="llm_top_k" class="form-control-gov" placeholder="40">
+                        <small class="text-muted">Número de opções consideradas</small>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label-gov">Contexto (Tokens)</label>
+                        <input type="number" step="1" min="256" max="4096" id="llm_num_ctx" class="form-control-gov" placeholder="2048">
+                        <small class="text-muted">Tamanho da memória de contexto</small>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label-gov">Penalty (Repetição)</label>
+                        <input type="number" step="0.01" min="1" max="2" id="llm_repeat_penalty" class="form-control-gov" placeholder="1.2">
+                        <small class="text-muted">Penaliza repetições no texto</small>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label-gov">Chunk Size</label>
+                        <input type="number" step="1" min="100" max="4000" id="chunk_size" class="form-control-gov" placeholder="1000">
+                        <small class="text-muted">Tamanho dos blocos de texto</small>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label-gov">Overlap (Sobreposição)</label>
+                        <input type="number" step="1" min="0" max="1000" id="chunk_overlap" class="form-control-gov" placeholder="150">
+                        <small class="text-muted">Sobreposição entre blocos</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-gov-footer">
+            <button type="button" onclick="app.saveSettings()" class="btn-gov-primary">
+                <i class="fas fa-save me-2"></i>Salvar Configurações
+            </button>
+            <button type="button" onclick="app.closeSettings()" class="btn-gov-secondary">
+                <i class="fas fa-times me-2"></i>Cancelar
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Confirmação Nova Conversa Gov.br -->
+<div id="confirmNewConvModal" class="modal-gov" style="display:none;">
+    <div class="modal-gov-content">
+        <div class="modal-gov-header">
+            <h2 class="modal-gov-title">Nova Conversa</h2>
+            <p class="modal-gov-subtitle">Você tem certeza que deseja iniciar uma nova conversa?</p>
+        </div>
+        
+        <div class="modal-gov-body">
+            <div style="text-align: center; padding: 1rem 0;">
+                <i class="fas fa-comment-dots" style="font-size: 3rem; color: var(--primary-blue); margin-bottom: 1rem;"></i>
+                <p style="color: var(--gray-60); margin: 0; line-height: 1.6;">
+                    O histórico da conversa atual será mantido seguro no banco de dados e você poderá acessá-lo posteriormente.
+                </p>
+            </div>
+        </div>
+        
+        <div class="modal-gov-footer">
+            <button type="button" id="confirmNewConvBtn" class="btn-gov-primary">
+                <i class="fas fa-plus me-2"></i>Sim, Iniciar Nova Conversa
+            </button>
+            <button type="button" id="cancelNewConvBtn" class="btn-gov-secondary">
+                <i class="fas fa-arrow-left me-2"></i>Continuar Conversa Atual
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- ADICIONANDO BIBLIOTECAS NECESSÁRIAS -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+<!-- Hidden form for CSRF token -->
+<form style="display: none;">
+    {% csrf_token %}
+</form>
+
+<!-- Django chats data -->
+<script id="django-chats-data" type="application/json">
+[
+    {% for chat in chats %}
+    {
+        "message": "{{ chat.message|escapejs }}",
+        "response": "{{ chat.response|escapejs }}",
+        "created_at": "{{ chat.created_at|date:'c' }}"
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+]
+</script>
+
+<script>
+    // Caminho do logo para uso no JS
+    const LOGO_COTIN_SRC = "{% static 'img/logo_cotin.png' %}";
+    
+    // Modern ChatPyIA Application
+    class ChatPyIA {
+        constructor() {
+            this.API_BASE_URL = window.location.origin;
+            this.isInChatMode = false;
+            this.isTyping = false;
+            this.theme = 'light';
+            this.llmProvider = localStorage.getItem('llm_provider') || 'databricks';
+            this.llmParams = JSON.parse(localStorage.getItem('llm_params') || '{}');
+            this.chunkParams = JSON.parse(localStorage.getItem('chunk_params') || '{}');
+            this.init();
+        }
+
+        init() {
+            this.setupEventListeners();
+            this.setupModalHandlers();
+            this.loadExistingChats();
+            this.applyTheme();
+            this.setupResponsiveHandlers();
+            
+            // Show welcome message
+            setTimeout(() => {
+                console.log('ChatCOTIN está pronto para ajudar com dados abertos de compras públicas.');
+            }, 1000);
+        }
+
+        setupResponsiveHandlers() {
+            // Lidar com redimensionamento da tela
+            window.addEventListener('resize', () => {
+                this.handleResize();
+            });
+            
+            // Lidar com mudança de orientação
+            window.addEventListener('orientationchange', () => {
+                setTimeout(() => {
+                    this.handleResize();
+                }, 100);
+            });
+            
+            // Auto-resize inicial
+            this.handleResize();
+        }
+
+        handleResize() {
+            // Ajustar altura do chat area baseado na viewport
+            const chatArea = document.getElementById('chatArea');
+            const header = document.querySelector('.header');
+            const inputSection = document.querySelector('.input-section');
+            const footer = document.querySelector('.footer-govbr');
+            
+            if (chatArea && this.isInChatMode) {
+                const headerHeight = header ? header.offsetHeight : 70;
+                const inputHeight = inputSection ? inputSection.offsetHeight : 80;
+                const footerHeight = footer ? footer.offsetHeight : 60;
+                const availableHeight = window.innerHeight - headerHeight - inputHeight - footerHeight;
+                
+                chatArea.style.height = `${Math.max(availableHeight, 200)}px`;
+                
+                // Scroll para o bottom após resize
+                setTimeout(() => this.scrollToBottom(), 50);
+            }
+            
+            // Ajustar textarea no mobile
+            this.adjustTextareaForMobile();
+        }
+
+        adjustTextareaForMobile() {
+            const messageInput = document.getElementById('messageInput');
+            if (messageInput && window.innerWidth <= 576) {
+                // Prevenir zoom no iOS
+                messageInput.style.fontSize = '16px';
+            }
+        }
+
+        setupEventListeners() {
+            const messageInput = document.getElementById('messageInput');
+            const sendBtn = document.getElementById('sendBtn');
+            
+            if (messageInput) {
+                // Message input events
+                messageInput.addEventListener('input', (e) => this.handleInputChange(e));
+                messageInput.addEventListener('keydown', (e) => this.handleKeyDown(e));
+                
+                // Prevenir submit em mobile quando usando teclado virtual
+                messageInput.addEventListener('focus', () => {
+                    if (window.innerWidth <= 768) {
+                        // Scroll para o input em mobile
+                        setTimeout(() => {
+                            messageInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }, 300);
+                    }
+                });
+            }
+            
+            if (sendBtn) {
+                sendBtn.addEventListener('click', () => this.sendMessage());
+            }
+        }
+
+        setupModalHandlers() {
+            // Modal Nova Conversa
+            const confirmModal = document.getElementById('confirmNewConvModal');
+            const confirmBtn = document.getElementById('confirmNewConvBtn');
+            const cancelBtn = document.getElementById('cancelNewConvBtn');
+            
+            if (confirmBtn && cancelBtn && confirmModal) {
+                confirmBtn.onclick = () => {
+                    this.clearChat();
+                    confirmModal.style.display = 'none';
+                };
+                cancelBtn.onclick = () => {
+                    confirmModal.style.display = 'none';
+                };
+                
+                // Fechar modal clicando fora
+                confirmModal.addEventListener('click', (e) => {
+                    if (e.target === confirmModal) {
+                        confirmModal.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Modal de Configurações
+            const settingsModal = document.getElementById('settingsModal');
+            if (settingsModal) {
+                settingsModal.addEventListener('click', (e) => {
+                    if (e.target === settingsModal) {
+                        this.closeSettings();
+                    }
+                });
+            }
+        }
+
+        loadExistingChats() {
+            // Check if there are existing chats from Django template
+            const djangoChats = this.getDjangoChats();
+            
+            if (djangoChats.length > 0) {
+                // If there are existing chats, switch to chat mode and load them
+                this.switchToChatMode();
+                this.loadDjangoChats(djangoChats);
+            }
+        }
+
+        getDjangoChats() {
+            // Get chats from Django template context
+            const chatsScript = document.getElementById('django-chats-data');
+            if (chatsScript) {
+                try {
+                    const data = JSON.parse(chatsScript.textContent);
+                    console.log('Django chats loaded:', data);
+                    return data;
+                } catch (e) {
+                    console.error('Error parsing Django chats:', e);
+                }
+            }
+            
+            console.log('No Django chats found');
+            return [];
+        }
+
+        loadDjangoChats(chats) {
+            // Load existing Django chats into the new interface
+            chats.forEach(chat => {
+                // Add user message
+                this.addMessage(chat.message, 'user');
+                // Add assistant response
+                this.addMessage(chat.response, 'assistant');
+            });
+            
+            this.scrollToBottom();
+        }
+
+        handleInputChange(e) {
+            const input = e.target;
+            const sendBtn = document.getElementById('sendBtn');
+            
+            if (!input || !sendBtn) return;
+            
+            // Auto-resize textarea
+            input.style.height = 'auto';
+            input.style.height = Math.min(input.scrollHeight, 120) + 'px';
+            
+            // Enable/disable send button
+            sendBtn.disabled = !input.value.trim();
+            
+            // Ajustar botão send em mobile
+            if (window.innerWidth <= 576) {
+                sendBtn.style.width = input.value.trim() ? '36px' : '40px';
+                sendBtn.style.height = input.value.trim() ? '36px' : '40px';
+            }
+        }
+
+        handleKeyDown(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                this.sendMessage();
+            }
+        }
+
+        async sendMessage() {
+            const input = document.getElementById('messageInput');
+            const message = input.value.trim();
+            if (!message || this.isTyping) return;
+            
+            // Switch to chat mode if needed
+            if (!this.isInChatMode) {
+                this.switchToChatMode();
+            }
+            
+            // Add user message
+            this.addMessage(message, 'user');
+            
+            // Clear input
+            input.value = '';
+            input.style.height = 'auto';
+            this.handleInputChange({ target: input });
+            
+            // Process message
+            await this.processMessage(message);
+        }
+
+        async processMessage(message) {
+            this.isTyping = true;
+            
+            // Adicionar indicador de digitação
+            const typingId = this.addTypingIndicator();
+            
+            try {
+                const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+                const params = {
+                    'csrfmiddlewaretoken': csrfToken,
+                    'message': message,
+                    'llm_provider': this.llmProvider
+                };
+                
+                if (this.llmProvider === 'ollama') {
+                    Object.assign(params, this.llmParams);
+                }
+                
+                const response = await fetch('', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'X-CSRFToken': csrfToken
+                    },
+                    body: new URLSearchParams(params)
+                });
+                
+                const data = await response.json();
+                
+                // Remover indicador de digitação
+                this.removeTypingIndicator(typingId);
+                
+                if (response.ok) {
+                    this.addMessage(data.response, 'assistant');
+                } else {
+                    this.addMessage('Desculpe, ocorreu um erro. Por favor, tente novamente.', 'assistant');
+                    console.error('Server error:', data);
+                }
+            } catch (error) {
+                // Remover indicador de digitação
+                this.removeTypingIndicator(typingId);
+                this.addMessage('Desculpe, não foi possível conectar ao servidor.', 'assistant');
+                console.error('Network error:', error);
+            }
+            
+            this.isTyping = false;
+        }
+
+        addTypingIndicator() {
+            const messagesContainer = document.getElementById('messagesContainer');
+            const typingId = `typing-${Date.now()}`;
+            
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'message assistant';
+            typingDiv.id = typingId;
+            
+            const avatarHtml = `<img src="${LOGO_COTIN_SRC}" alt="Logo ChatCOTIN" style="height: 24px; width: 24px; border-radius: 50%; vertical-align: middle;">`;
+            
+            typingDiv.innerHTML = `
+                <div class="message-avatar online">
+                    ${avatarHtml}
+                </div>
+                <div class="message-wrapper">
+                    <div class="message-content">
+                        <div class="typing-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            messagesContainer.appendChild(typingDiv);
+            this.scrollToBottom();
+            
+            return typingId;
+        }
+
+        removeTypingIndicator(typingId) {
+            const typingElement = document.getElementById(typingId);
+            if (typingElement) {
+                typingElement.remove();
+            }
+        }
+
+        addMessage(content, sender) {
+            const messagesContainer = document.getElementById('messagesContainer');
+            const messageId = `msg-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+            messageDiv.id = messageId;
+            
+            const time = new Date().toLocaleTimeString('pt-BR', { 
+                hour: '2-digit', 
+                minute: '2-digit' 
+            });
+            
+            const avatarHtml = sender === 'user' 
+                ? '<i class="fas fa-user" style="font-size: 20px; color: var(--gray-60);"></i>'
+                : `<img src="${LOGO_COTIN_SRC}" alt="Logo ChatCOTIN" style="height: 24px; width: 24px; border-radius: 50%; vertical-align: middle;">`;
+            
+            // Verificar se marked está disponível, senão usar fallback
+            let processedContent = content;
+            if (typeof marked !== 'undefined' && !content.includes('<')) {
+                try {
+                    processedContent = marked.parse(content);
+                } catch (e) {
+                    console.warn('Erro ao processar markdown:', e);
+                    processedContent = content.replace(/\n/g, '<br>');
+                }
+            } else if (!content.includes('<')) {
+                // Fallback simples para quebras de linha
+                processedContent = content.replace(/\n/g, '<br>');
+            }
+            
+            const messageHtml = `
+                <div class="message-avatar ${sender === 'assistant' ? 'online' : ''}">
+                    ${avatarHtml}
+                </div>
+                <div class="message-wrapper">
+                    <div class="message-content">
+                        ${processedContent}
+                    </div>
+                    <div class="message-time">${time}</div>
+                </div>
+            `;
+            
+            messageDiv.innerHTML = messageHtml;
+            messagesContainer.appendChild(messageDiv);
+            
+            this.scrollToBottom();
+            
+            return messageId;
+        }
+
+        scrollToBottom() {
+            const chatArea = document.getElementById('chatArea');
+            if (chatArea && chatArea.style.display !== 'none') {
+                requestAnimationFrame(() => {
+                    chatArea.scrollTop = chatArea.scrollHeight;
+                });
+            }
+        }
+
+        switchToChatMode() {
+            const welcomeScreen = document.getElementById('welcomeScreen');
+            const chatArea = document.getElementById('chatArea');
+            
+            if (welcomeScreen) welcomeScreen.style.display = 'none';
+            if (chatArea) chatArea.style.display = 'flex';
+            
+            this.isInChatMode = true;
+            
+            // Ajustar altura após mudança de modo
+            setTimeout(() => {
+                this.handleResize();
+                this.scrollToBottom();
+            }, 100);
+        }
+
+        clearChat() {
+            const messagesContainer = document.getElementById('messagesContainer');
+            const welcomeScreen = document.getElementById('welcomeScreen');
+            const chatArea = document.getElementById('chatArea');
+            
+            if (messagesContainer) {
+                messagesContainer.innerHTML = '';
+            }
+            
+            if (welcomeScreen) welcomeScreen.style.display = 'flex';
+            if (chatArea) chatArea.style.display = 'none';
+            
+            this.isInChatMode = false;
+            
+            // Focar no input
+            const messageInput = document.getElementById('messageInput');
+            if (messageInput) {
+                setTimeout(() => messageInput.focus(), 100);
+            }
+        }
+
+        newConversation() {
+            if (this.isInChatMode) {
+                const confirmModal = document.getElementById('confirmNewConvModal');
+                if (confirmModal) {
+                    confirmModal.style.display = 'flex';
+                }
+            } else {
+                const messageInput = document.getElementById('messageInput');
+                if (messageInput) {
+                    messageInput.focus();
+                }
+            }
+        }
+
+        startAction(action) {
+            const prompts = {
+                dados_abertos: "O que são dados abertos de compras públicas e como acessá-los?",
+                transparencia_publica: "Como acessar informações de transparência pública relacionadas a compras governamentais?",
+                legislacao_dados_abertos: "Quais são as principais legislações sobre dados abertos em compras públicas?"
+            };
+            
+            if (prompts[action]) {
+                const input = document.getElementById('messageInput');
+                if (input) {
+                    input.value = prompts[action];
+                    input.dispatchEvent(new Event('input', { bubbles: true }));
+                    
+                    // Só envia se o botão estiver habilitado
+                    const sendBtn = document.getElementById('sendBtn');
+                    if (sendBtn && !sendBtn.disabled) {
+                        this.sendMessage();
+                    }
+                }
+            }
+        }
+
+        sendSuggestion(text) {
+            const input = document.getElementById('messageInput');
+            if (input) {
+                input.value = text;
+                input.dispatchEvent(new Event('input', { bubbles: true }));
+                
+                const sendBtn = document.getElementById('sendBtn');
+                if (sendBtn && !sendBtn.disabled) {
+                    this.sendMessage();
+                }
+            }
+        }
+
+        async clearAllHistory() {
+            if (confirm('Tem certeza que deseja limpar TODO o histórico de conversas? Esta ação não pode ser desfeita.')) {
+                try {
+                    const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+                    
+                    const response = await fetch('/clear-history/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                            'X-CSRFToken': csrfToken
+                        },
+                        body: new URLSearchParams({
+                            'csrfmiddlewaretoken': csrfToken
+                        })
+                    });
+                    
+                    if (response.ok) {
+                        this.clearChat();
+                        this.showToast('Histórico limpo com sucesso!', 'success');
+                        location.reload(); // Reload to clear Django data
+                    } else {
+                        this.showToast('Erro ao limpar histórico', 'error');
+                    }
+                } catch (error) {
+                    this.showToast('Erro de conexão', 'error');
+                    console.error('Error clearing history:', error);
+                }
+            }
+        }
+
+        showToast(message, type = 'info') {
+            // Criar toast responsivo usando Bootstrap
+            const toastContainer = document.getElementById('toast-container') || this.createToastContainer();
+            
+            const toastId = `toast-${Date.now()}`;
+            const iconClass = type === 'success' ? 'fa-check-circle' : 
+                            type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle';
+            const bgClass = type === 'success' ? 'bg-success' : 
+                           type === 'error' ? 'bg-danger' : 'bg-primary';
+            
+            const toastHtml = `
+                <div id="${toastId}" class="toast align-items-center text-white ${bgClass} border-0" role="alert">
+                    <div class="d-flex">
+                        <div class="toast-body d-flex align-items-center">
+                            <i class="fas ${iconClass} me-2"></i>
+                            ${message}
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                    </div>
+                </div>
+            `;
+            
+            toastContainer.insertAdjacentHTML('beforeend', toastHtml);
+            
+            const toastElement = document.getElementById(toastId);
+            const toast = new bootstrap.Toast(toastElement, { delay: 3000 });
+            toast.show();
+            
+            // Remover após ocultar
+            toastElement.addEventListener('hidden.bs.toast', () => {
+                toastElement.remove();
+            });
+        }
+
+        createToastContainer() {
+            const container = document.createElement('div');
+            container.id = 'toast-container';
+            container.className = 'toast-container position-fixed bottom-0 end-0 p-3';
+            container.style.zIndex = '1050';
+            document.body.appendChild(container);
+            return container;
+        }
+
+        toggleTheme() {
+            this.theme = this.theme === 'light' ? 'dark' : 'light';
+            this.applyTheme();
+            
+            // Update icon
+            const icon = document.getElementById('themeIcon');
+            if (icon) {
+                icon.className = this.theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            }
+            
+            this.showToast(`Tema ${this.theme === 'dark' ? 'escuro' : 'claro'} ativado!`, 'success');
+        }
+
+        applyTheme() {
+            document.documentElement.setAttribute('data-theme', this.theme);
+            localStorage.setItem('theme', this.theme);
+        }
+
+        openSettings() {
+            const settingsModal = document.getElementById('settingsModal');
+            if (!settingsModal) return;
+            
+            settingsModal.style.display = 'flex';
+            
+            // Atualiza o radio conforme o localStorage
+            const radios = document.getElementsByName('llm_provider');
+            radios.forEach(r => { r.checked = (r.value === this.llmProvider); });
+            
+            // Preenche campos dos parâmetros do LLM
+            const temperatureInput = document.getElementById('llm_temperature');
+            const topPInput = document.getElementById('llm_top_p');
+            const topKInput = document.getElementById('llm_top_k');
+            const numCtxInput = document.getElementById('llm_num_ctx');
+            const repeatPenaltyInput = document.getElementById('llm_repeat_penalty');
+            const chunkSizeInput = document.getElementById('chunk_size');
+            const chunkOverlapInput = document.getElementById('chunk_overlap');
+            
+            if (temperatureInput) temperatureInput.value = this.llmParams.temperature ?? 0.1;
+            if (topPInput) topPInput.value = this.llmParams.top_p ?? 0.9;
+            if (topKInput) topKInput.value = this.llmParams.top_k ?? 40;
+            if (numCtxInput) numCtxInput.value = this.llmParams.num_ctx ?? 2048;
+            if (repeatPenaltyInput) repeatPenaltyInput.value = this.llmParams.repeat_penalty ?? 1.2;
+            if (chunkSizeInput) chunkSizeInput.value = this.chunkParams.chunk_size ?? 1000;
+            if (chunkOverlapInput) chunkOverlapInput.value = this.chunkParams.chunk_overlap ?? 150;
+        }
+
+        closeSettings() {
+            const settingsModal = document.getElementById('settingsModal');
+            if (settingsModal) {
+                settingsModal.style.display = 'none';
+            }
+        }
+
+        saveSettings() {
+            const radios = document.getElementsByName('llm_provider');
+            radios.forEach(r => {
+                if (r.checked) {
+                    this.llmProvider = r.value;
+                    localStorage.setItem('llm_provider', r.value);
+                }
+            });
+            
+            // Salva parâmetros do LLM
+            const temperatureInput = document.getElementById('llm_temperature');
+            const topPInput = document.getElementById('llm_top_p');
+            const topKInput = document.getElementById('llm_top_k');
+            const numCtxInput = document.getElementById('llm_num_ctx');
+            const repeatPenaltyInput = document.getElementById('llm_repeat_penalty');
+            
+            if (temperatureInput && topPInput && topKInput && numCtxInput && repeatPenaltyInput) {
+                this.llmParams = {
+                    temperature: parseFloat(temperatureInput.value) || 0.1,
+                    top_p: parseFloat(topPInput.value) || 0.9,
+                    top_k: parseInt(topKInput.value) || 40,
+                    num_ctx: parseInt(numCtxInput.value) || 2048,
+                    repeat_penalty: parseFloat(repeatPenaltyInput.value) || 1.2
+                };
+                localStorage.setItem('llm_params', JSON.stringify(this.llmParams));
+            }
+            
+            // Salva parâmetros de chunk
+            const chunkSizeInput = document.getElementById('chunk_size');
+            const chunkOverlapInput = document.getElementById('chunk_overlap');
+            
+            if (chunkSizeInput && chunkOverlapInput) {
+                this.chunkParams = {
+                    chunk_size: parseInt(chunkSizeInput.value) || 1000,
+                    chunk_overlap: parseInt(chunkOverlapInput.value) || 150
+                };
+                localStorage.setItem('chunk_params', JSON.stringify(this.chunkParams));
+            }
+            
+            this.closeSettings();
+            this.showToast('Configurações salvas com sucesso!', 'success');
+        }
+    }
+
+    // Global functions for inline handlers
+    function toggleSidebar() {
+        // Placeholder for sidebar functionality
+        console.log('Sidebar toggle');
+    }
+
+    // Aguardar o DOM estar carregado
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize app
+        window.app = new ChatPyIA();
+        
+        // Aplicar tema salvo
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            window.app.theme = savedTheme;
+            window.app.applyTheme();
+            
+            const icon = document.getElementById('themeIcon');
+            if (icon) {
+                icon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            }
+        }
+    });
+</script>
+
+<!-- Adicionar CSS para indicador de digitação -->
+<style>
+.typing-dots {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+    padding: 8px 0;
+}
+
+.typing-dots span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--gray-60);
+    animation: typing-animation 1.4s infinite ease-in-out;
+}
+
+.typing-dots span:nth-child(1) {
+    animation-delay: -0.32s;
+}
+
+.typing-dots span:nth-child(2) {
+    animation-delay: -0.16s;
+}
+
+@keyframes typing-animation {
+    0%, 80%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    40% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+</style>
+{% endblock %}

@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from decouple import config
 from pathlib import Path
+import logging
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -120,6 +121,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    BASE_DIR / 'core' / 'static',
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -129,4 +133,50 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = 'chatbot'
 LOGOUT_REDIRECT_URL = 'login'
 
-GROQ_API_KEY = config('GROQ_API_KEY')
+# Configurações do Databricks
+DATABRICKS_HOST = config('DATABRICKS_HOST')
+DATABRICKS_TOKEN = config('DATABRICKS_TOKEN')
+DATABRICKS_MODEL_ENDPOINT = config('DATABRICKS_MODEL_ENDPOINT')
+
+# Configuração de Logging - Ignorar logs desnecessários
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'filters': {
+        'ignore_chrome_devtools': {
+            '()': 'django.utils.log.CallbackFilter',
+            'callback': lambda record: '/.well-known/appspecific/com.chrome.devtools.json' not in record.getMessage()
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+            'filters': ['ignore_chrome_devtools'],
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'django.server': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': False,
+            'filters': ['ignore_chrome_devtools'],
+        },
+    },
+}
