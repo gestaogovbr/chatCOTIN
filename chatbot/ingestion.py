@@ -7,7 +7,7 @@ from langchain_community.vectorstores import Chroma
 
 SUPPORTED_EXTENSIONS = ['.txt', '.pdf', '.docx', '.csv', '.md']
 
-DOCS_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'DOCs')
+DOCS_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'Docs')
 if not os.path.exists(DOCS_PATH):
     os.makedirs(DOCS_PATH)
 
@@ -40,6 +40,6 @@ def ingest_documents(folder_path=DOCS_PATH, collection_name="meu_vetores", chunk
     cs = chunk_size if chunk_size is not None else 1000
     co = chunk_overlap if chunk_overlap is not None else 150
     chunks = split_documents(docs, chunk_size=cs, chunk_overlap=co)
-    embeddings = FastEmbedEmbeddings(model_name="BAAI/bge-small-en-v1.5")
+    embeddings = FastEmbedEmbeddings(model_name="sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
     vectorstore = Chroma.from_documents(chunks, embedding=embeddings, collection_name=collection_name)
     return vectorstore

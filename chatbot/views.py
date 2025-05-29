@@ -8,8 +8,8 @@ from databricks_langchain import ChatDatabricks
 from markdown import markdown
 
 from chatbot.models import Chat
-from chatbot.vectorstore import semantic_search, filter_relevant_documents, get_vectorstore
-from chatbot.llm import generate_answer
+from chatbot.vectorstore import semantic_search, filter_relevant_documents, get_vectorstore, enhanced_search_for_panels, is_panel_related_query
+from chatbot.llm import generate_answer, get_unified_prompt_template
 
 
 # Configuração das variáveis de ambiente do Databricks
@@ -38,22 +38,28 @@ def ask_ai(context, message):
         temperature=0.7,
         max_tokens=2048
     )
-    messages = [
-        (
-            'system',
-            'Você é o ChatCOTIN, um assistente especializado em dados abertos e transparência pública sobre compras governamentais. '
-            'Responda sempre em português, de forma clara, objetiva e cite a fonte/documento quando possível. '
-            'Utilize apenas informações dos documentos fornecidos na pasta DOCs do sistema para responder. '
-            'Se não encontrar a resposta nos documentos, informe que não há informação disponível. Responda em formato markdown.'
-        ),
-    ]
-    messages.extend(context)
-    messages.append(
-        (
-            'human',
-            message,
-        ),
+    
+    # Buscar contexto relevante do RAG
+    vectorstore = get_vectorstore()
+    docs = vectorstore.similarity_search(message, k=10)
+    embeddings = vectorstore._embedding_function
+    relevant_docs = filter_relevant_documents(message, docs, embeddings, top_n=5)
+    rag_context = "\n\n".join([doc.page_content for doc in relevant_docs])
+    
+    # Usar o template unificado
+    unified_prompt = get_unified_prompt_template()
+    
+    # Aplicar o template unificado com contexto RAG
+    prompt_content = unified_prompt.format(
+        context=rag_context, 
+        question=message
     )
+    
+    messages = [
+        ('system', 'Você é o ChatCOTIN. Siga rigorosamente as instruções do prompt.'),
+        ('human', prompt_content)
+    ]
+    
     print(messages)
     response = model.invoke(messages)
     return markdown(response.content, output_format='html')
@@ -61,13 +67,21 @@ def ask_ai(context, message):
 
 def ask_rag_local(message, k=5, llm_params=None, chat_history=None):
     """Pipeline RAG: busca contexto relevante e gera resposta usando LLM local (Ollama), com filtro avançado."""
-    # Busca semântica inicial
-    vectorstore = get_vectorstore()
-    docs = vectorstore.similarity_search(message, k=10)
-    # Filtro avançado de relevância
-    embeddings = vectorstore._embedding_function
-    relevant_docs = filter_relevant_documents(message, docs, embeddings, top_n=k)
-    context = "\n".join([doc.page_content for doc in relevant_docs])
+    
+    # Verificar se é uma consulta sobre painéis e usar busca especializada
+    if is_panel_related_query(message):
+        print("🎯 Consulta sobre painéis detectada - usando busca especializada")
+        context_results = enhanced_search_for_panels(message, k=8)
+        context = "\n\n".join(context_results)
+    else:
+        # Busca semântica normal
+        vectorstore = get_vectorstore()
+        docs = vectorstore.similarity_search(message, k=10)
+        # Filtro avançado de relevância
+        embeddings = vectorstore._embedding_function
+        relevant_docs = filter_relevant_documents(message, docs, embeddings, top_n=k)
+        context = "\n".join([doc.page_content for doc in relevant_docs])
+    
     # Geração de resposta
     resposta = generate_answer(context, message, chat_history=chat_history, llm_params=llm_params)
     return resposta

@@ -1,12 +1,13 @@
 # Busca semântica otimizada para RAG
 from langchain_community.embeddings import FastEmbedEmbeddings
-from langchain_chroma import Chroma
+from langchain_community.vectorstores import Chroma
 import os
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 
-EMBEDDING_MODEL = "BAAI/bge-small-en-v1.5"
-CHROMA_COLLECTION = "meu_vetores"
+EMBEDDING_MODEL = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+# Atualizado para usar a coleção mais recente com todos os documentos
+CHROMA_COLLECTION = "chatcotin_knowledge_1748485543"
 CHROMA_PERSIST_DIR = os.getenv("CHROMA_PERSIST_DIR", "chroma_db")
 
 
@@ -25,6 +26,57 @@ def semantic_search(query, k=5, collection_name=CHROMA_COLLECTION):
     vectorstore = get_vectorstore(collection_name=collection_name)
     results = vectorstore.similarity_search(query, k=k)
     return [doc.page_content for doc in results]
+
+
+def enhanced_search_for_panels(query, k=8):
+    """
+    Busca especializada para consultas sobre painéis que garante a inclusão 
+    do chunk do markdown com a lista completa de painéis.
+    """
+    vectorstore = get_vectorstore()
+    
+    # Busca normal
+    normal_results = vectorstore.similarity_search(query, k=k)
+    
+    # Verificar se algum resultado já inclui o chunk do markdown
+    markdown_chunk_found = False
+    for result in normal_results:
+        if ('resumo_fontes_transparencia_ativa.md' in result.metadata.get('filename', '') and
+            'Painel de Compras Governamentais' in result.page_content and
+            'Portal Nacional de Contratações Públicas' in result.page_content):
+            markdown_chunk_found = True
+            break
+    
+    # Se não encontrou o chunk do markdown, forçar sua inclusão
+    if not markdown_chunk_found:
+        # Buscar especificamente o chunk do markdown
+        markdown_results = vectorstore.similarity_search(
+            "Painel de Compras Governamentais Portal Nacional de Contratações Públicas PNCP", 
+            k=10
+        )
+        
+        # Encontrar o chunk correto do markdown
+        for result in markdown_results:
+            if ('resumo_fontes_transparencia_ativa.md' in result.metadata.get('filename', '') and
+                'Painel de Compras Governamentais' in result.page_content):
+                # Substituir o último resultado pela informação do markdown
+                normal_results[-1] = result
+                print("🔧 Chunk do markdown forçadamente incluído no contexto")
+                break
+    
+    return [doc.page_content for doc in normal_results]
+
+
+def is_panel_related_query(query):
+    """Verifica se a consulta é relacionada a painéis."""
+    query_lower = query.lower()
+    panel_keywords = [
+        'painéis', 'painel', 'panel', 'paineis', 
+        'disponíveis', 'transparência', 'dashboards',
+        'compras governamentais', 'pncp', 'município',
+        'fornecedores', 'contratos públicos'
+    ]
+    return any(keyword in query_lower for keyword in panel_keywords)
 
 
 # Palavras-chave do domínio (pode ser expandido/configurado)
