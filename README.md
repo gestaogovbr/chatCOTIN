@@ -3,9 +3,9 @@
 ![Logo ChatCOTIN](core/static/img/logo_cotin.png)
 
 # ChatCOTIN
-### Assistente Inteligente de Dados Abertos sobre Compras Públicas
+## Assistente Inteligente de Dados Abertos sobre Compras Públicas
 
-[![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python&logoColor=white)](https://python.org)
+[![Python](https://img.shields.io/badge/Python-3.12%2B-blue?logo=python&logoColor=white)](https://python.org)
 [![Django](https://img.shields.io/badge/Django-5.1.3-darkgreen?logo=django&logoColor=white)](https://djangoproject.com)
 [![Licença](https://img.shields.io/badge/Licença-Gov.br-blue)](LICENSE)
 
@@ -61,7 +61,7 @@ O ChatCOTIN é um assistente virtual inteligente especializado em transparência
 
 ### **Backend**
 - **Django 5.1.3** - Framework web robusto
-- **Python 3.8+** - Linguagem de programação
+- **Python 3.12+** - Linguagem de programação
 - **LangChain** - Framework para LLM
 - **ChromaDB** - Banco vetorial para embeddings
 - **WhiteNoise** - Servir arquivos estáticos
