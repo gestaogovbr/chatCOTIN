@@ -27,7 +27,7 @@ O ChatCOTIN é um assistente virtual inteligente especializado em transparência
   - Stefano Terci Gasperazzo
   - Jose Maria De Melo Junior
   - Luiz Gonzaga de Oliveira
-  - André Ruperto de Macêdo
+  - Flávio Henrique Martins
 
 ---
 
@@ -36,7 +36,7 @@ O ChatCOTIN é um assistente virtual inteligente especializado em transparência
 ### 🧠 **Inteligência Artificial Especializada**
 - Sistema RAG (Retrieval-Augmented Generation) para respostas precisas
 - Base de conhecimento especializada em compras públicas
-- Suporte aos modelos Databricks e Ollama (local)
+- Suporte aos modelos em Nuvem e local
 - Processamento de linguagem natural em português brasileiro
 
 ### 🔍 **Áreas de Especialização**
@@ -87,7 +87,7 @@ O ChatCOTIN é um assistente virtual inteligente especializado em transparência
 
 ## 📋 **Pré-requisitos**
 
-- **Python 3.8+** instalado
+- **Python 3.12+** instalado
 - **Git** para controle de versão
 - **Conta Databricks** (para produção) ou **Ollama** (para desenvolvimento)
 
