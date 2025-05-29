@@ -27,7 +27,7 @@ O ChatCOTIN é um assistente virtual inteligente especializado em transparência
   - Stefano Terci Gasperazzo
   - Jose Maria De Melo Junior
   - Luiz Gonzaga de Oliveira
-  - André Ruperto de Macêdo
+  - Flávio Henrique Martins
 
 ---
 
