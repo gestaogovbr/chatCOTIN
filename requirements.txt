@@ -17,6 +17,9 @@ chromadb==1.0.11  # Versão mais recente
 fastembed
 databricks-langchain==0.5.1  # Versão mais recente
 
+# Groq Cloud Integration
+groq
+
 # Document processing
 unstructured
 python-docx

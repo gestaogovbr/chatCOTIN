@@ -2,9 +2,15 @@
 import os
 from langchain_ollama import OllamaLLM
 from langchain.prompts import PromptTemplate
+from groq import Groq
+from markdown import markdown
+from django.conf import settings
 
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "llama3.2:latest")
+
+# Configuração do Groq - usar Django settings
+GROQ_API_KEY = getattr(settings, 'GROQ_API_KEY', '')
 
 DOCS_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'Docs')
 if not os.path.exists(DOCS_PATH):
@@ -112,3 +118,53 @@ def generate_answer(context, question, chat_history=None, llm_params=None):
 def get_unified_prompt_template():
     """Retorna o template de prompt unificado para o ChatCOTIN (compatível com ambos os modelos)."""
     return UNIFIED_PROMPT_TEMPLATE
+
+
+def get_groq_llm():
+    """Retorna uma instância do cliente Groq configurado."""
+    if not GROQ_API_KEY:
+        raise ValueError("GROQ_API_KEY não está configurada. Adicione-a nas variáveis de ambiente.")
+    
+    return Groq(api_key=GROQ_API_KEY)
+
+
+def generate_answer_groq(context, question, chat_history=None):
+    """
+    Gera uma resposta usando o modelo Groq Llama-3.3-70B-Versatile.
+    Utiliza o prompt template unificado do ChatCOTIN.
+    """
+    client = get_groq_llm()
+    
+    # Usar o template unificado
+    prompt = UNIFIED_PROMPT_TEMPLATE.format(context=context, question=question)
+    
+    # Se houver histórico, incluir no prompt
+    if chat_history:
+        prompt = f"HISTÓRICO DA CONVERSA:\n{chat_history}\n\n{prompt}"
+    
+    try:
+        # Fazer a chamada para o modelo Groq
+        completion = client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            messages=[
+                {
+                    "role": "system", 
+                    "content": "Você é o ChatCOTIN. Siga rigorosamente as instruções do prompt."
+                },
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ],
+            temperature=0.1,
+            max_tokens=4096,
+            top_p=0.9,
+            stream=False
+        )
+        
+        response = completion.choices[0].message.content
+        # Converter markdown para HTML
+        return markdown(response, output_format='html')
+        
+    except Exception as e:
+        return f"Erro ao conectar com o modelo Groq: {str(e)}"

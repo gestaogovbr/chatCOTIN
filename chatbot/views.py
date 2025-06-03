@@ -12,7 +12,7 @@ from markdown import markdown
 
 from chatbot.models import Chat, Conversation, ChatFeedback
 from chatbot.vectorstore import semantic_search, filter_relevant_documents, get_vectorstore, enhanced_search_for_panels, is_panel_related_query
-from chatbot.llm import generate_answer, get_unified_prompt_template
+from chatbot.llm import generate_answer, get_unified_prompt_template, generate_answer_groq
 
 
 # Configuração das variáveis de ambiente do Databricks
@@ -90,6 +90,28 @@ def ask_rag_local(message, k=5, llm_params=None, chat_history=None):
     return resposta
 
 
+def ask_rag_groq(message, chat_history=None):
+    """Pipeline RAG: busca contexto relevante e gera resposta usando Groq."""
+    
+    # Verificar se é uma consulta sobre painéis e usar busca especializada
+    if is_panel_related_query(message):
+        print("🎯 Consulta sobre painéis detectada - usando busca especializada")
+        context_results = enhanced_search_for_panels(message, k=8)
+        context = "\n\n".join(context_results)
+    else:
+        # Busca semântica normal
+        vectorstore = get_vectorstore()
+        docs = vectorstore.similarity_search(message, k=10)
+        # Filtro avançado de relevância
+        embeddings = vectorstore._embedding_function
+        relevant_docs = filter_relevant_documents(message, docs, embeddings, top_n=5)
+        context = "\n".join([doc.page_content for doc in relevant_docs])
+    
+    # Geração de resposta
+    resposta = generate_answer_groq(context, message, chat_history=chat_history)
+    return resposta
+
+
 def build_chat_history(chats, max_history=MAX_HISTORY):
     """
     Monta o histórico de conversação limitado para o prompt do LLM.
@@ -160,6 +182,8 @@ def chatbot(request, conversation_id=None):
         
         if llm_provider == 'ollama':
             response = ask_rag_local(message, llm_params=llm_params, chat_history=chat_history)
+        elif llm_provider == 'groq':
+            response = ask_rag_groq(message, chat_history=chat_history)
         else:
             context = get_chat_history(chats=conversation_chats)
             response = ask_ai(context=context, message=message)
@@ -548,8 +572,14 @@ def regenerate_response(request):
                 search_results = semantic_search(message)
                 relevant_docs = filter_relevant_documents(search_results, message)
                 
-                # Gera nova resposta
-                new_response = generate_answer(message, relevant_docs, llm_provider)
+                # Gera nova resposta baseada no provedor selecionado
+                if llm_provider == 'ollama':
+                    new_response = ask_rag_local(message)
+                elif llm_provider == 'groq':
+                    new_response = ask_rag_groq(message)
+                else:
+                    # Databricks
+                    new_response = generate_answer(message, relevant_docs, llm_provider)
                 
                 # Atualiza a resposta no chat existente
                 chat.response = new_response

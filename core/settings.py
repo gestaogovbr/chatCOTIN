@@ -162,6 +162,12 @@ DATABRICKS_HOST = config('DATABRICKS_HOST', default='')
 DATABRICKS_TOKEN = config('DATABRICKS_TOKEN', default='')
 DATABRICKS_MODEL_ENDPOINT = config('DATABRICKS_MODEL_ENDPOINT', default='')
 
+# Configurações do Groq
+GROQ_API_KEY = config('GROQ_API_KEY', default='')
+
+# Configuração do provedor de LLM padrão
+LLM_PROVIDER = config('LLM_PROVIDER', default='databricks')
+
 # Configurações de segurança para produção
 if not DEBUG:
     SECURE_BROWSER_XSS_FILTER = True
