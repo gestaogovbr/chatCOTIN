@@ -1,13 +1,8 @@
-# Integração com LLM local (Ollama) para RAG
+# Integração com modelos de IA para RAG - ChatCOTIN
 import os
-from langchain_ollama import OllamaLLM
-from langchain.prompts import PromptTemplate
 from groq import Groq
 from markdown import markdown
 from django.conf import settings
-
-OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
-OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "llama3.2:latest")
 
 # Configuração do Groq - usar Django settings
 GROQ_API_KEY = getattr(settings, 'GROQ_API_KEY', '')
@@ -16,7 +11,7 @@ DOCS_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'Docs')
 if not os.path.exists(DOCS_PATH):
     os.makedirs(DOCS_PATH)
 
-# Template de prompt unificado e otimizado para ambos os modelos
+# Template de prompt unificado e otimizado para modelos de IA
 UNIFIED_PROMPT_TEMPLATE = """
 VOCÊ É O ChatCOTIN - ASSISTENTE ESPECIALIZADO EM DADOS ABERTOS SOBRE COMPRAS PÚBLICAS
 
@@ -76,47 +71,8 @@ Para obter essas informações, recomendo consultar diretamente [sugestão de fo
 RESPOSTA:"""
 
 
-def get_llm(
-    temperature=0.1,
-    top_p=0.9,
-    top_k=40,
-    num_ctx=4096,
-    repeat_penalty=1.2
-):
-    """Retorna uma instância do LLM configurado (Ollama local) com parâmetros customizados."""
-    return OllamaLLM(
-        model=OLLAMA_MODEL,
-        base_url=OLLAMA_BASE_URL,
-        temperature=temperature,
-        top_p=top_p,
-        top_k=top_k,
-        num_ctx=num_ctx,
-        repeat_penalty=repeat_penalty
-    )
-
-
-def generate_answer(context, question, chat_history=None, llm_params=None):
-    """
-    Gera uma resposta usando o LLM local, recebendo contexto, histórico e a pergunta do usuário.
-    Utiliza o prompt template unificado e otimizado do ChatCOTIN.
-    Permite customizar parâmetros do LLM.
-    """
-    llm_params = llm_params or {}
-    llm = get_llm(**llm_params)
-    
-    # Usar o template unificado
-    prompt = UNIFIED_PROMPT_TEMPLATE.format(context=context, question=question)
-    
-    # Se houver histórico, pode ser incluído no prompt (opcional)
-    if chat_history:
-        prompt = f"HISTÓRICO DA CONVERSA:\n{chat_history}\n\n{prompt}"
-    
-    resposta = llm(prompt)
-    return resposta
-
-
 def get_unified_prompt_template():
-    """Retorna o template de prompt unificado para o ChatCOTIN (compatível com ambos os modelos)."""
+    """Retorna o template de prompt unificado para o ChatCOTIN (compatível com todos os modelos)."""
     return UNIFIED_PROMPT_TEMPLATE
 
 
@@ -132,8 +88,24 @@ def generate_answer_groq(context, question, chat_history=None):
     """
     Gera uma resposta usando o modelo Groq Llama-3.3-70B-Versatile.
     Utiliza o prompt template unificado do ChatCOTIN.
+    Inclui proteção contra contexto muito longo e retry em caso de erro 503.
     """
     client = get_groq_llm()
+    
+    # Proteção contra contexto muito longo (Groq tem limite de ~128K tokens)
+    # Estimativa: 1 token ≈ 4 caracteres em português
+    MAX_CONTEXT_CHARS = 80000  # ~20K tokens para contexto
+    MAX_HISTORY_CHARS = 8000   # ~2K tokens para histórico
+    
+    # Truncar contexto se muito longo
+    if len(context) > MAX_CONTEXT_CHARS:
+        context = context[:MAX_CONTEXT_CHARS] + "\n\n[CONTEXTO TRUNCADO DEVIDO AO TAMANHO]"
+        print(f"⚠️ Contexto truncado para {MAX_CONTEXT_CHARS} caracteres")
+    
+    # Truncar histórico se muito longo
+    if chat_history and len(chat_history) > MAX_HISTORY_CHARS:
+        chat_history = chat_history[-MAX_HISTORY_CHARS:] + "\n[HISTÓRICO TRUNCADO]"
+        print(f"⚠️ Histórico truncado para {MAX_HISTORY_CHARS} caracteres")
     
     # Usar o template unificado
     prompt = UNIFIED_PROMPT_TEMPLATE.format(context=context, question=question)
@@ -142,29 +114,68 @@ def generate_answer_groq(context, question, chat_history=None):
     if chat_history:
         prompt = f"HISTÓRICO DA CONVERSA:\n{chat_history}\n\n{prompt}"
     
-    try:
-        # Fazer a chamada para o modelo Groq
-        completion = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
-            messages=[
-                {
-                    "role": "system", 
-                    "content": "Você é o ChatCOTIN. Siga rigorosamente as instruções do prompt."
-                },
-                {
-                    "role": "user",
-                    "content": prompt
-                }
-            ],
-            temperature=0.1,
-            max_tokens=4096,
-            top_p=0.9,
-            stream=False
-        )
-        
-        response = completion.choices[0].message.content
-        # Converter markdown para HTML
-        return markdown(response, output_format='html')
-        
-    except Exception as e:
-        return f"Erro ao conectar com o modelo Groq: {str(e)}"
+    # Implementar retry para erro 503 (Service Unavailable)
+    import time
+    max_retries = 3
+    
+    for attempt in range(max_retries):
+        try:
+            # Fazer a chamada para o modelo Groq
+            completion = client.chat.completions.create(
+                model="llama-3.3-70b-versatile",
+                messages=[
+                    {
+                        "role": "system", 
+                        "content": "Você é o ChatCOTIN. Siga rigorosamente as instruções do prompt."
+                    },
+                    {
+                        "role": "user",
+                        "content": prompt
+                    }
+                ],
+                temperature=0.1,
+                max_tokens=4096,
+                top_p=0.9,
+                stream=False
+            )
+            
+            response = completion.choices[0].message.content
+            # Converter markdown para HTML
+            return markdown(response, output_format='html')
+            
+        except Exception as e:
+            error_str = str(e)
+            
+            # Se for erro 503 e ainda há tentativas, retry com delay
+            if '503' in error_str and attempt < max_retries - 1:
+                wait_time = (attempt + 1) * 2  # 2s, 4s, 6s
+                print(f"⚠️ Erro 503 (tentativa {attempt + 1}/{max_retries}). Tentando novamente em {wait_time}s...")
+                time.sleep(wait_time)
+                continue
+            
+            # Se for erro de token limit, tentar com contexto ainda menor
+            elif ('token' in error_str.lower() or 'length' in error_str.lower()) and attempt == 0:
+                print("⚠️ Erro de token limit. Reduzindo contexto...")
+                context = context[:40000] + "\n\n[CONTEXTO REDUZIDO DEVIDO A LIMITE DE TOKENS]"
+                prompt = UNIFIED_PROMPT_TEMPLATE.format(context=context, question=question)
+                if chat_history:
+                    prompt = f"HISTÓRICO DA CONVERSA:\n{chat_history[:4000]}\n\n{prompt}"
+                continue
+            
+            # Para outros erros ou esgotadas as tentativas
+            else:
+                # Melhorar mensagem de erro para o usuário
+                if '503' in error_str:
+                    return ("⚠️ O serviço Groq está temporariamente indisponível devido a alta demanda. "
+                           "Por favor, tente novamente em alguns minutos ou use o modelo Databricks.")
+                elif '401' in error_str:
+                    return "❌ Erro de autenticação com Groq. Verifique a configuração da API key."
+                elif '429' in error_str:
+                    return ("⚠️ Limite de requisições excedido. Aguarde alguns minutos antes de tentar novamente "
+                           "ou use o modelo Databricks.")
+                else:
+                    return f"❌ Erro inesperado: {error_str}"
+    
+    # Se chegou aqui, todas as tentativas falharam
+    return ("⚠️ Não foi possível conectar ao Groq após várias tentativas. "
+           "Por favor, tente usar o modelo Databricks ou tente novamente mais tarde.")

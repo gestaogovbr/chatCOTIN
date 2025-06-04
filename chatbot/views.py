@@ -12,7 +12,7 @@ from markdown import markdown
 
 from chatbot.models import Chat, Conversation, ChatFeedback
 from chatbot.vectorstore import semantic_search, filter_relevant_documents, get_vectorstore, enhanced_search_for_panels, is_panel_related_query
-from chatbot.llm import generate_answer, get_unified_prompt_template, generate_answer_groq
+from chatbot.llm import get_unified_prompt_template, generate_answer_groq
 
 
 # Configuração das variáveis de ambiente do Databricks
@@ -68,26 +68,7 @@ def ask_ai(context, message):
     return markdown(response.content, output_format='html')
 
 
-def ask_rag_local(message, k=5, llm_params=None, chat_history=None):
-    """Pipeline RAG: busca contexto relevante e gera resposta usando LLM local (Ollama), com filtro avançado."""
-    
-    # Verificar se é uma consulta sobre painéis e usar busca especializada
-    if is_panel_related_query(message):
-        print("🎯 Consulta sobre painéis detectada - usando busca especializada")
-        context_results = enhanced_search_for_panels(message, k=8)
-        context = "\n\n".join(context_results)
-    else:
-        # Busca semântica normal
-        vectorstore = get_vectorstore()
-        docs = vectorstore.similarity_search(message, k=10)
-        # Filtro avançado de relevância
-        embeddings = vectorstore._embedding_function
-        relevant_docs = filter_relevant_documents(message, docs, embeddings, top_n=k)
-        context = "\n".join([doc.page_content for doc in relevant_docs])
-    
-    # Geração de resposta
-    resposta = generate_answer(context, message, chat_history=chat_history, llm_params=llm_params)
-    return resposta
+# Função ask_rag_local removida - modelo Ollama descontinuado
 
 
 def ask_rag_groq(message, chat_history=None):
@@ -160,14 +141,6 @@ def chatbot(request, conversation_id=None):
     if request.method == 'POST':
         message = request.POST.get('message')
         llm_provider = request.POST.get('llm_provider', getattr(settings, 'LLM_PROVIDER', 'databricks'))
-        llm_params = {}
-        for param in ["temperature", "top_p", "top_k", "num_ctx", "repeat_penalty"]:
-            value = request.POST.get(param)
-            if value is not None:
-                try:
-                    llm_params[param] = float(value) if "." in value else int(value)
-                except ValueError:
-                    pass
         
         # Se não há conversa ativa, criar nova
         if not current_conversation:
@@ -180,11 +153,10 @@ def chatbot(request, conversation_id=None):
         conversation_chats = current_conversation.chats.all()
         chat_history = build_chat_history(list(conversation_chats.order_by('id')))
         
-        if llm_provider == 'ollama':
-            response = ask_rag_local(message, llm_params=llm_params, chat_history=chat_history)
-        elif llm_provider == 'groq':
+        if llm_provider == 'groq':
             response = ask_rag_groq(message, chat_history=chat_history)
         else:
+            # Databricks é o padrão
             context = get_chat_history(chats=conversation_chats)
             response = ask_ai(context=context, message=message)
 
@@ -568,18 +540,13 @@ def regenerate_response(request):
             llm_provider = data.get('llm_provider', 'databricks')
             
             try:
-                # Busca semântica
-                search_results = semantic_search(message)
-                relevant_docs = filter_relevant_documents(search_results, message)
-                
-                # Gera nova resposta baseada no provedor selecionado
-                if llm_provider == 'ollama':
-                    new_response = ask_rag_local(message)
-                elif llm_provider == 'groq':
+                # Busca semântica e gera nova resposta baseada no provedor selecionado
+                if llm_provider == 'groq':
                     new_response = ask_rag_groq(message)
                 else:
-                    # Databricks
-                    new_response = generate_answer(message, relevant_docs, llm_provider)
+                    # Databricks é o padrão
+                    context = []  # Usar contexto vazio para regeneração simples
+                    new_response = ask_ai(context=context, message=message)
                 
                 # Atualiza a resposta no chat existente
                 chat.response = new_response

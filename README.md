@@ -68,7 +68,7 @@ O ChatCOTIN é um assistente virtual inteligente especializado em transparência
 
 ### **Inteligência Artificial**
 - **Databricks** - LLM em nuvem (produção)
-- **Ollama** - LLM local (desenvolvimento)
+- **Groq Cloud** - LLM de alta performance
 - **Sentence Transformers** - Embeddings multilíngues
 - **RAG (Retrieval-Augmented Generation)** - Sistema de busca inteligente
 
@@ -89,7 +89,7 @@ O ChatCOTIN é um assistente virtual inteligente especializado em transparência
 
 - **Python 3.12+** instalado
 - **Git** para controle de versão
-- **Conta Databricks** (para produção) ou **Ollama** (para desenvolvimento)
+- **Conta Databricks** e/ou **Conta Groq Cloud**
 
 ---
 
@@ -132,9 +132,8 @@ DATABRICKS_HOST=https://seu-workspace.cloud.databricks.com
 DATABRICKS_TOKEN=seu-token-aqui
 DATABRICKS_MODEL_ENDPOINT=seu-endpoint-aqui
 
-# Ollama (Desenvolvimento)
-OLLAMA_BASE_URL=http://localhost:11434
-OLLAMA_MODEL=llama3.2:latest
+# Groq Cloud API
+GROQ_API_KEY=gsk_sua_chave_groq_aqui
 ```
 
 ### **5. Configure o Banco de Dados**
@@ -217,7 +216,7 @@ O projeto está otimizado para deploy no Azure. Consulte o guia detalhado:
 - 🛠️ **[Guia de Desenvolvimento](SETUP_DESENVOLVIMENTO.md)** - Setup completo para desenvolvedores
 - 🔄 **[Atualização da Base](COMO_ATUALIZAR_BASE_CONHECIMENTO.md)** - Como incluir novos documentos
 - ☁️ **[Deploy Azure](DEPLOY_AZURE.md)** - Guia para DevOps
-- 🐧 **[Produção Ollama](OLLAMA_PRODUCTION_GUIDE.md)** - Setup Ollama em produção
+- 🚀 **[Configuração Groq](CONFIGURACAO_GROQ.md)** - Setup modelo Groq
 
 ---
 

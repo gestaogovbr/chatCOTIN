@@ -2532,13 +2532,7 @@
                 <label class="form-label-gov">Modelo de Inteligência Artificial</label>
                 <div>
                     <div class="form-check-gov">
-                        <input class="form-check-input-gov" type="radio" name="llm_provider" value="ollama" id="ollama">
-                        <label class="form-check-label-gov" for="ollama">
-                            llama3.2:latest (Modelo Local)
-                        </label>
-                    </div>
-                    <div class="form-check-gov">
-                        <input class="form-check-input-gov" type="radio" name="llm_provider" value="databricks" id="databricks">
+                        <input class="form-check-input-gov" type="radio" name="llm_provider" value="databricks" id="databricks" checked>
                         <label class="form-check-label-gov" for="databricks">
                             databricks-llama-4-maverick (Nuvem)
                         </label>
@@ -2551,50 +2545,7 @@
                     </div>
                 </div>
             </div>
-            
-            <hr style="border: none; border-top: 1px solid var(--gray-20); margin: 1.5rem 0;">
-            
-            <!-- Parâmetros do Modelo -->
-            <div class="form-group-gov">
-                <label class="form-label-gov">Parâmetros do Modelo (Ollama)</label>
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <label class="form-label-gov">Temperature (Criatividade)</label>
-                        <input type="number" step="0.01" min="0" max="1" id="llm_temperature" class="form-control-gov" placeholder="0.1">
-                        <small class="text-muted">0 = Determinístico, 1 = Muito criativo</small>
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label-gov">Top-p (Núcleo)</label>
-                        <input type="number" step="0.01" min="0" max="1" id="llm_top_p" class="form-control-gov" placeholder="0.9">
-                        <small class="text-muted">Controla a diversidade das respostas</small>
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label-gov">Top-k (Opções)</label>
-                        <input type="number" step="1" min="1" max="100" id="llm_top_k" class="form-control-gov" placeholder="40">
-                        <small class="text-muted">Número de opções consideradas</small>
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label-gov">Contexto (Tokens)</label>
-                        <input type="number" step="1" min="256" max="4096" id="llm_num_ctx" class="form-control-gov" placeholder="2048">
-                        <small class="text-muted">Tamanho da memória de contexto</small>
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label-gov">Penalty (Repetição)</label>
-                        <input type="number" step="0.01" min="1" max="2" id="llm_repeat_penalty" class="form-control-gov" placeholder="1.2">
-                        <small class="text-muted">Penaliza repetições no texto</small>
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label-gov">Chunk Size</label>
-                        <input type="number" step="1" min="100" max="4000" id="chunk_size" class="form-control-gov" placeholder="1000">
-                        <small class="text-muted">Tamanho dos blocos de texto</small>
-                    </div>
-                    <div class="col-12">
-                        <label class="form-label-gov">Overlap (Sobreposição)</label>
-                        <input type="number" step="1" min="0" max="1000" id="chunk_overlap" class="form-control-gov" placeholder="150">
-                        <small class="text-muted">Sobreposição entre blocos</small>
-                    </div>
-                </div>
-            </div>
+
         </div>
         
         <div class="modal-gov-footer">
@@ -2670,7 +2621,7 @@
             this.isTyping = false;
             this.theme = 'light';
             this.llmProvider = localStorage.getItem('llm_provider') || 'databricks';
-            this.llmParams = JSON.parse(localStorage.getItem('llm_params') || '{}');
+            // Parâmetros do LLM removidos (Ollama descontinuado)
             this.chunkParams = JSON.parse(localStorage.getItem('chunk_params') || '{}');
             this.currentConversationId = null;
             this.searchTimeout = null;
@@ -2907,9 +2858,7 @@
                     params['conversation_id'] = this.currentConversationId;
                 }
                 
-                if (this.llmProvider === 'ollama') {
-                    Object.assign(params, this.llmParams);
-                }
+                // Parâmetros específicos do LLM removidos (Ollama descontinuado)
                 
                 const response = await fetch('', {
                     method: 'POST',
@@ -3296,20 +3245,10 @@
             const radios = document.getElementsByName('llm_provider');
             radios.forEach(r => { r.checked = (r.value === this.llmProvider); });
             
-            // Preenche campos dos parâmetros do LLM
-            const temperatureInput = document.getElementById('llm_temperature');
-            const topPInput = document.getElementById('llm_top_p');
-            const topKInput = document.getElementById('llm_top_k');
-            const numCtxInput = document.getElementById('llm_num_ctx');
-            const repeatPenaltyInput = document.getElementById('llm_repeat_penalty');
+            // Parâmetros LLM removidos (Ollama descontinuado)
             const chunkSizeInput = document.getElementById('chunk_size');
             const chunkOverlapInput = document.getElementById('chunk_overlap');
             
-            if (temperatureInput) temperatureInput.value = this.llmParams.temperature ?? 0.1;
-            if (topPInput) topPInput.value = this.llmParams.top_p ?? 0.9;
-            if (topKInput) topKInput.value = this.llmParams.top_k ?? 40;
-            if (numCtxInput) numCtxInput.value = this.llmParams.num_ctx ?? 2048;
-            if (repeatPenaltyInput) repeatPenaltyInput.value = this.llmParams.repeat_penalty ?? 1.2;
             if (chunkSizeInput) chunkSizeInput.value = this.chunkParams.chunk_size ?? 1000;
             if (chunkOverlapInput) chunkOverlapInput.value = this.chunkParams.chunk_overlap ?? 150;
         }
@@ -3330,23 +3269,7 @@
                 }
             });
             
-            // Salva parâmetros do LLM
-            const temperatureInput = document.getElementById('llm_temperature');
-            const topPInput = document.getElementById('llm_top_p');
-            const topKInput = document.getElementById('llm_top_k');
-            const numCtxInput = document.getElementById('llm_num_ctx');
-            const repeatPenaltyInput = document.getElementById('llm_repeat_penalty');
-            
-            if (temperatureInput && topPInput && topKInput && numCtxInput && repeatPenaltyInput) {
-                this.llmParams = {
-                    temperature: parseFloat(temperatureInput.value) || 0.1,
-                    top_p: parseFloat(topPInput.value) || 0.9,
-                    top_k: parseInt(topKInput.value) || 40,
-                    num_ctx: parseInt(numCtxInput.value) || 2048,
-                    repeat_penalty: parseFloat(repeatPenaltyInput.value) || 1.2
-                };
-                localStorage.setItem('llm_params', JSON.stringify(this.llmParams));
-            }
+            // Parâmetros do LLM removidos (Ollama descontinuado)
             
             // Salva parâmetros de chunk
             const chunkSizeInput = document.getElementById('chunk_size');
