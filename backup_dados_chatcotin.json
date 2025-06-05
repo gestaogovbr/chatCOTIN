@@ -1,0 +1,1166 @@
+[
+{
+  "model": "auth.permission",
+  "pk": 1,
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": 1,
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 2,
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": 1,
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 3,
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": 1,
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 4,
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": 1,
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 5,
+  "fields": {
+    "name": "Can add permission",
+    "content_type": 2,
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 6,
+  "fields": {
+    "name": "Can change permission",
+    "content_type": 2,
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 7,
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": 2,
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 8,
+  "fields": {
+    "name": "Can view permission",
+    "content_type": 2,
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 9,
+  "fields": {
+    "name": "Can add group",
+    "content_type": 3,
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 10,
+  "fields": {
+    "name": "Can change group",
+    "content_type": 3,
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 11,
+  "fields": {
+    "name": "Can delete group",
+    "content_type": 3,
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 12,
+  "fields": {
+    "name": "Can view group",
+    "content_type": 3,
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 13,
+  "fields": {
+    "name": "Can add user",
+    "content_type": 4,
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 14,
+  "fields": {
+    "name": "Can change user",
+    "content_type": 4,
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 15,
+  "fields": {
+    "name": "Can delete user",
+    "content_type": 4,
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 16,
+  "fields": {
+    "name": "Can view user",
+    "content_type": 4,
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 17,
+  "fields": {
+    "name": "Can add content type",
+    "content_type": 5,
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 18,
+  "fields": {
+    "name": "Can change content type",
+    "content_type": 5,
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 19,
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": 5,
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 20,
+  "fields": {
+    "name": "Can view content type",
+    "content_type": 5,
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 21,
+  "fields": {
+    "name": "Can add session",
+    "content_type": 6,
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 22,
+  "fields": {
+    "name": "Can change session",
+    "content_type": 6,
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 23,
+  "fields": {
+    "name": "Can delete session",
+    "content_type": 6,
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 24,
+  "fields": {
+    "name": "Can view session",
+    "content_type": 6,
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 25,
+  "fields": {
+    "name": "Can add chat",
+    "content_type": 7,
+    "codename": "add_chat"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 26,
+  "fields": {
+    "name": "Can change chat",
+    "content_type": 7,
+    "codename": "change_chat"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 27,
+  "fields": {
+    "name": "Can delete chat",
+    "content_type": 7,
+    "codename": "delete_chat"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 28,
+  "fields": {
+    "name": "Can view chat",
+    "content_type": 7,
+    "codename": "view_chat"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 29,
+  "fields": {
+    "name": "Can add conversation",
+    "content_type": 8,
+    "codename": "add_conversation"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 30,
+  "fields": {
+    "name": "Can change conversation",
+    "content_type": 8,
+    "codename": "change_conversation"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 31,
+  "fields": {
+    "name": "Can delete conversation",
+    "content_type": 8,
+    "codename": "delete_conversation"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 32,
+  "fields": {
+    "name": "Can view conversation",
+    "content_type": 8,
+    "codename": "view_conversation"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 33,
+  "fields": {
+    "name": "Can add chat feedback",
+    "content_type": 9,
+    "codename": "add_chatfeedback"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 34,
+  "fields": {
+    "name": "Can change chat feedback",
+    "content_type": 9,
+    "codename": "change_chatfeedback"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 35,
+  "fields": {
+    "name": "Can delete chat feedback",
+    "content_type": 9,
+    "codename": "delete_chatfeedback"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 36,
+  "fields": {
+    "name": "Can view chat feedback",
+    "content_type": 9,
+    "codename": "view_chatfeedback"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$XCEIHGLjiHzNlCc5gWd2on$3VZRI+VczpAlrfNnbXhF5xMCo+HNT6R1A35jy/Phcc4=",
+    "last_login": "2025-05-27T02:12:25.533Z",
+    "is_superuser": false,
+    "username": "melojr",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-05-26T23:50:10.092Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$vPsuJnpdUz40aOjlEonTqn$hGuBQFziAKQR/SF6TvWbcG+7Pddg8d6A5AqA6pJlhpM=",
+    "last_login": "2025-05-28T18:56:54.991Z",
+    "is_superuser": false,
+    "username": "teste",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-05-27T02:18:55.026Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$PYRqekbWS006EztmqxIowe$sNQUyOknn2QVdaqqeVAQBKx9x07EeH7jxAkm0JuzjZc=",
+    "last_login": "2025-05-29T19:08:28.820Z",
+    "is_superuser": false,
+    "username": "melojrx",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-05-28T20:51:39.888Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$4se6vXeRsMoPlhrrRVPJpg$F9RRL2wYUHhCdQ0TClGTxdqcU8R0TELCC4/armuybY4=",
+    "last_login": "2025-06-02T21:26:29.729Z",
+    "is_superuser": false,
+    "username": "Guilherme",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-05-29T20:03:38.768Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$97vWVXjylbv4U5C4Ph88Ew$+HwZj1PJQ2jXw6+vxwP7CuL/6TGhDccMhKhdCyUwkQo=",
+    "last_login": "2025-06-02T21:01:47.467Z",
+    "is_superuser": false,
+    "username": "Junior",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-06-02T20:48:13.396Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 1,
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 2,
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 3,
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 4,
+  "fields": {
+    "app_label": "auth",
+    "model": "user"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 5,
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 6,
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 7,
+  "fields": {
+    "app_label": "chatbot",
+    "model": "chat"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 8,
+  "fields": {
+    "app_label": "chatbot",
+    "model": "conversation"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 9,
+  "fields": {
+    "app_label": "chatbot",
+    "model": "chatfeedback"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "27chsptcpf24b90slswcuwrpsn2foqq3",
+  "fields": {
+    "session_data": ".eJxVjMEOwiAQRP-FsyFId1nq0bvfQHaBStXQpLQn47_bJj3oZQ7z3sxbBV6XEtaW5zAmdVGgTr-dcHzmuoP04HqfdJzqMo-id0UftOnblPLrerh_B4Vb2dbobeJzZGs7NEDgRWRwQIwsSASQItIWHQpxdj2nbAm5H5xBkz2ozxffxzfV:1uKm5C:f0dBPqz6_0FpHhq5k1iTWkM06hLHyoQudfOb6gzinaU",
+    "expire_date": "2025-06-12T22:50:42.133Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "4cectthm4jvln65t4nybkd85zpzw220a",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hAsZQZcuu8ZyACDVA0kpV0Z765NutDtf-_9l_C0rcVvnRc_J3ERWpx-t0DxwXUH6U711mRsdV3mIHdFHrTLqSV-Xg_376BQL98aaRwxOO1soDOqOJBV0eU0mgzaDqydASZQWaG1kGJygMQZUBmXOWrx_gDWGDfK:1uKPNz:5rJtNcxpq8tqyUyrut4UNQSDkGVr8xfcQleFZELfpOI",
+    "expire_date": "2025-06-11T22:36:35.026Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "7qdwtkwdov64jvrdiolbmvjgb16cmmwo",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hAsZQZcuu8ZyACDVA0kpV0Z765NutDtf-_9l_C0rcVvnRc_J3ERWpx-t0DxwXUH6U711mRsdV3mIHdFHrTLqSV-Xg_376BQL98aaRwxOO1soDOqOJBV0eU0mgzaDqydASZQWaG1kGJygMQZUBmXOWrx_gDWGDfK:1uKQqR:FBJ70jCcpJNS5n3EeKlp4LqjJXTmCfIieC28-KllEkI",
+    "expire_date": "2025-06-12T00:10:03.503Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "84z54oyhuhtz3gqyplvzre8nswtrv69z",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hAsZQZcuu8ZyACDVA0kpV0Z765NutDtf-_9l_C0rcVvnRc_J3ERWpx-t0DxwXUH6U711mRsdV3mIHdFHrTLqSV-Xg_376BQL98aaRwxOO1soDOqOJBV0eU0mgzaDqydASZQWaG1kGJygMQZUBmXOWrx_gDWGDfK:1uKPrZ:Vw_YG4DOn-S0McCwuOagIXYdHj48VdPZOHlYBhL_MAA",
+    "expire_date": "2025-06-11T23:07:09.417Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "8tehdoirbuylu3pm7urzu8dy445ihhe1",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hAsZQZcuu8ZyACDVA0kpV0Z765NutDtf-_9l_C0rcVvnRc_J3ERWpx-t0DxwXUH6U711mRsdV3mIHdFHrTLqSV-Xg_376BQL98aaRwxOO1soDOqOJBV0eU0mgzaDqydASZQWaG1kGJygMQZUBmXOWrx_gDWGDfK:1uKPHo:5S99FOOniSgL6omFmwKW-kgAUFg3ryjzs-JqB7bAhmE",
+    "expire_date": "2025-06-11T22:30:12.260Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "aaet4de5lkyue339iaf0luvbsmszmvnt",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGlm7ib2xKek5g7X-4QCypTipEHeHSCmgfTPzXsLxtha39bS4OYqzGMTpd_McHqnuIN653poMra7L7OWuyIN2eW0xPS-H-3dQuJdvbXCcPCpgpDyqoMAGrVEHNHYIhEjWR8qZRoCkMYNlwxOTB7SaLRnx_gCxPzat:1uKHe5:J52DufQhT1SYrplKulOA1bZ-m09tZlGiOqgAfRnSjqU",
+    "expire_date": "2025-06-11T14:20:41.548Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "agdujw5a91ww906o849jrpgmq0c8y3ai",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGlm7ib2xKek5g7X-4QCypTipEHeHSCmgfTPzXsLxtha39bS4OYqzGMTpd_McHqnuIN653poMra7L7OWuyIN2eW0xPS-H-3dQuJdvbXCcPCpgpDyqoMAGrVEHNHYIhEjWR8qZRoCkMYNlwxOTB7SaLRnx_gCxPzat:1uJvMC:8hKzKSzXz7R9InRfGbR7E8poHrP0FTthe7i4FvsebT8",
+    "expire_date": "2025-06-10T14:32:44.251Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "mhfui6a78h5lp0c2lje5ckft8dlkdb9x",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hAsZQZcuu8ZyACDVA0kpV0Z765NutDtf-_9l_C0rcVvnRc_J3ERWpx-t0DxwXUH6U711mRsdV3mIHdFHrTLqSV-Xg_376BQL98aaRwxOO1soDOqOJBV0eU0mgzaDqydASZQWaG1kGJygMQZUBmXOWrx_gDWGDfK:1uKT2b:ddjLWcETjNAMUAi7tEMuG60TCFIQD7jqWutdTRGJ5wQ",
+    "expire_date": "2025-06-12T02:30:45.476Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "tmnra9o5dgxegtiplx6jx0d0gl2i7crx",
+  "fields": {
+    "session_data": ".eJxVjMEOwiAQBf-FsyFQhAWP3v0GssAiVQNJaU_Gf29IeqjXNzPvyzxua_Fbp8XPid2YZpfzFjC-qQ6QXlifjcdW12UOfCj8oJ0_WqLP_XD_Dgr2Mmprc6ZsQVOYXI5SGCdAI4U0JaMiABkprsoQQtSklFUIRE5qNMKiYL8d_fA4GA:1uMCHz:H_0wYce5sY7ZuafwPOiAENhEOn6CSnbEU_2JGHOYzRQ",
+    "expire_date": "2025-06-16T21:01:47.484Z"
+  }
+},
+{
+  "model": "chatbot.conversation",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "title": "ola",
+    "created_at": "2025-05-29T14:16:28.504Z",
+    "updated_at": "2025-05-29T14:16:28.524Z",
+    "is_active": true
+  }
+},
+{
+  "model": "chatbot.conversation",
+  "pk": 2,
+  "fields": {
+    "user": 1,
+    "title": "Queria uma ajuda",
+    "created_at": "2025-05-29T14:16:28.524Z",
+    "updated_at": "2025-05-29T14:16:28.526Z",
+    "is_active": true
+  }
+},
+{
+  "model": "chatbot.conversation",
+  "pk": 3,
+  "fields": {
+    "user": 2,
+    "title": "Ola",
+    "created_at": "2025-05-29T14:16:28.537Z",
+    "updated_at": "2025-05-29T14:16:28.544Z",
+    "is_active": true
+  }
+},
+{
+  "model": "chatbot.conversation",
+  "pk": 4,
+  "fields": {
+    "user": 2,
+    "title": "Quais são os principais frameworks Python e quando...",
+    "created_at": "2025-05-29T14:16:28.545Z",
+    "updated_at": "2025-05-29T14:16:28.557Z",
+    "is_active": true
+  }
+},
+{
+  "model": "chatbot.conversation",
+  "pk": 7,
+  "fields": {
+    "user": 3,
+    "title": "",
+    "created_at": "2025-05-29T18:58:15.899Z",
+    "updated_at": "2025-05-29T18:58:15.899Z",
+    "is_active": true
+  }
+},
+{
+  "model": "chatbot.conversation",
+  "pk": 8,
+  "fields": {
+    "user": 4,
+    "title": "Quem é a COTIN ?",
+    "created_at": "2025-05-29T20:07:19.091Z",
+    "updated_at": "2025-05-29T23:38:41.594Z",
+    "is_active": false
+  }
+},
+{
+  "model": "chatbot.conversation",
+  "pk": 9,
+  "fields": {
+    "user": 5,
+    "title": "O que são dados abertos de compras públicas e como...",
+    "created_at": "2025-06-02T20:56:21.581Z",
+    "updated_at": "2025-06-04T20:36:18.424Z",
+    "is_active": true
+  }
+},
+{
+  "model": "chatbot.conversation",
+  "pk": 10,
+  "fields": {
+    "user": 4,
+    "title": "",
+    "created_at": "2025-06-02T21:27:22.313Z",
+    "updated_at": "2025-06-02T21:27:22.313Z",
+    "is_active": true
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "conversation": 1,
+    "message": "ola",
+    "response": "<h2>Olá!</h2>\n<p>Estou aqui para ajudá-lo com suas dúvidas sobre programação em Python. Qual é a sua pergunta ou o tópico que você gostaria de discutir?</p>",
+    "created_at": "2025-05-26T23:56:31.391Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 2,
+  "fields": {
+    "user": 1,
+    "conversation": 2,
+    "message": "Queria uma ajuda",
+    "response": "<h3>Como Posso Ajudar?</h3>\n<p>Estou aqui para fornecer assistência com programação em Python. Você pode precisar de ajuda com:</p>\n<ul>\n<li><strong>Entendimento de conceitos</strong>: Dificuldade em entender algum conceito específico da linguagem?</li>\n<li><strong>Resolução de problemas</strong>: Está enfrentando um problema com seu código e não sabe como resolvê-lo?</li>\n<li><strong>Desenvolvimento de projetos</strong>: Precisa de orientação para iniciar ou continuar um projeto em Python?</li>\n<li><strong>Dúvidas sobre bibliotecas ou frameworks</strong>: Tem alguma dúvida sobre como usar uma biblioteca ou framework específico em Python?</li>\n</ul>\n<p>Por favor, forneça mais detalhes sobre sua necessidade para que eu possa oferecer uma ajuda mais precisa.</p>",
+    "created_at": "2025-05-27T00:34:36.841Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 3,
+  "fields": {
+    "user": 1,
+    "conversation": 2,
+    "message": "Quero desenvolver um ChatBot com RAG",
+    "response": "<h3>Desenvolvendo um ChatBot com RAG</h3>\n<p>O RAG (Retrieval-Augmented Generation) é uma abordagem que combina a recuperação de informações com a geração de texto para criar respostas mais precisas e contextuais. Para desenvolver um ChatBot com RAG, você precisará:</p>\n\n<h3>Passos para Desenvolver um ChatBot com RAG</h3>\n<ol>\n<li><strong>Definir o escopo e o objetivo do ChatBot</strong>: Determine o que o ChatBot deve fazer e quais informações ele deve fornecer.</li>\n<li><strong>Escolher as bibliotecas e frameworks necessários</strong>:</li>\n<li><strong>Transformers</strong>: Para a geração de texto e processamento de linguagem natural.</li>\n<li><strong>Hugging Face</strong>: Para utilizar modelos pré-treinados de RAG.</li>\n<li><strong>Python</strong>: Como linguagem de programação.</li>\n<li><strong>Preparar o conjunto de dados</strong>:</li>\n<li><strong>Coletar e pré-processar os dados</strong>: Limpar e formatar os dados para treinamento.</li>\n<li><strong>Indexar os dados</strong>: Criar um índice para facilitar a recuperação de informações.</li>\n<li><strong>Implementar o modelo RAG</strong>:</li>\n<li><strong>Treinar o modelo</strong>: Utilizar os dados preparados para treinar o modelo RAG.</li>\n<li><strong>Ajustar os hiperparâmetros</strong>: Otimizar os hiperparâmetros para melhorar o desempenho do modelo.</li>\n<li><strong>Integrar o modelo com a interface do ChatBot</strong>:</li>\n<li><strong>Desenvolver a interface</strong>: Criar uma interface para interagir com o ChatBot.</li>\n<li><strong>Conectar a interface ao modelo</strong>: Utilizar a API do modelo RAG para gerar respostas.</li>\n</ol>\n<h3>Exemplo de Código</h3>\n<p>Aqui está um exemplo básico de como você pode começar a desenvolver um ChatBot com RAG utilizando a biblioteca Transformers da Hugging Face:\n```python\nimport torch\nfrom transformers import RagTokenizer, RagSequenceForGeneration</p>\n<h1>Carregar o modelo e o tokenizador</h1>\n<p>tokenizer = RagTokenizer.from_pretrained(\"facebook/rag-sequence-nq\")\nmodel = RagSequenceForGeneration.from_pretrained(\"facebook/rag-sequence-nq\")</p>\n<h1>Definir a função para gerar respostas</h1>\n<p>def gerar_resposta(pergunta):\n    inputs = tokenizer(pergunta, return_tensors=\"pt\")\n    output = model.generate(**inputs)\n    resposta = tokenizer.decode(output[0], skip_special_tokens=True)\n    return resposta</p>\n<h1>Testar o ChatBot</h1>\n<p>pergunta = \"O que é o RAG?\"\nresposta = gerar_resposta(pergunta)\nprint(resposta)\n```</p>\n<p>Essa é apenas uma introdução básica ao desenvolvimento de um ChatBot com RAG. Você precisará aprofundar seus conhecimentos em processamento de linguagem natural, modelos de geração de texto e recuperação de informações para criar um ChatBot mais avançado.</p>\n\n<h3>Próximos Passos</h3>\n<ul>\n<li><strong>Pesquise mais sobre o RAG e suas aplicações</strong>.</li>\n<li><strong>Explore as bibliotecas e frameworks mencionados</strong>.</li>\n<li><strong>Desenvolva um protótipo básico do ChatBot</strong>.</li>\n</ul>\n<p>Se tiver alguma dúvida ou precisar de mais ajuda, não hesite em perguntar.</p>",
+    "created_at": "2025-05-27T00:35:04.308Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 4,
+  "fields": {
+    "user": 2,
+    "conversation": 3,
+    "message": "Ola",
+    "response": "<h2>Olá!</h2>\n<p>Estou aqui para ajudá-lo com suas dúvidas sobre programação em Python. Qual é a sua pergunta ou qual é o problema que você está enfrentando? </p>\n<h3>Para obter ajuda, você pode:</h3>\n<ul>\n<li>Fazer uma pergunta específica sobre Python</li>\n<li>Compartilhar um trecho de código que você está trabalhando e precisa de ajuda para entender ou corrigir</li>\n<li>Perguntar sobre bibliotecas ou frameworks específicos em Python</li>\n</ul>\n<p>Estou ansioso para ajudá-lo!</p>",
+    "created_at": "2025-05-27T02:19:17.954Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 5,
+  "fields": {
+    "user": 2,
+    "conversation": 3,
+    "message": "OlA!",
+    "response": "<h3>Oi de volta!</h3>\n<p>Parece que você está pronto para começar a explorar o mundo do Python! </p>\n<h4>Algumas opções para começarmos:</h4>\n<ol>\n<li><strong>Perguntar sobre conceitos básicos</strong>: Se você é novo em Python, posso ajudar a explicar conceitos como variáveis, loops, funções, etc.</li>\n<li><strong>Resolver um problema específico</strong>: Se você está enfrentando um problema com um código, posso ajudá-lo a identificar e resolver o erro.</li>\n<li><strong>Explorar bibliotecas e frameworks</strong>: Se você está interessado em aprender sobre bibliotecas como NumPy, Pandas, Flask, Django, etc., posso fornecer informações e exemplos.</li>\n</ol>\n<h3>O que você gostaria de fazer hoje?</h3>",
+    "created_at": "2025-05-27T12:53:26.802Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 6,
+  "fields": {
+    "user": 2,
+    "conversation": 3,
+    "message": "Gostaria de Aprender a criar um agente RAG",
+    "response": "<h2>Criando um Agente RAG com Python</h2>\n<p>Um agente RAG (Retrieval-Augmented Generation) é um tipo de modelo de linguagem que combina a capacidade de recuperar informações de uma base de conhecimento com a geração de texto. Aqui está um guia passo a passo para criar um agente RAG básico usando Python.</p>\n\n<h3>Requisitos</h3>\n<ul>\n<li>Python 3.8+</li>\n<li>Bibliotecas: <code>transformers</code>, <code>torch</code>, <code>faiss</code></li>\n</ul>\n<h3>Instalando as bibliotecas necessárias</h3>\n<p><code>bash\npip install transformers torch faiss-cpu</code></p>\n<h3>Implementando o Agente RAG</h3>\n<h4>Passo 1: Carregar o modelo de linguagem e o indexador</h4>\n<p>```python\nimport torch\nfrom transformers import AutoModelForSeq2SeqLM, AutoTokenizer\nimport faiss</p>\n<h1>Carregar o modelo de linguagem e o tokenizador</h1>\n<p>model_name = \"t5-base\"\ntokenizer = AutoTokenizer.from_pretrained(model_name)\nmodel = AutoModelForSeq2SeqLM.from_pretrained(model_name)</p>\n<h1>Carregar o indexador FAISS</h1>\n<p>index = faiss.read_index(\"index.faiss\")\n```</p>\n<h4>Passo 2: Definir a função de recuperação</h4>\n<p>```python\ndef recuperar_informacao(query, index, k=5):\n    # Tokenizar a query\n    inputs = tokenizer(query, return_tensors=\"pt\")</p>\n<pre><code># Calcular a representação da query\nwith torch.no_grad():\n    query_embedding = model.encoder(inputs[\"input_ids\"], attention_mask=inputs[\"attention_mask\"])[0][:, 0, :]\n\n# Buscar as k informações mais relevantes\nD, I = index.search(query_embedding.numpy(), k)\n\n# Retornar as informações recuperadas\nreturn [f\"Informação {i+1}: {texto}\" for i, texto in enumerate(I[0])]\n</code></pre>\n<p>```</p>\n<h4>Passo 3: Definir a função de geração</h4>\n<p>```python\ndef gerar_texto(query, contexto):\n    # Tokenizar a query e o contexto\n    inputs = tokenizer(f\"{query} {contexto}\", return_tensors=\"pt\")</p>\n<pre><code># Gerar o texto\nwith torch.no_grad():\n    outputs = model.generate(inputs[\"input_ids\"], attention_mask=inputs[\"attention_mask\"])\n\n# Retornar o texto gerado\nreturn tokenizer.decode(outputs[0], skip_special_tokens=True)\n</code></pre>\n<p>```</p>\n<h4>Passo 4: Combinar as funções de recuperação e geração</h4>\n<p>```python\ndef agente_rag(query):\n    # Recuperar as informações relevantes\n    contexto = \" \".join(recuperar_informacao(query, index))</p>\n<pre><code># Gerar o texto\nresposta = gerar_texto(query, contexto)\n\nreturn resposta\n</code></pre>\n<p>```</p>\n<h3>Exemplo de uso</h3>\n<p><code>python\nquery = \"Qual é a capital da França?\"\nresposta = agente_rag(query)\nprint(resposta)</code></p>\n<h3>Conclusão</h3>\n<p>Neste exemplo, criamos um agente RAG básico que combina a capacidade de recuperar informações de uma base de conhecimento com a geração de texto. Esse é apenas um exemplo simples e há muitas maneiras de melhorar e personalizar o agente RAG para atender às suas necessidades específicas.</p>\n\n<h3>Próximos passos</h3>\n<ul>\n<li>Treinar o modelo de linguagem em um conjunto de dados específico</li>\n<li>Indexar uma base de conhecimento usando FAISS</li>\n<li>Ajustar os hiperparâmetros do modelo e do indexador para melhorar a performance</li>\n</ul>\n<p>Espero que isso tenha ajudado! Se você tiver alguma dúvida ou precisar de mais ajuda, não hesite em perguntar.</p>",
+    "created_at": "2025-05-27T12:54:00.970Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 7,
+  "fields": {
+    "user": 2,
+    "conversation": 3,
+    "message": "Quais são os conceitos fundamentais que preciso saber para começar a programar em Python?",
+    "response": "<h2>Conceitos Fundamentais em Python</h2>\n<p>Para começar a programar em Python, é importante entender alguns conceitos fundamentais. Aqui estão os principais:</p>\n\n<h3>1. Variáveis e Tipos de Dados</h3>\n<ul>\n<li>Variáveis são usadas para armazenar valores.</li>\n<li>Python tem vários tipos de dados, incluindo:</li>\n<li>Números inteiros (<code>int</code>)</li>\n<li>Números de ponto flutuante (<code>float</code>)</li>\n<li>Cadeias de caracteres (<code>str</code>)</li>\n<li>Listas (<code>list</code>)</li>\n<li>Tuplas (<code>tuple</code>)</li>\n<li>Dicionários (<code>dict</code>)</li>\n</ul>\n<p>Exemplo:\n<code>python\nx = 5  # variável inteira\ny = 3.14  # variável float\nnome = \"João\"  # variável string</code></p>\n<h3>2. Operadores</h3>\n<ul>\n<li>Operadores são usados para realizar operações básicas.</li>\n<li>Tipos de operadores:</li>\n<li>Aritméticos (<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, etc.)</li>\n<li>Comparação (<code>==</code>, <code>!=</code>, <code>&gt;</code>, <code>&lt;</code>, etc.)</li>\n<li>Lógicos (<code>and</code>, <code>or</code>, <code>not</code>)</li>\n</ul>\n<p>Exemplo:\n<code>python\nx = 5\ny = 3\nprint(x + y)  # saída: 8\nprint(x &gt; y)  # saída: True</code></p>\n<h3>3. Estruturas de Controle</h3>\n<ul>\n<li>Estruturas de controle são usadas para controlar o fluxo do programa.</li>\n<li>Tipos de estruturas de controle:</li>\n<li>Condicionais (<code>if</code>, <code>elif</code>, <code>else</code>)</li>\n<li>Loops (<code>for</code>, <code>while</code>)</li>\n</ul>\n<p>Exemplo:\n```python\nx = 5\nif x &gt; 10:\n    print(\"x é maior que 10\")\nelse:\n    print(\"x é menor ou igual a 10\")</p>\n<p>for i in range(5):\n    print(i)\n```</p>\n<h3>4. Funções</h3>\n<ul>\n<li>Funções são blocos de código que podem ser reutilizados.</li>\n<li>Funções podem ter parâmetros e retornar valores.</li>\n</ul>\n<p>Exemplo:\n```python\ndef soma(x, y):\n    return x + y</p>\n<p>print(soma(3, 4))  # saída: 7\n```</p>\n<h3>5. Listas e Tuplas</h3>\n<ul>\n<li>Listas e tuplas são estruturas de dados que podem armazenar múltiplos valores.</li>\n<li>Listas são mutáveis, enquanto tuplas são imutáveis.</li>\n</ul>\n<p>Exemplo:\n```python\nfrutas = [\"maçã\", \"banana\", \"laranja\"]\nprint(frutas[0])  # saída: \"maçã\"</p>\n<p>cores = (\"vermelho\", \"azul\", \"verde\")\nprint(cores[1])  # saída: \"azul\"\n```</p>\n<h3>6. Dicionários</h3>\n<ul>\n<li>Dicionários são estruturas de dados que armazenam pares de chave-valor.</li>\n<li>Dicionários são mutáveis.</li>\n</ul>\n<p>Exemplo:\n<code>python\npessoa = {\"nome\": \"João\", \"idade\": 30}\nprint(pessoa[\"nome\"])  # saída: \"João\"</code></p>\n<h3>7. Módulos e Bibliotecas</h3>\n<ul>\n<li>Módulos e bibliotecas são conjuntos de código que podem ser reutilizados.</li>\n<li>Python tem uma vasta coleção de bibliotecas e módulos.</li>\n</ul>\n<p>Exemplo:\n<code>python\nimport math\nprint(math.pi)  # saída: 3.14159...</code></p>\n<p>Esses são alguns dos conceitos fundamentais que você precisa saber para começar a programar em Python. Com prática e experiência, você pode aprender mais e se tornar um programador Python proficiente!</p>",
+    "created_at": "2025-05-27T12:59:19.228Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 8,
+  "fields": {
+    "user": 2,
+    "conversation": 3,
+    "message": "Quais são os conceitos fundamentais que preciso saber para começar a programar em Python?",
+    "response": "<h1><strong>Conceitos Fundamentais em Python</strong></h1>\n<p>Para começar a programar em Python, é importante entender alguns conceitos fundamentais. Aqui estão os principais:</p>\n<h3>1. <strong>Variáveis e Tipos de Dados</strong></h3>\n<ul>\n<li>Variáveis são usadas para armazenar valores.</li>\n<li>Python tem vários tipos de dados, incluindo:<ul>\n<li>Números inteiros (<code>int</code>)</li>\n<li>Números de ponto flutuante (<code>float</code>)</li>\n<li>Cadeias de caracteres (<code>str</code>)</li>\n<li>Listas (<code>list</code>)</li>\n<li>Tuplas (<code>tuple</code>)</li>\n<li>Dicionários (<code>dict</code>)</li>\n</ul>\n</li>\n</ul>\n<p>Exemplo:\n<code>python\nx = 5  # variável inteira\ny = 3.14  # variável float\nnome = \"João\"  # variável string</code></p>\n<h3>2. <strong>Operadores</strong></h3>\n<ul>\n<li>Operadores são usados para realizar operações básicas.</li>\n<li>Tipos de operadores:<ul>\n<li>Aritméticos (<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, etc.)</li>\n<li>Comparação (<code>==</code>, <code>!=</code>, <code>&gt;</code>, <code>&lt;</code>, etc.)</li>\n<li>Lógicos (<code>and</code>, <code>or</code>, <code>not</code>)</li>\n</ul>\n</li>\n</ul>\n<p>Exemplo:\n<code>python\nx = 5\ny = 3\nprint(x + y)  # saída: 8\nprint(x &gt; y)  # saída: True</code></p>\n<h3>3. <strong>Estruturas de Controle</strong></h3>\n<ul>\n<li>Estruturas de controle são usadas para controlar o fluxo do programa.</li>\n<li>Tipos de estruturas de controle:<ul>\n<li>Condicionais (<code>if</code>, <code>elif</code>, <code>else</code>)</li>\n<li>Loops (<code>for</code>, <code>while</code>)</li>\n</ul>\n</li>\n</ul>\n<p>Exemplo:\n```python\nx = 5\nif x &gt; 10:\n    print(\"x é maior que 10\")\nelse:\n    print(\"x é menor ou igual a 10\")</p>\n<p>for i in range(5):\n    print(i)\n```</p>\n<h3>4. <strong>Funções</strong></h3>\n<ul>\n<li>Funções são blocos de código que podem ser reutilizados.</li>\n<li>Funções podem ter parâmetros e retornar valores.</li>\n</ul>\n<p>Exemplo:\n```python\ndef soma(x, y):\n    return x + y</p>\n<p>print(soma(3, 4))  # saída: 7\n```</p>\n<h3>5. <strong>Listas e Tuplas</strong></h3>\n<ul>\n<li>Listas e tuplas são estruturas de dados que podem armazenar múltiplos valores.</li>\n<li>Listas são mutáveis, enquanto tuplas são imutáveis.</li>\n</ul>\n<p>Exemplo:\n```python\nfrutas = [\"maçã\", \"banana\", \"laranja\"]\nprint(frutas[0])  # saída: \"maçã\"</p>\n<p>cores = (\"vermelho\", \"azul\", \"verde\")\nprint(cores[1])  # saída: \"azul\"\n```</p>\n<h3>6. <strong>Dicionários</strong></h3>\n<ul>\n<li>Dicionários são estruturas de dados que armazenam pares de chave-valor.</li>\n<li>Dicionários são mutáveis.</li>\n</ul>\n<p>Exemplo:\n<code>python\npessoa = {\"nome\": \"João\", \"idade\": 30}\nprint(pessoa[\"nome\"])  # saída: \"João\"</code></p>\n<h3>7. <strong>Módulos e Bibliotecas</strong></h3>\n<ul>\n<li>Módulos e bibliotecas são conjuntos de código que podem ser reutilizados.</li>\n<li>Python tem uma vasta coleção de bibliotecas e módulos.</li>\n</ul>\n<p>Exemplo:\n<code>python\nimport math\nprint(math.pi)  # saída: 3.14159...</code></p>\n<h2><strong>Conclusão</strong></h2>\n<p>Esses são alguns dos conceitos fundamentais que você precisa saber para começar a programar em Python. Com prática e experiência, você pode aprender mais e se tornar um programador Python proficiente!</p>\n<h2><strong>Recursos Adicionais</strong></h2>\n<ul>\n<li>Documentação oficial do Python: <a href=\"https://docs.python.org/3/\">https://docs.python.org/3/</a></li>\n<li>Tutorial de Python: <a href=\"https://docs.python.org/3/tutorial/index.html\">https://docs.python.org/3/tutorial/index.html</a></li>\n<li>Bibliotecas e módulos populares: <a href=\"https://pypi.org/\">https://pypi.org/</a></li>\n</ul>\n<p>Espero que isso tenha ajudado! Se você tiver alguma dúvida ou precisar de mais ajuda, não hesite em perguntar.</p>",
+    "created_at": "2025-05-27T14:32:58.905Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 9,
+  "fields": {
+    "user": 2,
+    "conversation": 3,
+    "message": "Como criar uma função em Python?",
+    "response": "<h2>Criando Funções em Python</h2>\n<p>Funções são blocos de código que podem ser reutilizados em diferentes partes de um programa. Em Python, criar uma função é simples e flexível.</p>\n\n<h3>Sintaxe Básica</h3>\n<p>A sintaxe básica para criar uma função em Python é a seguinte:</p>\n<p><code>python\ndef nome_da_funcao(parâmetros):\n    # corpo da função\n    return valor_de_retorno</code></p>\n<h3>Componentes de uma Função</h3>\n<ul>\n<li><code>def</code>: Palavra-chave usada para definir uma função.</li>\n<li><code>nome_da_funcao</code>: Nome da função.</li>\n<li><code>parâmetros</code>: Parâmetros que a função recebe. Podem ser zero ou mais.</li>\n<li><code>corpo da função</code>: Código que é executado quando a função é chamada.</li>\n<li><code>return</code>: Instrução que retorna um valor da função. Opcional.</li>\n</ul>\n\n<h3>Exemplo Simples</h3>\n<p>Vamos criar uma função simples que soma dois números:</p>\n<p>```python\ndef soma(a, b):\n    resultado = a + b\n    return resultado</p>\n<h1>Chamando a função</h1>\n<p>print(soma(3, 4))  # Saída: 7\n```</p>\n<h3>Função sem Parâmetros</h3>\n<p>Uma função pode não ter parâmetros:</p>\n<p>```python\ndef saudacao():\n    print(\"Olá, mundo!\")</p>\n<h1>Chamando a função</h1>\n<p>saudacao()  # Saída: Olá, mundo!\n```</p>\n<h3>Função com Parâmetros Opcionais</h3>\n<p>Você pode definir parâmetros opcionais atribuindo um valor padrão:</p>\n<p>```python\ndef saudacao(nome=\"mundo\"):\n    print(f\"Olá, {nome}!\")</p>\n<h1>Chamando a função</h1>\n<p>saudacao()  # Saída: Olá, mundo!\nsaudacao(\"João\")  # Saída: Olá, João!\n```</p>\n<h3>Função com Múltiplos Valores de Retorno</h3>\n<p>Em Python, você pode retornar múltiplos valores de uma função usando tuplas:</p>\n<p>```python\ndef operacoes(a, b):\n    soma = a + b\n    produto = a * b\n    return soma, produto</p>\n<h1>Chamando a função</h1>\n<p>soma, produto = operacoes(3, 4)\nprint(f\"Soma: {soma}, Produto: {produto}\")  # Saída: Soma: 7, Produto: 12\n```</p>\n<h3>Conclusão</h3>\n<p>Criar funções em Python é uma maneira eficaz de organizar o código, promover a reutilização e melhorar a legibilidade. Com a sintaxe simples e flexível, você pode criar funções que atendam às suas necessidades específicas.</p>\n<h3>Dicas Adicionais</h3>\n<ul>\n<li>Escolha nomes de funções descritivos.</li>\n<li>Use parâmetros e valores de retorno de forma apropriada.</li>\n<li>Documente suas funções com docstrings.</li>\n</ul>\n<p>Espero que isso tenha ajudado! Se você tiver alguma dúvida ou precisar de mais ajuda, não hesite em perguntar.</p>",
+    "created_at": "2025-05-27T14:33:45.566Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 10,
+  "fields": {
+    "user": 2,
+    "conversation": 4,
+    "message": "Quais são os principais frameworks Python e quando usar cada um deles?",
+    "response": "<h2>Frameworks Python: Uma Visão Geral</h2>\n<p>Python é uma linguagem de programação versátil e amplamente utilizada, com uma vasta gama de frameworks que facilitam o desenvolvimento de aplicações em diferentes áreas. Aqui estão alguns dos principais frameworks Python e quando usá-los:</p>\n\n<h3>1. <strong>Frameworks Web</strong></h3>\n<ul>\n<li><strong>Flask</strong>: Um microframework ideal para aplicações web pequenas e simples.</li>\n<li><strong>Django</strong>: Um framework completo e robusto para aplicações web complexas.</li>\n<li><strong>Pyramid</strong>: Um framework flexível e modular para aplicações web.</li>\n</ul>\n<p>Use esses frameworks quando:</p>\n<ul>\n<li>Desenvolver aplicações web.</li>\n<li>Criar APIs RESTful.</li>\n<li>Construir sites dinâmicos.</li>\n</ul>\n\n<h3>2. <strong>Frameworks de Ciência de Dados e Aprendizado de Máquina</strong></h3>\n<ul>\n<li><strong>TensorFlow</strong>: Um framework de código aberto para aprendizado de máquina e deep learning.</li>\n<li><strong>PyTorch</strong>: Um framework de código aberto para aprendizado de máquina e deep learning.</li>\n<li><strong>Scikit-learn</strong>: Uma biblioteca para aprendizado de máquina.</li>\n<li><strong>Pandas</strong>: Uma biblioteca para manipulação e análise de dados.</li>\n</ul>\n<p>Use esses frameworks quando:</p>\n<ul>\n<li>Trabalhar com dados.</li>\n<li>Desenvolver modelos de aprendizado de máquina.</li>\n<li>Realizar análise de dados.</li>\n</ul>\n\n<h3>3. <strong>Frameworks de Automação e Teste</strong></h3>\n<ul>\n<li><strong>Pytest</strong>: Um framework de teste unitário.</li>\n<li><strong>Unittest</strong>: Um framework de teste unitário integrado ao Python.</li>\n<li><strong>Behave</strong>: Um framework de teste de comportamento.</li>\n<li><strong>Robot Framework</strong>: Um framework de teste de automação.</li>\n</ul>\n<p>Use esses frameworks quando:</p>\n<ul>\n<li>Testar código.</li>\n<li>Automatizar tarefas.</li>\n<li>Verificar a funcionalidade de aplicações.</li>\n</ul>\n\n<h3>4. <strong>Frameworks de Desenvolvimento de Jogos</strong></h3>\n<ul>\n<li><strong>Pygame</strong>: Um framework para desenvolvimento de jogos.</li>\n<li><strong>Panda3D</strong>: Um framework para desenvolvimento de jogos 3D.</li>\n</ul>\n<p>Use esses frameworks quando:</p>\n<ul>\n<li>Desenvolver jogos.</li>\n<li>Criar aplicações interativas.</li>\n</ul>\n\n<h3>Conclusão</h3>\n<p>A escolha do framework certo depende do tipo de projeto e das necessidades específicas. Compreender as características e capacidades de cada framework ajuda a tomar decisões informadas e a desenvolver aplicações eficientes e eficazes.</p>\n<h3>Dicas Adicionais</h3>\n<ul>\n<li>Pesquise e explore diferentes frameworks.</li>\n<li>Avalie as necessidades do seu projeto.</li>\n<li>Considere a comunidade e o suporte disponível.</li>\n</ul>\n<p>Espero que isso tenha ajudado! Se você tiver alguma dúvida ou precisar de mais ajuda, não hesite em perguntar.</p>",
+    "created_at": "2025-05-28T14:21:08.805Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 11,
+  "fields": {
+    "user": 2,
+    "conversation": 4,
+    "message": "Como crio um agente de IA usando Django ?",
+    "response": "<h2>Criando um Agente de IA com Django</h2>\n<p>Django é um framework web robusto e flexível que pode ser usado para criar aplicações complexas, incluindo agentes de IA. Aqui está um guia passo a passo para criar um agente de IA usando Django:</p>\n\n<h3>1. <strong>Definir o Objetivo do Agente</strong></h3>\n<p>Antes de começar, é importante definir o objetivo do agente de IA. Qual é a tarefa que o agente deve realizar? Por exemplo, um agente de IA pode ser usado para:</p>\n<ul>\n<li>Responder a perguntas frequentes</li>\n<li>Fornecer suporte ao cliente</li>\n<li>Realizar tarefas automatizadas</li>\n</ul>\n\n<h3>2. <strong>Escolher a Tecnologia de IA</strong></h3>\n<p>Django pode ser integrado a várias tecnologias de IA, incluindo:</p>\n<ul>\n<li><strong>Processamento de Linguagem Natural (NLP)</strong>: bibliotecas como NLTK, spaCy e gensim</li>\n<li><strong>Aprendizado de Máquina</strong>: bibliotecas como scikit-learn, TensorFlow e PyTorch</li>\n</ul>\n\n<h3>3. <strong>Instalar as Dependências</strong></h3>\n<p>Instale as dependências necessárias para o projeto, incluindo Django e as bibliotecas de IA escolhidas.</p>\n<p><code>bash\npip install django\npip install nltk\npip install spacy</code></p>\n\n<h3>4. <strong>Criar o Projeto Django</strong></h3>\n<p>Crie um novo projeto Django usando o comando:</p>\n<p><code>bash\ndjango-admin startproject projeto</code></p>\n\n<h3>5. <strong>Criar a Aplicação Django</strong></h3>\n<p>Crie uma nova aplicação Django dentro do projeto:</p>\n<p><code>bash\npython manage.py startapp agente</code></p>\n\n<h3>6. <strong>Implementar o Agente de IA</strong></h3>\n<p>Implemente o agente de IA usando as bibliotecas de IA escolhidas. Por exemplo, você pode criar um modelo de NLP para responder a perguntas frequentes.</p>\n<p>```python\n# agente/models.py\nimport nltk\nfrom nltk.tokenize import word_tokenize\n\ndef responder_pergunta(pergunta):\n    # Tokenizar a pergunta\n    tokens = word_tokenize(pergunta)</p>\n<pre><code># Realizar a lógica de resposta\nresposta = \"Resposta padrão\"\n\nreturn resposta\n</code></pre>\n<p>```</p>\n<h3>7. <strong>Criar a API</strong></h3>\n<p>Crie uma API para interagir com o agente de IA. Você pode usar o framework Django REST para criar uma API RESTful.</p>\n<p>```python\n# agente/views.py\nfrom rest_framework.response import Response\nfrom rest_framework.views import APIView\nfrom .models import responder_pergunta\n\nclass AgenteView(APIView):\n    def post(self, request):\n        pergunta = request.data['pergunta']\n        resposta = responder_pergunta(pergunta)\n        return Response({'resposta': resposta})\n```</p>\n<h3>8. <strong>Testar o Agente</strong></h3>\n<p>Teste o agente de IA usando a API criada. Você pode usar ferramentas como Postman ou cURL para testar a API.</p>\n<h3>Conclusão</h3>\n<p>Criar um agente de IA com Django é um processo que envolve definir o objetivo do agente, escolher a tecnologia de IA certa e implementar o agente usando Django. Com as etapas acima, você pode criar um agente de IA robusto e flexível.</p>\n<h3>Dicas Adicionais</h3>\n<ul>\n<li>Pesquise e explore diferentes tecnologias de IA.</li>\n<li>Avalie as necessidades do seu projeto.</li>\n<li>Considere a escalabilidade e a manutenção do agente.</li>\n</ul>\n<p>Espero que isso tenha ajudado! Se você tiver alguma dúvida ou precisar de mais ajuda, não hesite em perguntar.</p>",
+    "created_at": "2025-05-28T14:21:43.837Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 12,
+  "fields": {
+    "user": 2,
+    "conversation": 4,
+    "message": "ola!",
+    "response": "<h2>Olá!</h2>\n<p>Estou aqui para ajudá-lo com suas dúvidas sobre programação em Python. Qual é a sua pergunta ou qual é o problema que você está enfrentando? </p>\n<h3>Para obter ajuda, você pode:</h3>\n<ul>\n<li>Fazer uma pergunta específica sobre Python</li>\n<li>Compartilhar um trecho de código que você está trabalhando e precisa de ajuda para entender ou corrigir</li>\n<li>Perguntar sobre bibliotecas ou frameworks específicos em Python</li>\n</ul>\n<p>Estou ansioso para ajudá-lo!</p>\n<h4>Algumas opções para começarmos:</h4>\n<ol>\n<li><strong>Perguntar sobre conceitos básicos</strong>: Se você é novo em Python, posso ajudar a explicar conceitos como variáveis, loops, funções, etc.</li>\n<li><strong>Resolver um problema específico</strong>: Se você está enfrentando um problema com um código, posso ajudá-lo a identificar e resolver o erro.</li>\n<li><strong>Explorar bibliotecas e frameworks</strong>: Se você está interessado em aprender sobre bibliotecas como NumPy, Pandas, Flask, Django, etc., posso fornecer informações e exemplos.</li>\n</ol>\n<p>O que você gostaria de fazer hoje?</p>",
+    "created_at": "2025-05-28T18:58:01.106Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 13,
+  "fields": {
+    "user": 2,
+    "conversation": 4,
+    "message": "Gostaria de saber sobre python",
+    "response": "<h2>Python: Uma Linguagem de Programação Versátil</h2>\n<p>Python é uma linguagem de programação de alto nível, interpretada e orientada a objetos. É conhecida por sua simplicidade, legibilidade e versatilidade, tornando-a uma das linguagens mais populares e amplamente utilizadas no mundo.</p>\n\n<h3>Características de Python</h3>\n<ul>\n<li><strong>Simples e Legível</strong>: Python tem uma sintaxe clara e concisa, tornando-a fácil de aprender e entender.</li>\n<li><strong>Interpretada</strong>: Python é uma linguagem interpretada, o que significa que o código é executado linha por linha, sem a necessidade de compilação prévia.</li>\n<li><strong>Orientada a Objetos</strong>: Python suporta programação orientada a objetos, permitindo a criação de objetos e classes.</li>\n<li><strong>Extensível</strong>: Python tem uma grande coleção de bibliotecas e frameworks que podem ser usados para estender suas capacidades.</li>\n</ul>\n\n<h3>Aplicações de Python</h3>\n<ul>\n<li><strong>Desenvolvimento Web</strong>: Python é usado em desenvolvimento web com frameworks como Django e Flask.</li>\n<li><strong>Ciência de Dados e Aprendizado de Máquina</strong>: Python é amplamente utilizado em ciência de dados e aprendizado de máquina com bibliotecas como NumPy, Pandas e scikit-learn.</li>\n<li><strong>Automação</strong>: Python é usado para automação de tarefas, como processamento de arquivos e interação com sistemas operacionais.</li>\n<li><strong>Jogos</strong>: Python é usado em desenvolvimento de jogos com bibliotecas como Pygame.</li>\n</ul>\n\n<h3>Vantagens de Python</h3>\n<ul>\n<li><strong>Fácil de Aprender</strong>: Python é uma linguagem fácil de aprender, mesmo para iniciantes.</li>\n<li><strong>Comunidade Ativa</strong>: Python tem uma comunidade ativa e grande, com muitos recursos disponíveis.</li>\n<li><strong>Versátil</strong>: Python pode ser usado em uma ampla gama de aplicações, desde desenvolvimento web até ciência de dados.</li>\n</ul>\n\n<h3>Desvantagens de Python</h3>\n<ul>\n<li><strong>Lento</strong>: Python é uma linguagem interpretada, o que pode torná-la mais lenta do que linguagens compiladas.</li>\n<li><strong>Limitações de Multithreading</strong>: Python tem limitações em termos de multithreading devido ao GIL (Global Interpreter Lock).</li>\n</ul>\n\n<h3>Conclusão</h3>\n<p>Python é uma linguagem de programação versátil e amplamente utilizada, com uma grande comunidade e muitos recursos disponíveis. É uma ótima escolha para iniciantes e experientes, e pode ser usada em uma ampla gama de aplicações.</p>\n<h3>O que você gostaria de saber mais sobre Python?</h3>\n<ul>\n<li><strong>Sintaxe e estruturas de controle</strong></li>\n<li><strong>Bibliotecas e frameworks</strong></li>\n<li><strong>Aplicações e casos de uso</strong></li>\n</ul>\n<p>Estou aqui para ajudá-lo!</p>",
+    "created_at": "2025-05-28T18:58:30.235Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 14,
+  "fields": {
+    "user": 2,
+    "conversation": 4,
+    "message": "Quem está me respondendo",
+    "response": "<h2>Sobre Mim</h2>\n<p>Eu sou um modelo de linguagem treinado por máquina, projetado para fornecer informações e responder a perguntas sobre uma ampla gama de tópicos, incluindo programação em Python.</p>\n\n<h3>Como Funciono</h3>\n<ul>\n<li><strong>Treinamento</strong>: Fui treinado em um grande conjunto de dados de texto, que inclui livros, artigos e outros recursos.</li>\n<li><strong>Processamento de Linguagem Natural</strong>: Uso técnicas de processamento de linguagem natural para entender e responder a perguntas.</li>\n<li><strong>Geração de Texto</strong>: Posso gerar texto em resposta a perguntas ou solicitações.</li>\n</ul>\n\n<h3>O que Posso Fazer</h3>\n<ul>\n<li><strong>Responder a Perguntas</strong>: Posso responder a perguntas sobre uma ampla gama de tópicos, incluindo programação em Python.</li>\n<li><strong>Fornecer Informações</strong>: Posso fornecer informações sobre conceitos, tecnologias e práticas relacionadas à programação em Python.</li>\n<li><strong>Ajudar com Problemas</strong>: Posso ajudar a identificar e resolver problemas relacionados à programação em Python.</li>\n</ul>\n\n<h3>Limitações</h3>\n<ul>\n<li><strong>Conhecimento Limitado</strong>: Meu conhecimento é limitado ao que foi incluído nos meus dados de treinamento.</li>\n<li><strong>Erros Possíveis</strong>: Posso cometer erros ou fornecer informações incorretas.</li>\n</ul>\n\n<h3>Como Posso Ajudar Você?</h3>\n<p>Estou aqui para ajudá-lo com suas dúvidas e problemas relacionados à programação em Python. Qual é a sua pergunta ou problema?</p>",
+    "created_at": "2025-05-28T18:58:46.740Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 15,
+  "fields": {
+    "user": 2,
+    "conversation": 4,
+    "message": "ola@",
+    "response": "Olá! Como posso ajudar você hoje?",
+    "created_at": "2025-05-28T19:19:19.737Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 16,
+  "fields": {
+    "user": 2,
+    "conversation": 4,
+    "message": "Ola!!! Quem é você ?",
+    "response": "Olá! Eu sou um modelo de linguagem AI, aqui para ajudar e conversar com você! Como posso te ajudar hoje?",
+    "created_at": "2025-05-28T19:21:19.930Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 17,
+  "fields": {
+    "user": 2,
+    "conversation": 4,
+    "message": "Quais são os conceitos avançados de Python que devo dominar para ser um desenvolvedor experiente?",
+    "response": "Olá! Eu sou o ChatCOTIN, assistente especializado em dados abertos sobre compras públicas. Estou aqui para ajudar e conversar com você!\n\nVocê está procurando saber quais são os conceitos avançados de Python que deve dominar para ser um desenvolvedor experiente? \n\nPara isso, é importante entender alguns dos principais conceitos da linguagem:\n\n1.  **Desenvolvimento Orientado a Objetos (DOO)**: É fundamental conhecer como criar classes e objetos em Python, bem como herança, polimorfismo e encapsulação.\n2.  **Programação Funcional**: Conheça as funções puras, combinação de funções, map/reduce/filter, lambda functions, closures, etc.\n3.  **Conceitos Avançados do Ponto Flutuante (FP)**: Entenda como usar o ponto flutuante para criar classes e objetos mais flexíveis e escaláveis.\n4.  **Desenvolvimento de Aplicativos Web**: Conheça as bibliotecas Django, Flask ou Pyramid para desenvolver aplicativos web robustos em Python.\n\nAlém disso, é importante ter conhecimento sobre:\n\n*   **Bibliotecas e Módulos**: Entenda como usar bibliotecas como NumPy, Pandas, Scikit-learn, etc.\n*   **Conhecimento de Bases de Dados**: Conheça como interagir com bases de dados relacionais (SQL) ou não-relacionais (NoSQL).\n*   **Segurança e Autenticação**: Entenda como implementar autenticação e autorização em aplicativos Python.\n\nEsses são apenas alguns dos conceitos avançados que você deve dominar para ser um desenvolvedor experiente em Python. Lembre-se de que a prática é fundamental, então continue trabalhando com projetos reais e experimente novas tecnologias!\n\nVocê tem alguma dúvida específica sobre algum desses tópicos? Estou aqui para ajudar!",
+    "created_at": "2025-05-28T19:44:48.706Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 18,
+  "fields": {
+    "user": 2,
+    "conversation": 4,
+    "message": "Quem é a COTIN ?",
+    "response": "Olá! Eu sou o ChatCOTIN, assistente especializado em dados abertos sobre compras públicas. Estou aqui para ajudar e conversar com você!\n\nA Coordenação de Transparência e Informações Gerenciais (COTIN) é uma unidade da Secretaria Nacional de Compras Públicas do Brasil.\n\nEla foi criada pela Lei nº 12.527/2011, que estabelece a política pública de transparência nas compras públicas no país.\n\nA COTIN tem como objetivo garantir o acesso público e transparente às informações sobre as licitações e contratos assinados pelo governo federal brasileiro.\n\nEssa coordenação é responsável por fornecer dados abertos sobre as compras públicas, incluindo informações sobre os valores das licitações, os contratantes, os provedores de serviços e produtos, entre outros.\n\nA COTIN também trabalha para promover a transparência nas compras públicas, garantindo que esses processos sejam transparentes, justos e equitativos.\n\nEla é uma ferramenta importante para o cidadão brasileiro que deseja saber mais sobre as licitações e contratos assinados pelo governo federal.",
+    "created_at": "2025-05-28T20:00:21.574Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 19,
+  "fields": {
+    "user": 2,
+    "conversation": 4,
+    "message": "por quem é formada a COTIN ²",
+    "response": "A Coordenação de Transparência e Informações Gerenciais (COTIN) é uma unidade da Secretaria Nacional de Compras Públicas do Brasil. Ela foi criada pela Lei nº 12.527/2011, que estabelece a política pública de transparência nas compras públicas no país.\n\nA COTIN tem como objetivo garantir o acesso público e transparente às informações sobre as licitações e contratos assinados pelo governo federal brasileiro. Essa coordenação é responsável por fornecer dados abertos sobre as compras públicas, incluindo informações sobre os valores das licitações, os contratantes, os provedores de serviços e produtos, entre outros.\n\nA COTIN também trabalha para promover a transparência nas compras públicas, garantindo que esses processos sejam transparentes, justos e equitativos. Ela é uma ferramenta importante para o cidadão brasileiro que deseja saber mais sobre as licitações e contratos assinados pelo governo federal.\n\nA COTIN é formada pela Coordenação de Transparência e Informações Gerenciais da Secretaria Nacional de Compras Públicas do Brasil.",
+    "created_at": "2025-05-28T20:04:10.959Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 20,
+  "fields": {
+    "user": 2,
+    "conversation": 4,
+    "message": "e os componentes ?",
+    "response": "Olá! Sou o ChatCOTIN, assistente especializado em dados abertos sobre compras públicas. Estou aqui para ajudar com suas perguntas e fornecer informações precisas e objetivas.\n\nPara responder à sua pergunta, preciso saber mais sobre os componentes que você está se referindo. Por favor, forneça mais detalhes ou contexto sobre o assunto em questão. Isso me permitirá fornecer uma resposta mais precisa e relevante.\n\nLembre-se de que estou aqui para ajudar com informações sobre transparência, dados abertos e licitações no Brasil, conforme normativas do Compras.Gov e Lei de Acesso à Informação (Lei nº 12.527/2011). Se tiver alguma dúvida ou precisar de esclarecimentos, sinta-se à vontade para perguntar!",
+    "created_at": "2025-05-28T20:04:50.754Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 21,
+  "fields": {
+    "user": 2,
+    "conversation": 4,
+    "message": "Olá!",
+    "response": "Olá! Eu sou o ChatCOTIN, assistente especializado em dados abertos sobre compras públicas. Estou aqui para ajudar e conversar com você!\n\nVocê está procurando saber quais são os conceitos avançados de Python que deve dominar para ser um desenvolvedor experiente?\n\nPara isso, é importante entender alguns dos principais conceitos da linguagem:\n\n1.  **Desenvolvimento Orientado a Objetos (DOO)**: É fundamental conhecer como criar classes e objetos em Python, bem como herança, polimorfismo e encapsulação.\n2.  **Programação Funcional**: Conheça as funções puras, combinação de funções, map/reduce/filter, lambda functions, closures, etc.\n3.  **Conceitos Avançados do Ponto Flutuante (FP)**: Entenda como usar o ponto flutuante para criar classes e objetos mais flexíveis e escaláveis.\n4.  **Desenvolvimento de Aplicativos Web**: Conheça as tecnologias utilizadas no desenvolvimento web, como HTML5, CSS3, JavaScript, frameworks populares como React ou Angular.\n\nEsses são apenas alguns dos conceitos que você deve conhecer para se tornar um desenvolvedor experiente em Python. Lembre-se de que a prática é fundamental para dominar essas habilidades!\n\nVocê tem alguma dúvida específica sobre algum desses tópicos? Estou aqui para ajudar!",
+    "created_at": "2025-05-28T20:33:12.690Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 22,
+  "fields": {
+    "user": 2,
+    "conversation": 4,
+    "message": "Ola!",
+    "response": "Olá! Eu sou o ChatCOTIN, assistente especializado em dados abertos sobre compras públicas. Estou aqui para ajudar e conversar com você.\n\nVocê está procurando saber quais são os conceitos avançados de Python que deve dominar para ser um desenvolvedor experiente?\n\nPara isso, é importante entender alguns dos principais conceitos da linguagem:\n\n1.  **Desenvolvimento Orientado a Objetos (DOO)**: É fundamental conhecer como criar classes e objetos em Python, bem como herança, polimorfismo e encapsulação.\n2.  **Programação Funcional**: Conheça as funções puras, combinação de funções, map/reduce/filter, lambda functions, closures, etc.\n3.  **Conceitos Avançados do Ponto Flutuante (FP)**: Entenda como usar o ponto flutuante para criar classes e objetos mais flexíveis e escaláveis.\n4.  **Desenvolvimento de Aplicativos Web**: Conheça as tecnologias utilizadas no desenvolvimento web, como HTML5, CSS3, JavaScript, frameworks populares como React ou Angular.\n\nEsses são apenas alguns dos conceitos que você deve conhecer para se tornar um desenvolvedor experiente em Python. Lembre-se de que a prática é fundamental para dominar essas habilidades!\n\nVocê tem alguma dúvida específica sobre algum desses tópicos? Estou aqui para ajudar!",
+    "created_at": "2025-05-28T20:44:41.431Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 23,
+  "fields": {
+    "user": 2,
+    "conversation": 4,
+    "message": "Como acessar informações de transparência pública?",
+    "response": "Olá! Eu sou o ChatCOTIN, assistente especializado em dados abertos sobre compras públicas. Estou aqui para ajudar e conversar com você!\n\nVocê está procurando saber como acessar informações de transparência pública?\n\nPara isso, é importante entender que as informações de transparência pública estão disponíveis no site do Compras.Gov, da Secretaria Nacional de Compras Públicas.\n\nAqui estão algumas dicas para acessar essas informações:\n\n1.  Acesse o site do Compras.Gov: Você pode encontrar todas as licitações e contratos assinados pelo governo federal brasileiro no site do Compras.Gov.\n2.  Utilize a ferramenta de busca: O site oferece uma ferramenta de busca que permite procurar por informações específicas, como nome do contratante ou valor da licitação.\n3.  Acesse o portal de transparência: Você pode encontrar todas as informações de transparência pública no portal de transparência do Compras.Gov.\n\nEssas são apenas algumas dicas para acessar essas informações. Lembre-se de que a transparência é fundamental para garantir que os processos sejam justos e equitativos!\n\nVocê tem alguma dúvida específica sobre como acessar as informações de transparência pública? Estou aqui para ajudar!",
+    "created_at": "2025-05-28T20:48:58.833Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 71,
+  "fields": {
+    "user": 4,
+    "conversation": 8,
+    "message": "Quem é a COTIN ?",
+    "response": "Olá! Sou o ChatCOTIN, seu assistente especializado em dados abertos sobre compras públicas.\n\n===== INFORMAÇÕES GERAIS =====\n• Coordenador: Magnum Costa de Oliveira\n• Equipe: Guilherme Fonseca De Noronha Rocha, Stefano Terci Gasperazzo, Jose Maria De Melo Junior, Luiz Gonzaga de Oliveira, André Ruperto de Macêdo\n\n===== INSTRUÇÕES OBRIGATÓRIAS =====\n1. SEMPRE responda em português brasileiro.\n2. SEMPRE priorize as informações da base de conhecimento fornecida no CONTEXTO.\n3. SEMPRE cite a fonte quando usar informações dos documentos.\n4. SEMPRE mantenha foco em: transparência, dados abertos, compras públicas, licitações.\n\n===== PAINÉIS DISPONÍVEIS =====\n\n**Painel de Municípios**\n- Nome do Painel: Acesso a Dados Abertos\n  - Descrição detalhada: Ferramenta para acesso a informações sobre compras públicas municipais.\n  - Link: [Link ao painel](https://www.compras.gov.br/painel-municipal)\n\n**Painel de Viagens**\n- Nome do Painel: Acompanhamento e Análise de Afastamentos\n  - Descrição detalhada: Ferramenta para acompanhamento e análise de afastamentos a serviço no âmbito da administração pública federal.\n  - Link: [Link ao painel](https://www.compras.gov.br/viagens)\n\n**Painel de Licitações**\n- Nome do Painel: Análise de Licitações\n  - Descrição detalhada: Ferramenta para análise e acompanhamento das licitações públicas.\n  - Link: [Link ao painel](https://www.compras.gov.br/licitacoes)\n\n**Painel de Compras Públicas**\n- Nome do Painel: Dados Abertos em Compras Públicas\n  - Descrição detalhada: Ferramenta para acesso a informações sobre compras públicas, incluindo orçamentos e contratos.\n  - Link: [Link ao painel](https://www.compras.gov.br/compras-publicas)\n\nFontes:\n- Lei de Acesso à Informação (LAI) nº 12.527/2011\n- Portal Compras.gov.br\n\n===== CONCLUSÃO =====\nSe você tiver alguma dúvida ou precisar de mais informações, sinta-se à vontade para perguntar!",
+    "created_at": "2025-05-29T20:07:59.294Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 72,
+  "fields": {
+    "user": 4,
+    "conversation": 8,
+    "message": "Quais são os 9 módulos da API de Dados abertos ?",
+    "response": "Com base nos documentos da base de conhecimento disponíveis acima, temos a disposição os seguintes módulos da API de Dados Abertos do Compras.gov.br:\n\n1. **Dados Abertos**: Informações públicas disponibilizadas em formatos acessíveis e reutilizáveis, como parte da política de transparência do governo.\n   - Link: https://dadosabertos.compras.gov.br/swagger-ui/index.html\n\n2. **Módulo D+1 (Critério de atualização diária dos dados)**: Informações do dia anterior ficam disponíveis no dia seguinte, garantindo a atualidade das informações.\n\n3. **Endpoint**: Endereço específico na API onde uma consulta pode ser feita para obter dados.\n   - Exemplo: \"O endpoint https://dadosabertos.compras.gov.br/modulo-arp/1_consultarARP lista Atas de Registro de Preços.\"\n\n4. **ETP Digital (Estudos Técnicos Preliminares)**: Módulo do Compras.gov.br que reúne estudos para planejar contratações, analisando viabilidade e riscos.\n\n5. **JSON (JavaScript Object Notation)**: Formato leve e estruturado usado pela API para apresentar dados, fácil de ler por humanos e máquinas.\n   - Exemplo: \"A API retorna dados como { 'codigoItem': 123, 'nome': 'Cadeira' } em JSON.\"\n\n6. **LAI (Lei de Acesso à Informação)**: Lei nº 12.527/2011 que garante o acesso a informações públicas, estabelecendo regras de transparência e prazos para resposta.\n\nFontes:\n- https://dadosabertos.compras.gov.br/swagger-ui/index.html\n- Portal Compras.gov.br",
+    "created_at": "2025-05-29T20:12:32.051Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 73,
+  "fields": {
+    "user": 4,
+    "conversation": 8,
+    "message": "Quais são os 9 módulos da API de Dados abertos ?",
+    "response": "<p>Com base nos documentos da base de conhecimento, temos a disposição os seguintes módulos da API de Dados Abertos do Compras.gov.br:</p>\n<ol>\n<li><strong>CATMAT</strong>: Materiais adquiridos.</li>\n<li><strong>CATSER</strong>: Serviços contratados.</li>\n<li><strong>Preços Praticados</strong>: Valores pagos.</li>\n<li><strong>PGC</strong>: Planejamento de contratações.</li>\n<li><strong>UASG</strong>: Unidades administrativas.</li>\n<li><strong>Legado</strong>: Dados antigos (Lei 8.666/93).</li>\n<li><strong>Contratações</strong>: Nova lei (14.133/2021).</li>\n<li><strong>ARP</strong>: Atas de Registro de Preço.</li>\n<li><strong>Contratos</strong>: Contratos firmados.</li>\n</ol>\n<p>Esses módulos oferecem dados específicos sobre diferentes aspectos das compras públicas, permitindo uma análise detalhada das contratações públicas.</p>\n<p>Fontes:\n- Resposta 3.2: Quais são os principais módulos da API?\n- Conceitos_Básicos - COTIN-CGGES: 1.2. Módulos da API de Compras</p>",
+    "created_at": "2025-05-29T20:13:28.670Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 74,
+  "fields": {
+    "user": 4,
+    "conversation": 8,
+    "message": "Em qual módulo consigo informação sobre contratações da minha UASG ?",
+    "response": "<p>Com base nos documentos da base de conhecimento fornecida, você pode encontrar informações sobre contratações da sua UASG nos seguintes módulos da API de Dados Abertos do Compras.gov.br:</p>\n<ol>\n<li>\n<p><strong>Módulo UASG</strong>: Este módulo traz informações detalhadas sobre as Unidades Administrativas de Serviços Gerais (UASGs), incluindo dados da unidade, órgão superior e vinculação administrativa das unidades responsáveis pela condução das licitações e contratações.</p>\n</li>\n<li>\n<p><strong>Módulo Contratações (Lei nº 14.133/2021)</strong>: Focado em compras e contratações realizadas sob a nova Lei nº 14.133/2021, permitindo consultar os processos licitatórios e contratações que estão de acordo com a legislação atual.</p>\n</li>\n<li>\n<p><strong>Módulo Legado</strong>: Permite a consulta das compras e contratações realizadas sob a vigência das leis anteriores à Lei nº 14.133/2021, como a Lei nº 8.666/1993.</p>\n</li>\n</ol>\n<p>Para acessar essas informações, você pode consultar a documentação da API disponível em:\n- https://dadosabertos.compras.gov.br/swagger-ui/index.html\n- https://dados.gov.br/dados/conjuntos-dados/compras-publicas-do-governo-federal</p>\n<p>Para usar a API, você deve acessar a documentação, escolher o módulo desejado, clicar em “Try it out”, preencher os campos obrigatórios (como o código da UASG), ajustar os filtros conforme necessário e clicar em “Execute” para visualizar os dados em JSON.</p>\n<p>Fontes:\n- Documentação da API de Dados Abertos do Compras.gov.br\n- Informações sobre os módulos da API disponíveis no contexto fornecido.</p>",
+    "created_at": "2025-05-29T20:18:23.962Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 75,
+  "fields": {
+    "user": 4,
+    "conversation": 8,
+    "message": "O que são dados abertos de compras públicas e como acessá-los?",
+    "response": "<p>Os dados abertos de compras públicas referem-se às informações relativas às licitações, contratações e compras realizadas pelo governo que são disponibilizadas de forma acessível e reutilizável. Esses dados são fundamentais para garantir transparência e permitir que cidadãos e organizações monitorem e analisem as compras governamentais.</p>\n<p>Para acessar esses dados, o governo federal disponibiliza várias ferramentas e plataformas. Com base nos documentos da base de conhecimento, temos à disposição os seguintes painéis e módulos para acessar dados abertos de compras públicas:</p>\n<ol>\n<li><strong>Painel de Compras Governamentais</strong>: Ferramenta para visualizar e analisar processos de compras do governo federal, com dados detalhados de licitações e valores homologados. O painel permite filtrar por data, órgão, e outros parâmetros específicos, facilitando a exportação de dados para planilhas.</li>\n<li>\n<p>Link: https://paineldecompras.economia.gov.br/licitacao-sessao</p>\n</li>\n<li>\n<p><strong>Painel PNCP em Números</strong>: Interface estatística com dados agregados de contratações públicas do PNCP, por estado, município ou órgão. O painel oferece uma visão ampla do ecossistema de compras públicas em todo o país.</p>\n</li>\n<li>\n<p>Link: https://www.gov.br/pncp/pt-br/acesso-a-informacao/painel-pncp-em-numeros</p>\n</li>\n<li>\n<p><strong>Painel de Municípios</strong>: Permite a análise de dados de compras públicas em nível municipal.</p>\n</li>\n<li>\n<p><strong>Painel de Fornecedores Nacionais e Internacionais</strong>: Oferece informações sobre fornecedores que participam de licitações e contratações públicas.</p>\n</li>\n<li>\n<p><strong>Pesquisa de Preços de Materiais e/ou Serviços</strong>: Ferramenta que filtra os resultados conforme o catmat ou catser desejado, permitindo a consulta aos preços praticados pela Administração Pública Federal.</p>\n</li>\n<li>Link: Disponível no Portal de Dados Abertos do Governo Federal.</li>\n</ol>\n<p>Além disso, os dados abertos também podem ser acessados por meio da API de Dados Abertos do Compras.gov.br, que oferece endpoints específicos para consultar diferentes tipos de dados, como Atas de Registro de Preços, informações sobre UASG, órgãos, licitações, entre outros.</p>\n<p>Para consultar esses dados, você pode acessar diretamente os links fornecidos ou verificar o Portal de Dados Abertos do Governo Federal para obter mais informações e tutoriais sobre como utilizar essas ferramentas.</p>\n<p>Fontes: \n- MANUAL DOS PAINÉIS DE COMPRAS PÚBLICAS\n- Definições e exemplos de Dados Abertos e API de Dados Abertos do Compras.gov.br.</p>",
+    "created_at": "2025-05-29T20:52:41.184Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 76,
+  "fields": {
+    "user": 4,
+    "conversation": 8,
+    "message": "Como acessar informações de transparência pública relacionadas a compras governamentais?",
+    "response": "<p>Para acessar informações de transparência pública relacionadas a compras governamentais, você pode utilizar os seguintes recursos disponíveis:</p>\n<ol>\n<li><strong>Compras.gov.br</strong>: Sistema oficial do governo federal para gerenciar contratações públicas, integrado ao SIASG. Ele promove transparência e eficiência nas compras governamentais.</li>\n<li>\n<p>Link: https://compras.gov.br/</p>\n</li>\n<li>\n<p><strong>API de Dados Abertos do Compras.gov.br</strong>: Ferramenta que dá acesso detalhado a dados de compras públicas, como licitações, contratos e preços, em formato JSON via protocolo REST.</p>\n</li>\n<li>\n<p>Link: https://catalogo.compras.gov.br/cnbs-web/busca</p>\n</li>\n<li>\n<p><strong>Portal de Dados Abertos</strong>: Embora não esteja diretamente mencionado no contexto, é uma fonte geral para dados abertos do governo brasileiro.</p>\n</li>\n<li>\n<p>Nota: Não está diretamente linkado no contexto, mas é uma fonte relevante para dados abertos.</p>\n</li>\n<li>\n<p><strong>Lei de Acesso à Informação (LAI) - Lei nº 12.527/2011</strong>: Garante o direito de acesso a informações públicas. Você pode solicitar informações sobre compras governamentais usando essa lei.</p>\n</li>\n<li>\n<p>Link: https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/lei/l12527.htm</p>\n</li>\n<li>\n<p><strong>Controladoria-Geral da União (CGU)</strong>: Órgão responsável por fiscalizar o uso de recursos públicos e garantir a transparência, incluindo o cumprimento da LAI. Se um pedido de informação for negado sem motivo, você pode recorrer à CGU.</p>\n</li>\n<li>Nota: Embora não tenha um link direto no contexto, é uma fonte oficial relevante.</li>\n</ol>\n<p>Com base nos documentos da base de conhecimento, os principais módulos e recursos para acessar informações sobre compras governamentais incluem:</p>\n<ol>\n<li><strong>Módulo de Contratações do Compras.gov.br</strong>: Utiliza a Lei 14.133/2021 para licitações e contratos públicos.</li>\n<li><strong>Módulo Legado do Compras.gov.br</strong>: Referente a licitações e contratos regidos pela Lei 8.666/93.</li>\n<li><strong>Matriz de Risco</strong>: Módulo que identifica e gerencia riscos em contratações públicas.</li>\n<li><strong>PNCP (Portal Nacional de Contratações Públicas)</strong>: Embora mencionado indiretamente, é relevante para contratações após 2021.</li>\n</ol>\n<p>Para acessar informações específicas, você pode:\n- Visitar o Compras.gov.br e utilizar seus recursos.\n- Consultar a API de Dados Abertos para obter dados detalhados.\n- Solicitar informações via LAI, conforme necessário.</p>\n<p>Fontes:\n- Compras.gov.br\n- API de Dados Abertos do Compras.gov.br\n- Lei de Acesso à Informação (LAI) - Lei nº 12.527/2011\n- Controladoria-Geral da União (CGU) (referência indireta)</p>",
+    "created_at": "2025-05-29T23:38:04.964Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 77,
+  "fields": {
+    "user": 4,
+    "conversation": 8,
+    "message": "Quais são as principais legislações sobre dados abertos em compras públicas?",
+    "response": "**Legislações sobre Dados Abertos em Compras Públicas**\n\nCom base nos documentos da base de conhecimento disponíveis acima, temos a disposição as seguintes legislações relacionadas aos dados abertos em compras públicas:\n\n1. **Lei Geral de Proteção de Dados (LGPD)**: Embora não seja especificamente uma lei sobre dados abertos em compras públicas, a LGPD estabelece diretrizes para o tratamento e proteção de dados pessoais e confidenciais, incluindo aqueles relacionados às contratações públicas.\n   - Fonte: Lei nº 13.709/2018\n\n2. **Lei da Transparência Administrativa (LTA)**: A LTA é uma lei que visa promover a transparência e a responsabilidade na administração pública, incluindo a divulgação de informações sobre contratações públicas.\n   - Fonte: Lei nº 12.737/2012\n\n3. **Instituto Nacional de Estatística (INE)**: O INE é um órgão público que fornece dados estatísticos e informação sobre as contratações públicas, incluindo os valores gastos com cada item.\n   - Fonte: Instituto Nacional de Estatística\n\n4. **Portal de Dados Abertos do Governo Federal**: O portal oferece uma variedade de informações relacionadas às contratações públicas, incluindo dados sobre fornecedores, preços e processos de licitação.\n   - Fonte: Portal de Dados Abertos do Governo Federal\n\n5. **Lei nº 8.666/1993**: A Lei da Licitação estabelece regras para as contratações públicas, incluindo a necessidade de divulgação de informações sobre licitações e contratos.\n   - Fonte: Lei nº 8.666/1993\n\n6. **Instituto Nacional de Materiais (INM)**: O INM é um órgão público que fornece dados sobre materiais e produtos utilizados nas contratações públicas, incluindo os preços pagos.\n   - Fonte: Instituto Nacional de Materiais",
+    "created_at": "2025-05-29T23:38:41.587Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 78,
+  "fields": {
+    "user": 5,
+    "conversation": 9,
+    "message": "O que são dados abertos de compras públicas e como acessá-los?",
+    "response": "<p>Os dados abertos de compras públicas referem-se às informações relacionadas às aquisições e contratações realizadas pela administração pública, que são disponibilizadas de forma acessível e transparente para a sociedade. Esses dados incluem detalhes sobre licitações, fornecedores, valores contratados, itens adquiridos, entre outros.</p>\n<p>No contexto do governo brasileiro, a disponibilização desses dados é um compromisso assumido na Parceria para Governo Aberto (Open Government Partnership - OGP), reforçando a transparência dos gastos públicos e incentivando a pesquisa e a inovação tecnológica por meio da Política Brasileira de Dados Abertos.</p>\n<p>Para acessar esses dados, existem várias ferramentas e painéis disponíveis:</p>\n<ol>\n<li><strong>Painel de Municípios</strong>: Facilita a comparação entre diferentes municípios, possibilitando identificar padrões de consumo, eficiência nas compras e oportunidades de melhoria.</li>\n<li>Plataforma: Looker Studio</li>\n<li>\n<p>Acesso: <a href=\"link indisponível\">Painel de Municípios</a></p>\n</li>\n<li>\n<p><strong>Painel de Viagens</strong>: Ferramenta para acompanhamento e análise de afastamentos a serviço no âmbito da administração pública federal.</p>\n</li>\n<li>\n<p>Definição: Consolida informações sobre viagens nacionais e internacionais registradas no Sistema de Concessão de Diárias e Passagens (SCDP) e no VIAJAR (Banco Central do Brasil).</p>\n</li>\n<li>\n<p><strong>Pesquisa de Preços</strong>: Serviço que permite consultar os dados das descrições dos itens de serviços.</p>\n</li>\n<li>\n<p><strong>Painel de Fornecedores Nacionais e Internacionais</strong>: Ferramenta que apresenta dados sobre a participação de empresas nacionais e estrangeiras nas licitações do Governo Federal.</p>\n</li>\n<li>\n<p>Definição: Proporciona uma visão detalhada do envolvimento desses fornecedores nos processos de compras públicas.</p>\n</li>\n<li>\n<p><strong>Módulo PGC - Planejamento e Gerenciamento de Contratações</strong>: O PGC é uma ferramenta estratégica utilizada por órgãos e entidades do governo para planejar, organizar e controlar suas contratações e aquisições.</p>\n</li>\n<li>Serviços disponíveis:<ul>\n<li>PGC Detalhe: Permite consultar os dados dos itens do plano de contratação de um órgão.</li>\n<li>PGC Detalhe Catálogo: Serviço relacionado ao PGC.</li>\n</ul>\n</li>\n</ol>\n<p>O acesso a esses dados e ferramentas pode ser feito através de URLs específicas, utilizando o protocolo de comunicação REST/HTTP 1.1 e a notação JSON para os dados trafegados.</p>\n<p>Fontes:\n- Documentos da base de conhecimento sobre Compras.gov.br e Dados Abertos.\n- Informações sobre os painéis e módulos disponíveis no contexto do Compras.gov.br.</p>",
+    "created_at": "2025-06-02T20:57:17.329Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 79,
+  "fields": {
+    "user": 5,
+    "conversation": 9,
+    "message": "Como acessar informações de transparência pública relacionadas a compras governamentais?",
+    "response": "<p>Com base nos documentos da base de conhecimento, temos à disposição os seguintes painéis e módulos para acessar informações de transparência pública relacionadas a compras governamentais:</p>\n<ol>\n<li><strong>Painel de Municípios</strong>: Facilita a comparação entre diferentes municípios, possibilitando identificar padrões de consumo, eficiência nas compras e oportunidades de melhoria.</li>\n<li>Plataforma: Looker Studio</li>\n<li>\n<p>Acesso: Painel de Municípios</p>\n</li>\n<li>\n<p><strong>Painel de Viagens</strong>: Ferramenta para acompanhamento e análise de afastamentos a serviço no âmbito da administração pública federal. Ele consolida informações sobre viagens nacionais e internacionais registradas no Sistema de Concessão de Diárias e Passagens (SCDP) e no VIAJAR (Banco Central do Brasil).</p>\n</li>\n<li>Plataforma: Qlik</li>\n<li>\n<p>Acesso: Painel de Viagens</p>\n</li>\n<li>\n<p><strong>Pesquisa de Preços</strong>: Serviço que permite consultar os dados das descrições dos itens de serviços.</p>\n</li>\n<li>\n<p>Acesso: Pesquisa de Preços</p>\n</li>\n<li>\n<p><strong>Painel de Fornecedores Nacionais e Internacionais</strong>: Ferramenta que apresenta dados sobre a participação de empresas nacionais e estrangeiras nas licitações do Governo Federal, proporcionando uma visão detalhada do envolvimento desses fornecedores nos processos de compras públicas.</p>\n</li>\n<li>\n<p>Acesso: Painel de Fornecedores Nacionais e Internacionais</p>\n</li>\n<li>\n<p><strong>Módulo PGC - Planejamento e Gerenciamento de Contratações</strong>: O PGC é uma ferramenta estratégica utilizada por órgãos e entidades do governo para planejar, organizar e controlar suas contratações e aquisições.</p>\n</li>\n<li>\n<p>Serviços disponíveis:</p>\n<ul>\n<li>PGC Detalhe: Permite consultar os dados dos itens do plano de contratação de um órgão.</li>\n<li>PGC Detalhe Catálogo: Serviço relacionado ao PGC.</li>\n</ul>\n</li>\n<li>\n<p><strong>Módulo Contratos</strong>: Reúne dados referentes aos contratos firmados no âmbito público, abrangendo informações como objeto, valor, prazo de vigência e partes envolvidas.</p>\n</li>\n</ol>\n<p>Fontes: Documentos da base de conhecimento sobre Compras.gov.br e Dados Abertos, incluindo informações sobre os painéis e módulos disponíveis no contexto do Compras.gov.br.</p>",
+    "created_at": "2025-06-03T20:25:55.475Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 80,
+  "fields": {
+    "user": 5,
+    "conversation": 9,
+    "message": "Quais são as principais legislações sobre dados abertos em compras públicas?",
+    "response": "<p>Com base nos documentos da base de conhecimento, as principais legislações sobre dados abertos em compras públicas incluem:</p>\n<ol>\n<li><strong>Lei de Acesso à Informação (LAI)</strong>: A Lei nº 12.527/2011 garante o direito de acesso a informações públicas, promovendo transparência na administração pública. Suas diretrizes incluem publicidade como regra e sigilo como exceção, divulgação espontânea de dados de interesse público, uso de tecnologia para acesso, incentivo à cultura de transparência e controle social.</li>\n<li><strong>Política Brasileira de Dados Abertos</strong>: A implementação da Política Brasileira de Dados Abertos incentiva a pesquisa e a inovação tecnológica, reforçando a transparência dos gastos públicos e fornecendo informações de valor agregado à sociedade.</li>\n<li><strong>Lei nº 14.133/2021</strong>: A Lei nº 14.133/2021 é mencionada no contexto do Módulo Contratações, garantindo transparência e conformidade com a legislação vigente nas contratações realizadas pelos órgãos públicos.</li>\n</ol>\n<p>Fontes: Documentos da base de conhecimento sobre Compras.gov.br e Dados Abertos, incluindo informações sobre a Lei de Acesso à Informação (LAI) e a Política Brasileira de Dados Abertos.</p>",
+    "created_at": "2025-06-03T20:26:52.782Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 81,
+  "fields": {
+    "user": 5,
+    "conversation": 9,
+    "message": "E quem é você ?",
+    "response": "<p>Sou o ChatCOTIN, uma versão de IA da Coordenação de Transparência e Informações Gerenciais (COTIN). Meu objetivo é fornecer informações precisas e atualizadas sobre dados abertos de compras públicas, licitações e transparência governamental, com base nos documentos da base de conhecimento disponíveis.</p>\n<p>Sou especializado em API de Dados Abertos, Portal Compras.gov.br e Lei de Acesso à Informação (Lei 12.527/2011). Minha equipe é liderada pelo Coordenador Magnum Costa de Oliveira e composta por Guilherme Fonseca De Noronha Rocha, Stefano Terci Gasperazzo, Jose Maria De Melo Junior, Luiz Gonzaga de Oliveira e André Ruperto de Macêdo.</p>\n<p>Estou aqui para ajudar a esclarecer dúvidas sobre compras públicas, licitações e transparência governamental, sempre priorizando as informações da base de conhecimento fornecida e citando as fontes dos documentos utilizados.</p>\n<p>Fontes: Documentos da base de conhecimento sobre Compras.gov.br e Dados Abertos.</p>",
+    "created_at": "2025-06-03T20:27:10.253Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 82,
+  "fields": {
+    "user": 5,
+    "conversation": 9,
+    "message": "O que são dados abertos de compras públicas e como acessá-los?",
+    "response": "<p>Com base nos documentos da base de conhecimento, os dados abertos de compras públicas referem-se às informações relacionadas às aquisições e contratações realizadas pela administração pública, que são disponibilizadas de forma acessível e transparente para a sociedade. Esses dados incluem detalhes sobre licitações, fornecedores, valores contratados, itens adquiridos, entre outros.</p>\n<p>A abertura dos dados de Compras Governamentais é um compromisso assumido pelo governo brasileiro na Parceria para Governo Aberto (Open Government Partnership - OGP). Esse compromisso reforça a transparência dos gastos públicos, fornece informações de valor agregado à sociedade e incentiva a pesquisa e a inovação tecnológica por meio da implementação da Política Brasileira de Dados Abertos.</p>\n<p>Para acessar esses dados, existem várias ferramentas e painéis disponíveis:</p>\n<ol>\n<li><strong>Painel de Municípios</strong>: Facilita a comparação entre diferentes municípios, possibilitando identificar padrões de consumo, eficiência nas compras e oportunidades de melhoria.</li>\n<li>Plataforma: Looker Studio</li>\n<li>\n<p>Acesso: Painel de Municípios</p>\n</li>\n<li>\n<p><strong>Painel de Viagens</strong>: Ferramenta para acompanhamento e análise de afastamentos a serviço no âmbito da administração pública federal. Ele consolida informações sobre viagens nacionais e internacionais registradas no Sistema de Concessão de Diárias e Passagens (SCDP) e no VIAJAR (Banco Central do Brasil).</p>\n</li>\n<li>Plataforma: Qlik</li>\n<li>\n<p>Acesso: Painel de Viagens</p>\n</li>\n<li>\n<p><strong>Pesquisa de Preços</strong>: Serviço que permite consultar os dados das descrições dos itens de serviços.</p>\n</li>\n<li>\n<p>Acesso: Pesquisa de Preços</p>\n</li>\n<li>\n<p><strong>Painel de Fornecedores Nacionais e Internacionais</strong>: Ferramenta que apresenta dados sobre a participação de empresas nacionais e estrangeiras nas licitações do Governo Federal, proporcionando uma visão detalhada do envolvimento desses fornecedores nos processos de compras públicas.</p>\n</li>\n<li>\n<p>Acesso: Painel de Fornecedores Nacionais e Internacionais</p>\n</li>\n<li>\n<p><strong>Módulo PGC - Planejamento e Gerenciamento de Contratações</strong>: O PGC é uma ferramenta estratégica utilizada por órgãos e entidades do governo para planejar, organizar e controlar suas contratações e aquisições.</p>\n</li>\n<li>Serviços disponíveis:<ul>\n<li>PGC Detalhe: Permite consultar os dados dos itens do plano de contratação de um órgão.</li>\n<li>PGC Detalhe Catálogo: Serviço relacionado ao PGC.</li>\n</ul>\n</li>\n</ol>\n<p>O acesso a esses dados e ferramentas pode ser feito através de URLs específicas, utilizando o protocolo de comunicação REST/HTTP 1.1 e a notação JSON para os dados trafegados.</p>\n<p>Fontes: Documentos da base de conhecimento sobre Compras.gov.br e Dados Abertos, incluindo informações sobre os painéis e módulos disponíveis no contexto do Compras.gov.br.</p>",
+    "created_at": "2025-06-04T17:59:44.597Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 83,
+  "fields": {
+    "user": 5,
+    "conversation": 9,
+    "message": "Quem é a Cotin ?",
+    "response": "<p>Com base nos documentos da base de conhecimento, a COTIN (Coordenação de Transparência e Informações Gerenciais) é uma equipe liderada pelo Coordenador Magnum Costa de Oliveira e composta por Guilherme Fonseca De Noronha Rocha, Stefano Terci Gasperazzo, Jose Maria De Melo Junior, Luiz Gonzaga de Oliveira e André Ruperto de Macêdo.</p>\n<p>A COTIN é responsável por fornecer informações precisas e atualizadas sobre dados abertos de compras públicas, licitações e transparência governamental, com base nos documentos da base de conhecimento disponíveis. A equipe é especializada em API de Dados Abertos, Portal Compras.gov.br e Lei de Acesso à Informação (Lei 12.527/2011).</p>\n<p>Fontes: Documentos da base de conhecimento sobre Compras.gov.br e Dados Abertos.</p>",
+    "created_at": "2025-06-04T18:00:28.033Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 84,
+  "fields": {
+    "user": 5,
+    "conversation": 9,
+    "message": "O que são dados abertos de compras públicas e como acessá-los?",
+    "response": "Erro ao conectar com o modelo Groq: Error code: 503 - {'error': {'message': 'Service Unavailable', 'type': 'internal_server_error'}}",
+    "created_at": "2025-06-04T19:48:18.953Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 85,
+  "fields": {
+    "user": 5,
+    "conversation": 9,
+    "message": "O que são dados abertos de compras públicas e como acessá-los?",
+    "response": "<p>Com base nos documentos da base de conhecimento, os dados abertos de compras públicas referem-se às informações relacionadas às aquisições e contratações realizadas pela administração pública, que são disponibilizadas de forma acessível e transparente para a sociedade. Esses dados incluem detalhes sobre licitações, fornecedores, valores contratados, itens adquiridos, entre outros.</p>\n<p>A abertura dos dados de Compras Governamentais é um compromisso assumido pelo governo brasileiro na Parceria para Governo Aberto (Open Government Partnership - OGP). Esse compromisso reforça a transparência dos gastos públicos, fornece informações de valor agregado à sociedade e incentiva a pesquisa e a inovação tecnológica por meio da implementação da Política Brasileira de Dados Abertos.</p>\n<p>Para acessar esses dados, existem várias ferramentas e painéis disponíveis:</p>\n<ol>\n<li><strong>Painel de Municípios</strong>: Facilita a comparação entre diferentes municípios, possibilitando identificar padrões de consumo, eficiência nas compras e oportunidades de melhoria.</li>\n<li>Plataforma: Looker Studio</li>\n<li>\n<p>Acesso: Painel de Municípios</p>\n</li>\n<li>\n<p><strong>Painel de Viagens</strong>: Ferramenta para acompanhamento e análise de afastamentos a serviço no âmbito da administração pública federal. Ele consolida informações sobre viagens nacionais e internacionais registradas no Sistema de Concessão de Diárias e Passagens (SCDP) e no VIAJAR (Banco Central do Brasil).</p>\n</li>\n<li>Plataforma: Qlik</li>\n<li>\n<p>Acesso: Painel de Viagens</p>\n</li>\n<li>\n<p><strong>Pesquisa de Preços</strong>: Serviço que permite consultar os dados das descrições dos itens de serviços.</p>\n</li>\n<li>\n<p>Acesso: Pesquisa de Preços</p>\n</li>\n<li>\n<p><strong>Painel de Fornecedores Nacionais e Internacionais</strong>: Ferramenta que apresenta dados sobre a participação de empresas nacionais e estrangeiras nas licitações do Governo Federal, proporcionando uma visão detalhada do envolvimento desses fornecedores nos processos de compras públicas.</p>\n</li>\n<li>\n<p>Acesso: Painel de Fornecedores Nacionais e Internacionais</p>\n</li>\n<li>\n<p><strong>Módulo PGC - Planejamento e Gerenciamento de Contratações</strong>: O PGC é uma ferramenta estratégica utilizada por órgãos e entidades do governo para planejar, organizar e controlar suas contratações e aquisições.</p>\n</li>\n<li>Serviços disponíveis:<ul>\n<li>PGC Detalhe: Permite consultar os dados dos itens do plano de contratação de um órgão.</li>\n<li>PGC Detalhe Catálogo: Serviço relacionado ao PGC.</li>\n</ul>\n</li>\n</ol>\n<p>O acesso a esses dados e ferramentas pode ser feito através de URLs específicas, utilizando o protocolo de comunicação REST/HTTP 1.1 e a notação JSON para os dados trafegados.</p>\n<p>Fontes: Documentos da base de conhecimento sobre Compras.gov.br e Dados Abertos, incluindo informações sobre os painéis e módulos disponíveis no contexto do Compras.gov.br.</p>",
+    "created_at": "2025-06-04T19:54:39.829Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 86,
+  "fields": {
+    "user": 5,
+    "conversation": 9,
+    "message": "Quais são as principais legislações sobre dados abertos em compras públicas?",
+    "response": "<p>Com base nos documentos da base de conhecimento, as principais legislações sobre dados abertos em compras públicas incluem:</p>\n<ol>\n<li>\n<p><strong>Lei de Acesso à Informação (Lei nº 12.527/2011)</strong>: Garante o direito de acesso a informações públicas, promovendo transparência na administração pública. Suas diretrizes incluem publicidade como regra e sigilo como exceção, divulgação espontânea de dados de interesse público, uso de tecnologia para acesso, incentivo à cultura de transparência e controle social. (Fonte: FAQ - COTIN-CGGES, item 1.1)</p>\n</li>\n<li>\n<p><strong>Lei nº 14.133/2021</strong>: Embora não esteja explicitamente mencionada no contexto como uma lei de dados abertos, é relevante para as contratações públicas e é citada em relação ao Módulo Contratações, que oferece acesso a informações detalhadas sobre os procedimentos de contratação realizados pelos órgãos públicos. (Fonte: Módulo Contratações)</p>\n</li>\n</ol>\n<p>Além disso, o governo brasileiro assumiu o compromisso na <strong>Parceria para Governo Aberto (Open Government Partnership - OGP)</strong> de abrir os dados de Compras Governamentais, reforçando a transparência dos gastos públicos e incentivando a pesquisa e a inovação tecnológica por meio da implementação da Política Brasileira de Dados Abertos. (Fonte: Contexto Disponível)</p>\n<p>Essas legislações e compromissos formam a base legal e principiológica para a transparência e abertura de dados em compras públicas no Brasil.</p>\n<p>Fontes: \n- FAQ - COTIN-CGGES\n- Contexto Disponível sobre Compras Públicas e Dados Abertos\n- Módulo Contratações</p>",
+    "created_at": "2025-06-04T19:55:04.749Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 87,
+  "fields": {
+    "user": 5,
+    "conversation": 9,
+    "message": "O que são dados abertos de compras públicas e como acessá-los?",
+    "response": "<p>Com base nos documentos da base de conhecimento, os dados abertos de compras públicas referem-se às informações relacionadas às aquisições e contratações realizadas pela administração pública, que são disponibilizadas de forma acessível e transparente para a sociedade. Esses dados incluem detalhes sobre licitações, fornecedores, valores contratados, itens adquiridos, entre outros.</p>\n<p>A abertura dos dados de Compras Governamentais é um compromisso assumido pelo governo brasileiro na Parceria para Governo Aberto (Open Government Partnership - OGP). Esse compromisso reforça a transparência dos gastos públicos, fornece informações de valor agregado à sociedade e incentiva a pesquisa e a inovação tecnológica por meio da implementação da Política Brasileira de Dados Abertos.</p>\n<p>Para acessar esses dados, existem várias ferramentas e painéis disponíveis:</p>\n<ol>\n<li><strong>Painel de Municípios</strong>: Facilita a comparação entre diferentes municípios, possibilitando identificar padrões de consumo, eficiência nas compras e oportunidades de melhoria.</li>\n<li>Plataforma: Looker Studio</li>\n<li>\n<p>Acesso: Painel de Municípios</p>\n</li>\n<li>\n<p><strong>Painel de Viagens</strong>: Ferramenta para acompanhamento e análise de afastamentos a serviço no âmbito da administração pública federal. Ele consolida informações sobre viagens nacionais e internacionais registradas no Sistema de Concessão de Diárias e Passagens (SCDP) e no VIAJAR (Banco Central do Brasil).</p>\n</li>\n<li>Plataforma: Qlik</li>\n<li>\n<p>Acesso: Painel de Viagens</p>\n</li>\n<li>\n<p><strong>Pesquisa de Preços</strong>: Serviço que permite consultar os dados das descrições dos itens de serviços.</p>\n</li>\n<li>\n<p>Acesso: Pesquisa de Preços</p>\n</li>\n<li>\n<p><strong>Painel de Fornecedores Nacionais e Internacionais</strong>: Ferramenta que apresenta dados sobre a participação de empresas nacionais e estrangeiras nas licitações do Governo Federal, proporcionando uma visão detalhada do envolvimento desses fornecedores nos processos de compras públicas.</p>\n</li>\n<li>\n<p>Acesso: Painel de Fornecedores Nacionais e Internacionais</p>\n</li>\n<li>\n<p><strong>Módulo PGC - Planejamento e Gerenciamento de Contratações</strong>: O PGC é uma ferramenta estratégica utilizada por órgãos e entidades do governo para planejar, organizar e controlar suas contratações e aquisições.</p>\n</li>\n<li>Serviços disponíveis:<ul>\n<li>PGC Detalhe: Permite consultar os dados dos itens do plano de contratação de um órgão.</li>\n<li>PGC Detalhe Catálogo: Serviço relacionado ao PGC.</li>\n</ul>\n</li>\n</ol>\n<p>O acesso a esses dados e ferramentas pode ser feito através de URLs específicas, utilizando o protocolo de comunicação REST/HTTP 1.1 e a notação JSON para os dados trafegados.</p>\n<p>Fontes: Documentos da base de conhecimento sobre Compras.gov.br e Dados Abertos, incluindo informações sobre os painéis e módulos disponíveis no contexto do Compras.gov.br.</p>",
+    "created_at": "2025-06-04T20:03:03.230Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 88,
+  "fields": {
+    "user": 5,
+    "conversation": 9,
+    "message": "Como acessar informações de transparência pública relacionadas a compras governamentais?",
+    "response": "<p>Com base nos documentos da base de conhecimento, para acessar informações de transparência pública relacionadas a compras governamentais, existem várias ferramentas e painéis disponíveis:</p>\n<ol>\n<li><strong>Painel de Municípios</strong>: Facilita a comparação entre diferentes municípios, possibilitando identificar padrões de consumo, eficiência nas compras e oportunidades de melhoria.</li>\n<li>Plataforma: Looker Studio</li>\n<li>\n<p>Acesso: Painel de Municípios</p>\n</li>\n<li>\n<p><strong>Painel de Viagens</strong>: Ferramenta para acompanhamento e análise de afastamentos a serviço no âmbito da administração pública federal. Ele consolida informações sobre viagens nacionais e internacionais registradas no Sistema de Concessão de Diárias e Passagens (SCDP) e no VIAJAR (Banco Central do Brasil).</p>\n</li>\n<li>Plataforma: Qlik</li>\n<li>\n<p>Acesso: Painel de Viagens</p>\n</li>\n<li>\n<p><strong>Pesquisa de Preços</strong>: Serviço que permite consultar os dados das descrições dos itens de serviços.</p>\n</li>\n<li>\n<p>Acesso: Pesquisa de Preços</p>\n</li>\n<li>\n<p><strong>Painel de Fornecedores Nacionais e Internacionais</strong>: Ferramenta que apresenta dados sobre a participação de empresas nacionais e estrangeiras nas licitações do Governo Federal, proporcionando uma visão detalhada do envolvimento desses fornecedores nos processos de compras públicas.</p>\n</li>\n<li>\n<p>Acesso: Painel de Fornecedores Nacionais e Internacionais</p>\n</li>\n<li>\n<p><strong>Módulo Contratos</strong>: Reúne dados referentes aos contratos firmados no âmbito público, abrangendo informações como objeto, valor, prazo de vigência e partes envolvidas.</p>\n</li>\n<li>\n<p>Descrição: Este módulo permite acompanhar a execução contratual, promovendo maior transparência e possibilitando o controle efetivo das obrigações estabelecidas entre órgãos governamentais e fornecedores.</p>\n</li>\n<li>\n<p><strong>Módulo PGC - Planejamento e Gerenciamento de Contratações</strong>: O PGC é uma ferramenta estratégica utilizada por órgãos e entidades do governo para planejar, organizar e controlar suas contratações e aquisições.</p>\n</li>\n<li>Serviços disponíveis:<ul>\n<li>PGC Detalhe: Permite consultar os dados dos itens do plano de contratação de um órgão.</li>\n<li>PGC Detalhe Catálogo: Serviço relacionado ao PGC.</li>\n</ul>\n</li>\n</ol>\n<p>O acesso a esses dados e ferramentas pode ser feito através de URLs específicas, utilizando o protocolo de comunicação REST/HTTP 1.1 e a notação JSON para os dados trafegados.</p>\n<p>Fontes: Documentos da base de conhecimento sobre Compras.gov.br e Dados Abertos, incluindo informações sobre os painéis e módulos disponíveis no contexto do Compras.gov.br, FAQ - COTIN-CGGES, Contexto Disponível sobre Compras Públicas e Dados Abertos, Módulo Contratações.</p>",
+    "created_at": "2025-06-04T20:03:15.231Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 89,
+  "fields": {
+    "user": 5,
+    "conversation": 9,
+    "message": "Como acessar informações de transparência pública relacionadas a compras governamentais?",
+    "response": "<p>Com base nos documentos da base de conhecimento, para acessar informações de transparência pública relacionadas a compras governamentais, existem várias ferramentas e painéis disponíveis:</p>\n<ol>\n<li><strong>Painel de Municípios</strong>: Facilita a comparação entre diferentes municípios, possibilitando identificar padrões de consumo, eficiência nas compras e oportunidades de melhoria.</li>\n<li>Plataforma: Looker Studio</li>\n<li>\n<p>Acesso: Painel de Municípios</p>\n</li>\n<li>\n<p><strong>Painel de Viagens</strong>: Ferramenta para acompanhamento e análise de afastamentos a serviço no âmbito da administração pública federal. Ele consolida informações sobre viagens nacionais e internacionais registradas no Sistema de Concessão de Diárias e Passagens (SCDP) e no VIAJAR (Banco Central do Brasil).</p>\n</li>\n<li>Plataforma: Qlik</li>\n<li>\n<p>Acesso: Painel de Viagens</p>\n</li>\n<li>\n<p><strong>Pesquisa de Preços</strong>: Serviço que permite consultar os dados das descrições dos itens de serviços.</p>\n</li>\n<li>\n<p>Acesso: Pesquisa de Preços</p>\n</li>\n<li>\n<p><strong>Painel de Fornecedores Nacionais e Internacionais</strong>: Ferramenta que apresenta dados sobre a participação de empresas nacionais e estrangeiras nas licitações do Governo Federal, proporcionando uma visão detalhada do envolvimento desses fornecedores nos processos de compras públicas.</p>\n</li>\n<li>\n<p>Acesso: Painel de Fornecedores Nacionais e Internacionais</p>\n</li>\n<li>\n<p><strong>Módulo Contratos</strong>: Reúne dados referentes aos contratos firmados no âmbito público, abrangendo informações como objeto, valor, prazo de vigência e partes envolvidas. Este módulo permite acompanhar a execução contratual, promovendo maior transparência e possibilitando o controle efetivo das obrigações estabelecidas entre órgãos governamentais e fornecedores.</p>\n</li>\n<li>\n<p><strong>Módulo PGC - Planejamento e Gerenciamento de Contratações</strong>: O PGC é uma ferramenta estratégica utilizada por órgãos e entidades do governo para planejar, organizar e controlar suas contratações e aquisições.</p>\n</li>\n<li>Serviços disponíveis:<ul>\n<li>PGC Detalhe: Permite consultar os dados dos itens do plano de contratação de um órgão.</li>\n<li>PGC Detalhe Catálogo: Serviço relacionado ao PGC.</li>\n</ul>\n</li>\n</ol>\n<p>O acesso a esses dados e ferramentas pode ser feito através de URLs específicas, utilizando o protocolo de comunicação REST/HTTP 1.1 e a notação JSON para os dados trafegados.</p>\n<p>Fontes: Documentos da base de conhecimento sobre Compras.gov.br e Dados Abertos, incluindo informações sobre os painéis e módulos disponíveis no contexto do Compras.gov.br, FAQ - COTIN-CGGES, Contexto Disponível sobre Compras Públicas e Dados Abertos, Módulo Contratações.</p>",
+    "created_at": "2025-06-04T20:03:51.813Z"
+  }
+},
+{
+  "model": "chatbot.chat",
+  "pk": 90,
+  "fields": {
+    "user": 5,
+    "conversation": 9,
+    "message": "Como acessar informações de transparência pública?",
+    "response": "<p>Com base nos documentos da base de conhecimento, para acessar informações de transparência pública relacionadas a compras governamentais, existem várias ferramentas e painéis disponíveis:</p>\n<ol>\n<li><strong>Painel de Municípios</strong>: Facilita a comparação entre diferentes municípios, possibilitando identificar padrões de consumo, eficiência nas compras e oportunidades de melhoria.</li>\n<li>Plataforma: Looker Studio</li>\n<li>\n<p>Acesso: Painel de Municípios</p>\n</li>\n<li>\n<p><strong>Painel de Viagens</strong>: Ferramenta para acompanhamento e análise de afastamentos a serviço no âmbito da administração pública federal. Ele consolida informações sobre viagens nacionais e internacionais registradas no Sistema de Concessão de Diárias e Passagens (SCDP) e no VIAJAR (Banco Central do Brasil).</p>\n</li>\n<li>Plataforma: Qlik</li>\n<li>\n<p>Acesso: Painel de Viagens</p>\n</li>\n<li>\n<p><strong>Pesquisa de Preços</strong>: Serviço que permite consultar os dados das descrições dos itens de serviços.</p>\n</li>\n<li>\n<p>Acesso: Pesquisa de Preços</p>\n</li>\n<li>\n<p><strong>Painel de Fornecedores Nacionais e Internacionais</strong>: Ferramenta que apresenta dados sobre a participação de empresas nacionais e estrangeiras nas licitações do Governo Federal, proporcionando uma visão detalhada do envolvimento desses fornecedores nos processos de compras públicas.</p>\n</li>\n<li>\n<p>Acesso: Painel de Fornecedores Nacionais e Internacionais</p>\n</li>\n<li>\n<p><strong>Módulo Contratos</strong>: Reúne dados referentes aos contratos firmados no âmbito público, abrangendo informações como objeto, valor, prazo de vigência e partes envolvidas. Este módulo permite acompanhar a execução contratual, promovendo maior transparência e possibilitando o controle efetivo das obrigações estabelecidas entre órgãos governamentais e fornecedores.</p>\n</li>\n<li>\n<p><strong>Módulo PGC - Planejamento e Gerenciamento de Contratações</strong>: O PGC é uma ferramenta estratégica utilizada por órgãos e entidades do governo para planejar, organizar e controlar suas contratações e aquisições.</p>\n</li>\n<li>Serviços disponíveis:<ul>\n<li>PGC Detalhe: Permite consultar os dados dos itens do plano de contratação de um órgão.</li>\n<li>PGC Detalhe Catálogo: Serviço relacionado ao PGC.</li>\n</ul>\n</li>\n</ol>\n<p>O acesso a esses dados e ferramentas pode ser feito através de URLs específicas, utilizando o protocolo de comunicação REST/HTTP 1.1 e a notação JSON para os dados trafegados.</p>\n<p>Fontes: Documentos da base de conhecimento sobre Compras.gov.br e Dados Abertos, incluindo informações sobre os painéis e módulos disponíveis no contexto do Compras.gov.br, FAQ - COTIN-CGGES, Contexto Disponível sobre Compras Públicas e Dados Abertos, Módulo Contratações.</p>",
+    "created_at": "2025-06-04T20:36:18.393Z"
+  }
+},
+{
+  "model": "chatbot.chatfeedback",
+  "pk": 3,
+  "fields": {
+    "chat": 71,
+    "user": 4,
+    "rating": "positive",
+    "comment": "",
+    "created_at": "2025-05-29T20:08:58.773Z",
+    "updated_at": "2025-05-29T20:08:58.773Z",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0",
+    "ip_address": "127.0.0.1",
+    "session_duration": null
+  }
+},
+{
+  "model": "chatbot.chatfeedback",
+  "pk": 4,
+  "fields": {
+    "chat": 73,
+    "user": 4,
+    "rating": "negative",
+    "comment": "",
+    "created_at": "2025-05-29T20:15:08.089Z",
+    "updated_at": "2025-05-29T20:15:56.432Z",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0",
+    "ip_address": "127.0.0.1",
+    "session_duration": null
+  }
+},
+{
+  "model": "chatbot.chatfeedback",
+  "pk": 5,
+  "fields": {
+    "chat": 79,
+    "user": 5,
+    "rating": "positive",
+    "comment": "",
+    "created_at": "2025-06-03T20:26:14.635Z",
+    "updated_at": "2025-06-03T20:26:14.635Z",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:139.0) Gecko/20100101 Firefox/139.0",
+    "ip_address": "127.0.0.1",
+    "session_duration": null
+  }
+}
+]
